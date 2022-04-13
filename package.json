@@ -1,0 +1,19 @@
+{
+  "name": "evmabiless",
+  "version": "1.0.0",
+  "description": "Detect ABI from contract EVM bytecode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarpelesLab/evmabiless.git"
+  },
+  "author": "Mark Karpeles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KarpelesLab/evmabiless/issues"
+  },
+  "homepage": "https://github.com/KarpelesLab/evmabiless#readme"
+}
