@@ -62,4 +62,4 @@ uasort($signatures, function($a, $b) { return $a['compact'] > $b['compact']; });
 
 $f = fopen('signatures.js', 'w');
 
-fwrite($f, 'module.exports='.json_encode($signatures, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).';'."\n");
+fwrite($f, "// Do not edit, automatically generated file.\n\n".'module.exports = '.json_encode($signatures, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).';'."\n");

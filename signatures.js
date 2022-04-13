@@ -1,4 +1,6 @@
-module.exports={
+// Do not edit, automatically generated file.
+
+module.exports = {
     "8c5be1e5": {
         "abi": "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
         "compact": "Approval(address,address,uint256)",
