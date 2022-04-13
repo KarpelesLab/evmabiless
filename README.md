@@ -2,6 +2,30 @@
 
 This is based on a known list of ABIs, and the contract's bytecode.
 
+## Usage
+
+### abiList
+
+`abiList` returns a list of all known ABIs in a contract in human readable format.
+
+Parameter is the contract's bytecode (hex encoded).
+
+For a very basic sample:
+
+```js
+import { abiList } from 'evmabiless';
+
+// ...
+
+const erc20 = new ethers.Contract(address, abiList(bytecode), provider);
+```
+
+### scanContract
+
+scanContract will return all methods in a contract, and hashes for unknown methods.
+
+Parameter is the contract's bytecode (hex encoded).
+
 ## Bytecode
 
 EVM contracts will have a entry point that will read the function being called
