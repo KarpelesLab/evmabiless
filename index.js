@@ -1,6 +1,6 @@
 'use strict';
 
-signatures = require('./signatures');
+const signatures = require('./signatures');
 
 module.exports.scanContract = function(code) {
 	let res = [];

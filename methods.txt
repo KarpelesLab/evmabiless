@@ -9,9 +9,9 @@ decimals()
 owner()
 
 // IERC20
-totalSupply()
-balanceOf(address)
-transfer(address,uint256)
+function totalSupply() external view returns (uint256);
+function balanceOf(address account) external view returns (uint256);
+function transfer(address to, uint256 amount) external returns (bool);
 allowance(address,address)
 approve(address,uint256)
 transferFrom(address,address,uint256)
