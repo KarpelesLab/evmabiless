@@ -10,7 +10,7 @@ module.exports.scanContract = function(code) {
 	for (const match of matches) {
 		let f = match[1]; // keccak256 hash of function signature
 		if (f in signatures) {
-			f = signatures[f];
+			f = signatures[f].compact;
 		}
 		res.push(f);
 	}
