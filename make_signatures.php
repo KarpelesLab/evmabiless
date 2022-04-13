@@ -20,23 +20,27 @@ while(!feof($in)) {
 
 		// replace any spaces/tabs/etc with a single space
 		$def = preg_replace('/\s+/', ' ', $def);
+		$func = ['inputs' => [], 'name' => '', 'outputs' => []];
 
 		// we have a string such as: function transferFrom(address from, address to, uint256 amount) external returns (bool)
 		// we want to convert this to: transferFrom(address,address,uint256)
 		$p = strpos($def, ' ');
 		if ($p === false) throw new \Exception('invalid abi');
-		$type = substr($def, 0, $p); // function|event
+		$func['type'] = substr($def, 0, $p); // function|event
 		$abi = substr($def, $p+1); // transferFrom(...
 
 		$p = strpos($abi, '(');
 		if ($p === false) throw new \Exception('invalid abi');
 		$args = trim(substr($abi, $p+1));
+		$func['name'] = trim(substr($abi, 0, $p));
 		$abi = trim(substr($abi, 0, $p)).'('; // "transferFrom"
 
 		$p = strpos($args, ')');
 		if ($p === false) throw new \Exception('invalid abi');
 		$args = trim(substr($args, 0, $p));
 		$args = explode(',', $args);
+
+		$inputs = [];
 
 		$first = true;
 		foreach($args as $arg) {
@@ -46,14 +50,26 @@ while(!feof($in)) {
 				continue; // might be a function with just ()
 			}
 			$p = strpos($arg, ' ');
-			if ($p !== false) $arg = substr($arg, 0, $p); // only get the type
+			if ($p !== false) {
+				$lastp = strrpos($arg, ' ');
+				$argname = substr($arg, $lastp+1);
+				$arg = substr($arg, 0, $p); // only get the type
+			} else {
+				$argname = '';
+			}
 			$abi .= ($first?'':',').$arg;
 			$first = false;
+			$func['inputs'][] = ['internalType' => $arg, 'name' => $argname, 'type' => $arg];
 		}
 		$abi .= ')';
 		$hash = \Keccak256::hash($abi, 256);
 
-		$signatures[substr($hash, 0, 8)] = ['abi' => $def, 'compact' => $abi, 'type' => $type];
+		// if type=function, need stateMutability=nonpayable|view
+		$func['abi'] = $def;
+		$func['compact'] = $abi;
+		ksort($func);
+
+		$signatures[substr($hash, 0, 8)] = $func;
 	}
 }
 if ($buf !== '') die("missing ; at end of known_abi.sol ?\n");
