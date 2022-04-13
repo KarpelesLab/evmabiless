@@ -29,7 +29,7 @@ module.exports.abiList = function(code) {
 	const matches = code.matchAll(byteCodeMethodRegexp);
 	for (const match of matches) {
 		let f = match[1]; // keccak256 hash of function signature
-		if f in signatures) {
+		if (f in signatures) {
 			res.push(signatures[f].abi);
 		}
 	}
