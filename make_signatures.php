@@ -7,9 +7,9 @@ if (!$in) die("no file\n");
 
 while(!feof($in)) {
 	$l = fgets($in);
-	if (!$l) continue;
-	if (substr($l, 0, 2) == '//') continue;
 	$l = trim($l);
+	if (substr($l, 0, 2) == '//') continue;
+	if ($l == '') continue;
 
 	$hash = \Keccak256::hash($l, 256);
 	$signatures[substr($hash, 0, 8)] = $l;

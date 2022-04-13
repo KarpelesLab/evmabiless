@@ -1,13 +1,40 @@
 // this is a list of known contract methods
+
+// generic methods
 name()
+symbol()
 decimals()
+
+// ownable
+owner()
+
+// IERC20
+totalSupply()
+balanceOf(address)
+transfer(address,uint256)
+allowance(address,address)
+approve(address,uint256)
+transferFrom(address,address,uint256)
+
+// IERC721
+ownerOf(uint256)
+safeTransferFrom(address,address,uint256)
+safeTransferFrom(address,address,uint256,bytes)
+getApproved(uint256)
+setApprovalForAll(address,bool)
+isApprovedForAll(address,address)
+
+tokenURI(uint256)
+
+supportsInterface(bytes4)
+
 DOMAIN_SEPARATOR()
 contractURI()
-balanceOf(address)
 delegates(address)
-fiatWeight(uint256)
 getApproved(uint256)
 getPastTotalSupply(uint256)
 getPastVotes(address,uint256)
 getVotes(address)
 nonces(address)
+tokenByIndex(uint256)
+
