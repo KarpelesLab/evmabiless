@@ -17,7 +17,7 @@ import { abiList } from 'evmabiless';
 
 // ...
 
-const erc20 = new ethers.Contract(address, abiList(bytecode), provider);
+const erc20 = new ethers.Contract(address, abiList(await provider.getCode(address)), provider);
 ```
 
 ### scanContract
