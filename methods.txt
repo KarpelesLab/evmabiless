@@ -1,0 +1,13 @@
+// this is a list of known contract methods
+name()
+decimals()
+DOMAIN_SEPARATOR()
+contractURI()
+balanceOf(address)
+delegates(address)
+fiatWeight(uint256)
+getApproved(uint256)
+getPastTotalSupply(uint256)
+getPastVotes(address,uint256)
+getVotes(address)
+nonces(address)
