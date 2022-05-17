@@ -49,13 +49,17 @@ while(!feof($in)) {
 				$first = false;
 				continue; // might be a function with just ()
 			}
-			$p = strpos($arg, ' ');
-			if ($p !== false) {
-				$lastp = strrpos($arg, ' ');
-				$argname = substr($arg, $lastp+1);
-				$arg = substr($arg, 0, $p); // only get the type
-			} else {
-				$argname = '';
+			$parts = preg_split('/\\s/', $arg);
+			$argname = '';
+			foreach($parts as $np => $val) {
+				if (($val == 'memory') || ($val == 'calldata')) {
+					continue;
+				}
+				if ($np == 0) {
+					$arg = $val;
+					continue;
+				}
+				$argname = $val;
 			}
 			$abi .= ($first?'':',').$arg;
 			$first = false;
@@ -74,8 +78,6 @@ while(!feof($in)) {
 			$returns = substr($returns, 1, -1);
 			$returns = explode(',', $returns);
 
-			var_dump($returns);
-
 			$first = true;
 			foreach($returns as $return) {
 				$return = trim($return);
@@ -88,6 +90,7 @@ while(!feof($in)) {
 				$returnname = '';
 				foreach($parts as $np => $val) {
 					if ($val == 'memory') continue; // keyword
+					if ($val == 'calldata') continue; // keyword
 					if ($np == 0) {
 						// type
 						$return = $val;
@@ -98,7 +101,6 @@ while(!feof($in)) {
 				$first = false;
 				$func['outputs'][] = ['internalType' => $return, 'name' => $returnname, 'type' => $return];
 			}
-			var_dump($func['outputs']);
 		}
 
 		// try to detect if payable, view, pure, etc
