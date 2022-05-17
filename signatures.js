@@ -100,6 +100,225 @@ module.exports = {
         "outputs": [],
         "type": "event"
     },
+    "802aabe8": {
+        "abi": "function _totalRelayers() public view returns (uint)",
+        "compact": "_totalRelayers()",
+        "inputs": [],
+        "name": "_totalRelayers",
+        "outputs": [],
+        "type": "function"
+    },
+    "cdb0f73a": {
+        "abi": "function adminAddRelayer(address relayerAddress) external",
+        "compact": "adminAddRelayer(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "relayerAddress",
+                "type": "address"
+            }
+        ],
+        "name": "adminAddRelayer",
+        "outputs": [],
+        "type": "function"
+    },
+    "8b63aebf": {
+        "abi": "function adminChangeFeeHandler(address newFeeHandler) external",
+        "compact": "adminChangeFeeHandler(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newFeeHandler",
+                "type": "address"
+            }
+        ],
+        "name": "adminChangeFeeHandler",
+        "outputs": [],
+        "type": "function"
+    },
+    "4e056005": {
+        "abi": "function adminChangeRelayerThreshold(uint256 newThreshold) external",
+        "compact": "adminChangeRelayerThreshold(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "newThreshold",
+                "type": "uint256"
+            }
+        ],
+        "name": "adminChangeRelayerThreshold",
+        "outputs": [],
+        "type": "function"
+    },
+    "80ae1c28": {
+        "abi": "function adminPauseTransfers() external",
+        "compact": "adminPauseTransfers()",
+        "inputs": [],
+        "name": "adminPauseTransfers",
+        "outputs": [],
+        "type": "function"
+    },
+    "9d82dd63": {
+        "abi": "function adminRemoveRelayer(address relayerAddress) external",
+        "compact": "adminRemoveRelayer(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "relayerAddress",
+                "type": "address"
+            }
+        ],
+        "name": "adminRemoveRelayer",
+        "outputs": [],
+        "type": "function"
+    },
+    "8c0c2631": {
+        "abi": "function adminSetBurnable(address handlerAddress, address tokenAddress) external",
+        "compact": "adminSetBurnable(address,address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "handlerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+            }
+        ],
+        "name": "adminSetBurnable",
+        "outputs": [],
+        "type": "function"
+    },
+    "edc20c3c": {
+        "abi": "function adminSetDepositNonce(uint8 domainID, uint64 nonce) external",
+        "compact": "adminSetDepositNonce(uint8,uint64)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "domainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint64",
+                "name": "nonce",
+                "type": "uint64"
+            }
+        ],
+        "name": "adminSetDepositNonce",
+        "outputs": [],
+        "type": "function"
+    },
+    "d15ef64e": {
+        "abi": "function adminSetForwarder(address forwarder, bool valid) external",
+        "compact": "adminSetForwarder(address,bool)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "forwarder",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "valid",
+                "type": "bool"
+            }
+        ],
+        "name": "adminSetForwarder",
+        "outputs": [],
+        "type": "function"
+    },
+    "5a1ad87c": {
+        "abi": "function adminSetGenericResource(address handlerAddress, bytes32 resourceID, address contractAddress, bytes4 depositFunctionSig, uint256 depositFunctionDepositerOffset, bytes4 executeFunctionSig) external",
+        "compact": "adminSetGenericResource(address,bytes32,address,bytes4,uint256,bytes4)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "handlerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "contractAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes4",
+                "name": "depositFunctionSig",
+                "type": "bytes4"
+            },
+            {
+                "internalType": "uint256",
+                "name": "depositFunctionDepositerOffset",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes4",
+                "name": "executeFunctionSig",
+                "type": "bytes4"
+            }
+        ],
+        "name": "adminSetGenericResource",
+        "outputs": [],
+        "type": "function"
+    },
+    "cb10f215": {
+        "abi": "function adminSetResource(address handlerAddress, bytes32 resourceID, address tokenAddress) external",
+        "compact": "adminSetResource(address,bytes32,address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "handlerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+            }
+        ],
+        "name": "adminSetResource",
+        "outputs": [],
+        "type": "function"
+    },
+    "ffaac0eb": {
+        "abi": "function adminUnpauseTransfers() external",
+        "compact": "adminUnpauseTransfers()",
+        "inputs": [],
+        "name": "adminUnpauseTransfers",
+        "outputs": [],
+        "type": "function"
+    },
+    "bd2a1820": {
+        "abi": "function adminWithdraw(address handlerAddress, bytes memory data) external",
+        "compact": "adminWithdraw(address,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "handlerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "adminWithdraw",
+        "outputs": [],
+        "type": "function"
+    },
     "dd62ed3e": {
         "abi": "function allowance(address owner, address spender) external view returns (uint256)",
         "compact": "allowance(address,address)",
@@ -152,6 +371,30 @@ module.exports = {
         "outputs": [],
         "type": "function"
     },
+    "17f03ce5": {
+        "abi": "function cancelProposal(uint8 domainID, uint64 depositNonce, bytes32 dataHash) public",
+        "compact": "cancelProposal(uint8,uint64,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "domainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint64",
+                "name": "depositNonce",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "dataHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "cancelProposal",
+        "outputs": [],
+        "type": "function"
+    },
     "313ce567": {
         "abi": "function decimals() external view returns (uint8)",
         "compact": "decimals()",
@@ -161,7 +404,7 @@ module.exports = {
         "type": "function"
     },
     "5c19a95c": {
-        "abi": "function delegate(address delegatee) public virtual override",
+        "abi": "function delegate(address delegatee) public override",
         "compact": "delegate(address)",
         "inputs": [
             {
@@ -175,7 +418,7 @@ module.exports = {
         "type": "function"
     },
     "c3cda520": {
-        "abi": "function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) public virtual override",
+        "abi": "function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) public override",
         "compact": "delegateBySig(address,uint256,uint256,uint8,bytes32,bytes32)",
         "inputs": [
             {
@@ -214,7 +457,7 @@ module.exports = {
         "type": "function"
     },
     "587cde1e": {
-        "abi": "function delegates(address account) public view virtual override returns (address)",
+        "abi": "function delegates(address account) public view override returns (address)",
         "compact": "delegates(address)",
         "inputs": [
             {
@@ -224,6 +467,112 @@ module.exports = {
             }
         ],
         "name": "delegates",
+        "outputs": [],
+        "type": "function"
+    },
+    "b07e54bb": {
+        "abi": "function deposit(bytes32 resourceID, address depositer, bytes calldata data) external override returns (bytes memory)",
+        "compact": "deposit(bytes32,address,bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "depositer",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "deposit",
+        "outputs": [],
+        "type": "function"
+    },
+    "73c45c98": {
+        "abi": "function deposit(uint8 destinationDomainID, bytes32 resourceID, bytes calldata depositData, bytes calldata feeData) external payable",
+        "compact": "deposit(uint8,bytes32,bytes,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "destinationDomainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes",
+                "name": "depositData",
+                "type": "bytes"
+            },
+            {
+                "internalType": "bytes",
+                "name": "feeData",
+                "type": "bytes"
+            }
+        ],
+        "name": "deposit",
+        "outputs": [],
+        "type": "function"
+    },
+    "e248cff2": {
+        "abi": "function executeProposal(bytes32 resourceID, bytes calldata data) external override",
+        "compact": "executeProposal(bytes32,bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "executeProposal",
+        "outputs": [],
+        "type": "function"
+    },
+    "206a98fd": {
+        "abi": "function executeProposal(uint8 domainID, uint64 depositNonce, bytes calldata data, bytes32 resourceID, bool revertOnFail) public",
+        "compact": "executeProposal(uint8,uint64,bytes,bytes32,bool)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "domainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint64",
+                "name": "depositNonce",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bool",
+                "name": "revertOnFail",
+                "type": "bool"
+            }
+        ],
+        "name": "executeProposal",
         "outputs": [],
         "type": "function"
     },
@@ -242,7 +591,7 @@ module.exports = {
         "type": "function"
     },
     "8e539e8c": {
-        "abi": "function getPastTotalSupply(uint256 blockNumber) public view virtual override returns (uint256)",
+        "abi": "function getPastTotalSupply(uint256 blockNumber) public view override returns (uint256)",
         "compact": "getPastTotalSupply(uint256)",
         "inputs": [
             {
@@ -256,7 +605,7 @@ module.exports = {
         "type": "function"
     },
     "3a46b1a8": {
-        "abi": "function getPastVotes(address account, uint256 blockNumber) public view virtual override returns (uint256)",
+        "abi": "function getPastVotes(address account, uint256 blockNumber) public view override returns (uint256)",
         "compact": "getPastVotes(address,uint256)",
         "inputs": [
             {
@@ -274,8 +623,32 @@ module.exports = {
         "outputs": [],
         "type": "function"
     },
+    "a9cf69fa": {
+        "abi": "function getProposal(uint8 originDomainID, uint64 depositNonce, bytes32 dataHash) external view returns (Proposal memory)",
+        "compact": "getProposal(uint8,uint64,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "originDomainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint64",
+                "name": "depositNonce",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "dataHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "getProposal",
+        "outputs": [],
+        "type": "function"
+    },
     "9ab24eb0": {
-        "abi": "function getVotes(address account) public view virtual override returns (uint256)",
+        "abi": "function getVotes(address account) public view override returns (uint256)",
         "compact": "getVotes(address)",
         "inputs": [
             {
@@ -307,6 +680,20 @@ module.exports = {
         "outputs": [],
         "type": "function"
     },
+    "541d5548": {
+        "abi": "function isRelayer(address relayer) external view returns (bool)",
+        "compact": "isRelayer(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "relayer",
+                "type": "address"
+            }
+        ],
+        "name": "isRelayer",
+        "outputs": [],
+        "type": "function"
+    },
     "06fdde03": {
         "abi": "function name() external view returns (string memory)",
         "compact": "name()",
@@ -316,7 +703,7 @@ module.exports = {
         "type": "function"
     },
     "7ecebe00": {
-        "abi": "function nonces(address owner) public view virtual returns (uint256)",
+        "abi": "function nonces(address owner) public view returns (uint256)",
         "compact": "nonces(address)",
         "inputs": [
             {
@@ -330,7 +717,7 @@ module.exports = {
         "type": "function"
     },
     "8da5cb5b": {
-        "abi": "function owner() public view virtual returns (address)",
+        "abi": "function owner() public view returns (address)",
         "compact": "owner()",
         "inputs": [],
         "name": "owner",
@@ -351,8 +738,22 @@ module.exports = {
         "outputs": [],
         "type": "function"
     },
+    "5e1fab0f": {
+        "abi": "function renounceAdmin(address newAdmin) external",
+        "compact": "renounceAdmin(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newAdmin",
+                "type": "address"
+            }
+        ],
+        "name": "renounceAdmin",
+        "outputs": [],
+        "type": "function"
+    },
     "715018a6": {
-        "abi": "function renounceOwnership() public virtual",
+        "abi": "function renounceOwnership() public",
         "compact": "renounceOwnership()",
         "inputs": [],
         "name": "renounceOwnership",
@@ -432,7 +833,7 @@ module.exports = {
         "type": "function"
     },
     "01ffc9a7": {
-        "abi": "function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool)",
+        "abi": "function supportsInterface(bytes4 interfaceId) public view override returns (bool)",
         "compact": "supportsInterface(bytes4)",
         "inputs": [
             {
@@ -519,7 +920,7 @@ module.exports = {
         "type": "function"
     },
     "f2fde38b": {
-        "abi": "function transferOwnership(address newOwner) public virtual onlyOwner",
+        "abi": "function transferOwnership(address newOwner) public",
         "compact": "transferOwnership(address)",
         "inputs": [
             {
@@ -529,6 +930,49 @@ module.exports = {
             }
         ],
         "name": "transferOwnership",
+        "outputs": [],
+        "type": "function"
+    },
+    "c0331b3e": {
+        "abi": "function voteProposal(uint8 domainID, uint64 depositNonce, bytes32 resourceID, bytes calldata data) external",
+        "compact": "voteProposal(uint8,uint64,bytes32,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "domainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint64",
+                "name": "depositNonce",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "voteProposal",
+        "outputs": [],
+        "type": "function"
+    },
+    "0968f264": {
+        "abi": "function withdraw(bytes memory data) external override",
+        "compact": "withdraw(bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "withdraw",
         "outputs": [],
         "type": "function"
     }
