@@ -23,6 +23,7 @@ module.exports = {
         ],
         "name": "Approval",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "event"
     },
     "17307eab": {
@@ -47,6 +48,7 @@ module.exports = {
         ],
         "name": "ApprovalForAll",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "event"
     },
     "3644e515": {
@@ -54,7 +56,14 @@ module.exports = {
         "compact": "DOMAIN_SEPARATOR()",
         "inputs": [],
         "name": "DOMAIN_SEPARATOR",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "8be0079c": {
@@ -74,6 +83,7 @@ module.exports = {
         ],
         "name": "OwnershipTransferred",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "event"
     },
     "ddf252ad": {
@@ -98,6 +108,7 @@ module.exports = {
         ],
         "name": "Transfer",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "event"
     },
     "802aabe8": {
@@ -105,7 +116,14 @@ module.exports = {
         "compact": "_totalRelayers()",
         "inputs": [],
         "name": "_totalRelayers",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint",
+                "name": "",
+                "type": "uint"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "cdb0f73a": {
@@ -120,6 +138,7 @@ module.exports = {
         ],
         "name": "adminAddRelayer",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "8b63aebf": {
@@ -134,6 +153,7 @@ module.exports = {
         ],
         "name": "adminChangeFeeHandler",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "4e056005": {
@@ -148,6 +168,7 @@ module.exports = {
         ],
         "name": "adminChangeRelayerThreshold",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "80ae1c28": {
@@ -156,6 +177,7 @@ module.exports = {
         "inputs": [],
         "name": "adminPauseTransfers",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "9d82dd63": {
@@ -170,6 +192,7 @@ module.exports = {
         ],
         "name": "adminRemoveRelayer",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "8c0c2631": {
@@ -189,6 +212,7 @@ module.exports = {
         ],
         "name": "adminSetBurnable",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "edc20c3c": {
@@ -208,6 +232,7 @@ module.exports = {
         ],
         "name": "adminSetDepositNonce",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "d15ef64e": {
@@ -227,6 +252,7 @@ module.exports = {
         ],
         "name": "adminSetForwarder",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "5a1ad87c": {
@@ -266,6 +292,7 @@ module.exports = {
         ],
         "name": "adminSetGenericResource",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "cb10f215": {
@@ -290,6 +317,7 @@ module.exports = {
         ],
         "name": "adminSetResource",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "ffaac0eb": {
@@ -298,6 +326,7 @@ module.exports = {
         "inputs": [],
         "name": "adminUnpauseTransfers",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "bd2a1820": {
@@ -317,6 +346,7 @@ module.exports = {
         ],
         "name": "adminWithdraw",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "dd62ed3e": {
@@ -335,7 +365,14 @@ module.exports = {
             }
         ],
         "name": "allowance",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "095ea7b3": {
@@ -355,6 +392,7 @@ module.exports = {
         ],
         "name": "approve",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "70a08231": {
@@ -368,7 +406,14 @@ module.exports = {
             }
         ],
         "name": "balanceOf",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "balance",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "17f03ce5": {
@@ -393,6 +438,7 @@ module.exports = {
         ],
         "name": "cancelProposal",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "313ce567": {
@@ -400,7 +446,14 @@ module.exports = {
         "compact": "decimals()",
         "inputs": [],
         "name": "decimals",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint8",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "5c19a95c": {
@@ -415,6 +468,7 @@ module.exports = {
         ],
         "name": "delegate",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "c3cda520": {
@@ -454,6 +508,7 @@ module.exports = {
         ],
         "name": "delegateBySig",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "587cde1e": {
@@ -467,7 +522,14 @@ module.exports = {
             }
         ],
         "name": "delegates",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "b07e54bb": {
@@ -491,7 +553,14 @@ module.exports = {
             }
         ],
         "name": "deposit",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "73c45c98": {
@@ -521,6 +590,7 @@ module.exports = {
         ],
         "name": "deposit",
         "outputs": [],
+        "stateMutability": "payable",
         "type": "function"
     },
     "e248cff2": {
@@ -540,6 +610,7 @@ module.exports = {
         ],
         "name": "executeProposal",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "206a98fd": {
@@ -574,6 +645,7 @@ module.exports = {
         ],
         "name": "executeProposal",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "081812fc": {
@@ -587,7 +659,14 @@ module.exports = {
             }
         ],
         "name": "getApproved",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "8e539e8c": {
@@ -601,7 +680,14 @@ module.exports = {
             }
         ],
         "name": "getPastTotalSupply",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "3a46b1a8": {
@@ -620,7 +706,14 @@ module.exports = {
             }
         ],
         "name": "getPastVotes",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "a9cf69fa": {
@@ -644,7 +737,14 @@ module.exports = {
             }
         ],
         "name": "getProposal",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "Proposal",
+                "name": "",
+                "type": "Proposal"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "9ab24eb0": {
@@ -658,7 +758,14 @@ module.exports = {
             }
         ],
         "name": "getVotes",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "e985e9c5": {
@@ -677,7 +784,14 @@ module.exports = {
             }
         ],
         "name": "isApprovedForAll",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "541d5548": {
@@ -691,7 +805,14 @@ module.exports = {
             }
         ],
         "name": "isRelayer",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "06fdde03": {
@@ -699,7 +820,14 @@ module.exports = {
         "compact": "name()",
         "inputs": [],
         "name": "name",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "7ecebe00": {
@@ -713,7 +841,14 @@ module.exports = {
             }
         ],
         "name": "nonces",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "8da5cb5b": {
@@ -721,7 +856,14 @@ module.exports = {
         "compact": "owner()",
         "inputs": [],
         "name": "owner",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "6352211e": {
@@ -735,7 +877,14 @@ module.exports = {
             }
         ],
         "name": "ownerOf",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "5e1fab0f": {
@@ -750,6 +899,7 @@ module.exports = {
         ],
         "name": "renounceAdmin",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "715018a6": {
@@ -758,6 +908,7 @@ module.exports = {
         "inputs": [],
         "name": "renounceOwnership",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "42842e0e": {
@@ -782,6 +933,7 @@ module.exports = {
         ],
         "name": "safeTransferFrom",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "b88d4fde": {
@@ -811,6 +963,7 @@ module.exports = {
         ],
         "name": "safeTransferFrom",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "a22cb465": {
@@ -830,6 +983,7 @@ module.exports = {
         ],
         "name": "setApprovalForAll",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "01ffc9a7": {
@@ -843,7 +997,14 @@ module.exports = {
             }
         ],
         "name": "supportsInterface",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "95d89b41": {
@@ -851,7 +1012,14 @@ module.exports = {
         "compact": "symbol()",
         "inputs": [],
         "name": "symbol",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "c87b56dd": {
@@ -865,7 +1033,14 @@ module.exports = {
             }
         ],
         "name": "tokenURI",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "18160ddd": {
@@ -873,7 +1048,14 @@ module.exports = {
         "compact": "totalSupply()",
         "inputs": [],
         "name": "totalSupply",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "a9059cbb": {
@@ -892,7 +1074,14 @@ module.exports = {
             }
         ],
         "name": "transfer",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "23b872dd": {
@@ -917,6 +1106,7 @@ module.exports = {
         ],
         "name": "transferFrom",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "f2fde38b": {
@@ -931,6 +1121,7 @@ module.exports = {
         ],
         "name": "transferOwnership",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "c0331b3e": {
@@ -960,6 +1151,7 @@ module.exports = {
         ],
         "name": "voteProposal",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     },
     "0968f264": {
@@ -974,6 +1166,7 @@ module.exports = {
         ],
         "name": "withdraw",
         "outputs": [],
+        "stateMutability": "nonPayable",
         "type": "function"
     }
 };

@@ -13,11 +13,11 @@ Parameter is the contract's bytecode (hex encoded).
 For a very basic sample:
 
 ```js
-import { abiList } from 'evmabiless';
+import { abiObjectList } from 'evmabiless';
 
 // ...
 
-const erc20 = new ethers.Contract(address, abiList(await provider.getCode(address)), provider);
+const erc20 = new ethers.Contract(address, abiObjectList(await provider.getCode(address)), provider);
 ```
 
 ### scanContract

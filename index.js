@@ -36,3 +36,21 @@ module.exports.abiList = function(code) {
 
 	return res;
 };
+
+// abiObjectList returns an array of abi definition, such as what ethers.js accepts as input
+// Unknown ABIs will not be returned.
+module.exports.abiObjectList = function(code) {
+	let res = [];
+
+	// match our regexp
+	const matches = code.matchAll(byteCodeMethodRegexp);
+	for (const match of matches) {
+		let f = match[1]; // keccak256 hash of function signature
+		if (f in signatures) {
+			const abi = signatures[f];
+			res.push({name: abi.name, inputs: abi.inputs, outputs: abi.outputs, type: abi.type, stateMutability: abi.stateMutability});
+		}
+	}
+
+	return res;
+};

@@ -20,7 +20,7 @@ while(!feof($in)) {
 
 		// replace any spaces/tabs/etc with a single space
 		$def = preg_replace('/\s+/', ' ', $def);
-		$func = ['inputs' => [], 'name' => '', 'outputs' => []];
+		$func = ['inputs' => [], 'name' => '', 'outputs' => [], 'stateMutability' => 'nonPayable'];
 
 		// we have a string such as: function transferFrom(address from, address to, uint256 amount) external returns (bool)
 		// we want to convert this to: transferFrom(address,address,uint256)
@@ -37,16 +37,16 @@ while(!feof($in)) {
 
 		$p = strpos($args, ')');
 		if ($p === false) throw new \Exception('invalid abi');
+		$postArgs = trim(substr($args, $p+1));
 		$args = trim(substr($args, 0, $p));
 		$args = explode(',', $args);
-
-		$inputs = [];
 
 		$first = true;
 		foreach($args as $arg) {
 			$arg = trim($arg);
 			if ($arg === '') {
 				if (!$first) throw new \Exception('invalid abi');
+				$first = false;
 				continue; // might be a function with just ()
 			}
 			$p = strpos($arg, ' ');
@@ -63,6 +63,52 @@ while(!feof($in)) {
 		}
 		$abi .= ')';
 		$hash = \Keccak256::hash($abi, 256);
+
+		// check for returns
+		$p = strpos($postArgs, 'returns');
+		if ($p !== false) {
+			$p += 7; // skip "returns"
+			$returns = trim(substr($postArgs, $p)); // should contain "(...)"
+			if ((substr($returns, 0, 1) != '(') || (substr($returns, -1) != ')'))
+				throw new \Exception('invalid abi returns value');
+			$returns = substr($returns, 1, -1);
+			$returns = explode(',', $returns);
+
+			var_dump($returns);
+
+			$first = true;
+			foreach($returns as $return) {
+				$return = trim($return);
+				if ($return === '') {
+					if (!$first) throw new \Exception('invalid abi');
+					$first = false;
+					continue; // might be a function with just ()
+				}
+				$parts = preg_split('/\\s/', $return);
+				$returnname = '';
+				foreach($parts as $np => $val) {
+					if ($val == 'memory') continue; // keyword
+					if ($np == 0) {
+						// type
+						$return = $val;
+						continue;
+					}
+					$returnname = $val;
+				}
+				$first = false;
+				$func['outputs'][] = ['internalType' => $return, 'name' => $returnname, 'type' => $return];
+			}
+			var_dump($func['outputs']);
+		}
+
+		// try to detect if payable, view, pure, etc
+		if (strpos($postArgs, 'payable') !== false) {
+			$func['stateMutability'] = 'payable';
+		} else if (strpos($postArgs, 'view') !== false) {
+			$func['stateMutability'] = 'view';
+		} else if (strpos($postArgs, 'pure') !== false) {
+			$func['stateMutability'] = 'pure';
+		}
 
 		// if type=function, need stateMutability=nonpayable|view
 		$func['abi'] = $def;
