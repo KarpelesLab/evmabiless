@@ -71,6 +71,7 @@ function _totalRelayers() public view returns (uint);
 function adminChangeFeeHandler(address newFeeHandler) external;
 function adminWithdraw(address handlerAddress, bytes memory data) external;
 function deposit(uint8 destinationDomainID, bytes32 resourceID, bytes calldata depositData, bytes calldata feeData) external payable;
+function deposit(uint8 destinationChainID, bytes32 resourceID, bytes calldata data) external payable;
 function voteProposal(uint8 domainID, uint64 depositNonce, bytes32 resourceID, bytes calldata data) external;
 function cancelProposal(uint8 domainID, uint64 depositNonce, bytes32 dataHash) public;
 function executeProposal(uint8 domainID, uint64 depositNonce, bytes calldata data, bytes32 resourceID, bool revertOnFail) public;

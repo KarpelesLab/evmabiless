@@ -563,6 +563,31 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "05e2ca17": {
+        "abi": "function deposit(uint8 destinationChainID, bytes32 resourceID, bytes calldata data) external payable",
+        "compact": "deposit(uint8,bytes32,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "destinationChainID",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "resourceID",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "deposit",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "73c45c98": {
         "abi": "function deposit(uint8 destinationDomainID, bytes32 resourceID, bytes calldata depositData, bytes calldata feeData) external payable",
         "compact": "deposit(uint8,bytes32,bytes,bytes)",
