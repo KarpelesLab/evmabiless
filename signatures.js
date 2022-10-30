@@ -840,6 +840,26 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "40c10f19": {
+        "abi": "function mint(address to, uint256 tokenId) public",
+        "compact": "mint(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "mint",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "06fdde03": {
         "abi": "function name() external view returns (string memory)",
         "compact": "name()",
@@ -932,6 +952,41 @@ module.exports = {
         "compact": "renounceOwnership()",
         "inputs": [],
         "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "40d097c3": {
+        "abi": "function safeMint(address to) public",
+        "compact": "safeMint(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            }
+        ],
+        "name": "safeMint",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "a1448194": {
+        "abi": "function safeMint(address to, uint256 tokenId) public",
+        "compact": "safeMint(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "safeMint",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "function"

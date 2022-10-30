@@ -43,6 +43,11 @@ function tokenURI(uint256 tokenId) external view returns (string memory);
 
 function supportsInterface(bytes4 interfaceId) public view override returns (bool);
 
+// ERC-721 mint
+function safeMint(address to, uint256 tokenId) public;
+function safeMint(address to) public;
+function mint(address to, uint256 tokenId) public;
+
 // Votes
 function getVotes(address account) public view override returns (uint256);
 function getPastVotes(address account, uint256 blockNumber) public view override returns (uint256);
