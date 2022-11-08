@@ -23,6 +23,10 @@ function transferFrom(address from, address to, uint256 amount) external returns
 event Transfer(address indexed from, address indexed to, uint256 value);
 event Approval(address indexed owner, address indexed spender, uint256 value);
 
+// ERC20Burnable
+function burn(uint256 amount) external;
+function burnFrom(address account, uint256 amount) external;
+
 // IERC721
 event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);

@@ -416,6 +416,41 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "42966c68": {
+        "abi": "function burn(uint256 amount) external",
+        "compact": "burn(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "burn",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "79cc6790": {
+        "abi": "function burnFrom(address account, uint256 amount) external",
+        "compact": "burnFrom(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "burnFrom",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "17f03ce5": {
         "abi": "function cancelProposal(uint8 domainID, uint64 depositNonce, bytes32 dataHash) public",
         "compact": "cancelProposal(uint8,uint64,bytes32)",
