@@ -124,6 +124,47 @@ if ($buf !== '') die("missing ; at end of known_abi.sol ?\n");
 
 uasort($signatures, function($a, $b) { return $a['compact'] > $b['compact']; });
 
+$go = fopen('signatures.go', 'w');
+fwrite($go, "package evmabiless\n\n// Do not edit, automatically generated file.\n\n");
+fwrite($go, "var signatures = map[MethodPrefix]*Abi{\n");
+
+foreach($signatures as $key => $val) {
+	// transform key
+	$key = 'MethodPrefix{0x'.substr($key, 0, 2).', 0x'.substr($key, 2, 2).', 0x'.substr($key, 4, 2).', 0x'.substr($key, 6, 2).'}';
+	fwrite($go, "\t$key: &Abi{\n");
+	fwrite($go, "\t\tName: \"".$val['name']."\",\n");
+	fwrite($go, "\t\tABI: \"".$val['abi']."\",\n");
+	fwrite($go, "\t\tCompact: \"".$val['compact']."\",\n");
+	fwrite($go, "\t\tStateMutability: \"".$val['stateMutability']."\",\n");
+	fwrite($go, "\t\tType: \"".$val['type']."\",\n");
+	if (count($val['inputs'])) {
+		fwrite($go, "\t\tInputs: []*AbiIO{\n");
+		foreach($val['inputs'] as $io) {
+			fwrite($go, "\t\t\t&AbiIO{\n");
+			fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
+			fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
+			fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+			fwrite($go, "\t\t\t},\n");
+		}
+		fwrite($go, "\t\t},\n");
+	}
+	if (count($val['outputs'])) {
+		fwrite($go, "\t\tOutputs: []*AbiIO{\n");
+		foreach($val['outputs'] as $io) {
+			fwrite($go, "\t\t\t&AbiIO{\n");
+			fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
+			fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
+			fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+			fwrite($go, "\t\t\t},\n");
+		}
+		fwrite($go, "\t\t},\n");
+	}
+	fwrite($go, "\t},\n");
+}
+
+fwrite($go, "}\n");
+fclose($go);
+
 $f = fopen('signatures.js', 'w');
 
 fwrite($f, "// Do not edit, automatically generated file.\n\n".'module.exports = '.json_encode($signatures, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).';'."\n");
