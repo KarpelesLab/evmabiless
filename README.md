@@ -1,3 +1,5 @@
+[![GoDoc](https://godoc.org/github.com/KarpelesLab/evmabiless?status.svg)](https://godoc.org/github.com/KarpelesLab/evmabiless)
+
 # ABI-less contract invocation
 
 This is based on a known list of ABIs, and the contract's bytecode.
