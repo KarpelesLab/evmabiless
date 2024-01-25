@@ -51,6 +51,20 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x4b, 0xf5, 0xd7, 0xe9}: &Abi{
+		Name:            "CLOCK_MODE",
+		ABI:             "function CLOCK_MODE() public view virtual override returns (string memory)",
+		Compact:         "CLOCK_MODE()",
+		StateMutability: "view",
+		Type:            "function",
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+	},
 	MethodPrefix{0x36, 0x44, 0xe5, 0x15}: &Abi{
 		Name:            "DOMAIN_SEPARATOR",
 		ABI:             "function DOMAIN_SEPARATOR() external view returns (bytes32)",
@@ -430,6 +444,42 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x45, 0x21, 0x15, 0xd6}: &Abi{
+		Name:            "cancel",
+		ABI:             "function cancel(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public virtual override returns (uint256)",
+		Compact:         "cancel(address[],uint256[],bytes[],bytes32)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "descriptionHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x17, 0xf0, 0x3c, 0xe5}: &Abi{
 		Name:            "cancelProposal",
 		ABI:             "function cancelProposal(uint8 domainID, uint64 depositNonce, bytes32 dataHash) public",
@@ -451,6 +501,205 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "dataHash",
 				Type:         "bytes32",
 				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x56, 0x78, 0x13, 0x88}: &Abi{
+		Name:            "castVote",
+		ABI:             "function castVote(uint256 proposalId, uint8 support) public virtual override returns (uint256)",
+		Compact:         "castVote(uint256,uint8)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x3b, 0xcc, 0xf4, 0xfd}: &Abi{
+		Name:            "castVoteBySig",
+		ABI:             "function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s) public virtual override returns (uint256)",
+		Compact:         "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "v",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "r",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "s",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x7b, 0x3c, 0x71, 0xd3}: &Abi{
+		Name:            "castVoteWithReason",
+		ABI:             "function castVoteWithReason(uint256 proposalId, uint8 support, string calldata reason) public virtual override returns (uint256)",
+		Compact:         "castVoteWithReason(uint256,uint8,string)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x5f, 0x39, 0x8a, 0x14}: &Abi{
+		Name:            "castVoteWithReasonAndParams",
+		ABI:             "function castVoteWithReasonAndParams(uint256 proposalId, uint8 support, string calldata reason, bytes memory params) public virtual override returns (uint256)",
+		Compact:         "castVoteWithReasonAndParams(uint256,uint8,string,bytes)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+			&AbiIO{
+				Name:         "params",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x03, 0x42, 0x01, 0x81}: &Abi{
+		Name:            "castVoteWithReasonAndParamsBySig",
+		ABI:             "function castVoteWithReasonAndParamsBySig(uint256 proposalId, uint8 support, string calldata reason, bytes memory params, uint8 v, bytes32 r, bytes32 s) public virtual override returns (uint256)",
+		Compact:         "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+			&AbiIO{
+				Name:         "params",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "v",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "r",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "s",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x91, 0xdd, 0xad, 0xf4}: &Abi{
+		Name:            "clock",
+		ABI:             "function clock() public view virtual override returns (uint48)",
+		Compact:         "clock()",
+		StateMutability: "view",
+		Type:            "function",
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint48",
+				InternalType: "uint48",
 			},
 		},
 	},
@@ -623,6 +872,42 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "feeData",
 				Type:         "bytes",
 				InternalType: "bytes",
+			},
+		},
+	},
+	MethodPrefix{0x26, 0x56, 0x22, 0x7d}: &Abi{
+		Name:            "execute",
+		ABI:             "function execute(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public payable virtual override returns (uint256)",
+		Compact:         "execute(address[],uint256[],bytes[],bytes32)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "descriptionHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -799,6 +1084,99 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xeb, 0x90, 0x19, 0xd4}: &Abi{
+		Name:            "getVotes",
+		ABI:             "function getVotes(address account, uint256 timepoint) public view virtual override returns (uint256)",
+		Compact:         "getVotes(address,uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "timepoint",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x9a, 0x80, 0x2a, 0x6d}: &Abi{
+		Name:            "getVotesWithParams",
+		ABI:             "function getVotesWithParams(address account, uint256 timepoint, bytes memory params) public view virtual override returns (uint256)",
+		Compact:         "getVotesWithParams(address,uint256,bytes)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "timepoint",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "params",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xc5, 0x90, 0x57, 0xe4}: &Abi{
+		Name:            "hashProposal",
+		ABI:             "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
+		Compact:         "hashProposal(address[],uint256[],bytes[],bytes32)",
+		StateMutability: "pure",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "descriptionHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0xe9, 0x85, 0xe9, 0xc5}: &Abi{
 		Name:            "isApprovedForAll",
 		ABI:             "function isApprovedForAll(address owner, address operator) external view returns (bool)",
@@ -935,6 +1313,119 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xc0, 0x1f, 0x9e, 0x37}: &Abi{
+		Name:            "proposalDeadline",
+		ABI:             "function proposalDeadline(uint256 proposalId) public view virtual override returns (uint256)",
+		Compact:         "proposalDeadline(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x14, 0x34, 0x89, 0xd0}: &Abi{
+		Name:            "proposalProposer",
+		ABI:             "function proposalProposer(uint256 proposalId) public view virtual override returns (address)",
+		Compact:         "proposalProposer(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x2d, 0x63, 0xf6, 0x93}: &Abi{
+		Name:            "proposalSnapshot",
+		ABI:             "function proposalSnapshot(uint256 proposalId) public view virtual override returns (uint256)",
+		Compact:         "proposalSnapshot(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xb5, 0x81, 0x31, 0xb0}: &Abi{
+		Name:            "proposalThreshold",
+		ABI:             "function proposalThreshold() public view virtual returns (uint256)",
+		Compact:         "proposalThreshold()",
+		StateMutability: "view",
+		Type:            "function",
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x7d, 0x5e, 0x81, 0xe2}: &Abi{
+		Name:            "propose",
+		ABI:             "function propose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) public virtual override returns (uint256)",
+		Compact:         "propose(address[],uint256[],bytes[],string)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "description",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x5e, 0x1f, 0xab, 0x0f}: &Abi{
 		Name:            "renounceAdmin",
 		ABI:             "function renounceAdmin(address newAdmin) external",
@@ -1061,6 +1552,27 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x3e, 0x4f, 0x49, 0xe6}: &Abi{
+		Name:            "state",
+		ABI:             "function state(uint256 proposalId) public view returns (ProposalState)",
+		Compact:         "state(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "ProposalState",
+				InternalType: "ProposalState",
+			},
+		},
+	},
 	MethodPrefix{0x01, 0xff, 0xc9, 0xa7}: &Abi{
 		Name:            "supportsInterface",
 		ABI:             "function supportsInterface(bytes4 interfaceId) public view override returns (bool)",
@@ -1093,6 +1605,20 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "string",
 				InternalType: "string",
+			},
+		},
+	},
+	MethodPrefix{0xfc, 0x0c, 0x54, 0x6a}: &Abi{
+		Name:            "token",
+		ABI:             "function token() public view returns (address)",
+		Compact:         "token()",
+		StateMutability: "view",
+		Type:            "function",
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 	},
@@ -1192,6 +1718,20 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "newOwner",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x54, 0xfd, 0x4d, 0x50}: &Abi{
+		Name:            "version",
+		ABI:             "function version() public view returns (string memory)",
+		Compact:         "version()",
+		StateMutability: "view",
+		Type:            "function",
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "string",
+				InternalType: "string",
 			},
 		},
 	},

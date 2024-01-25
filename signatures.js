@@ -51,6 +51,21 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "event"
     },
+    "4bf5d7e9": {
+        "abi": "function CLOCK_MODE() public view virtual override returns (string memory)",
+        "compact": "CLOCK_MODE()",
+        "inputs": [],
+        "name": "CLOCK_MODE",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "3644e515": {
         "abi": "function DOMAIN_SEPARATOR() external view returns (bytes32)",
         "compact": "DOMAIN_SEPARATOR()",
@@ -451,6 +466,42 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "452115d6": {
+        "abi": "function cancel(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public virtual override returns (uint256)",
+        "compact": "cancel(address[],uint256[],bytes[],bytes32)",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "descriptionHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "cancel",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "17f03ce5": {
         "abi": "function cancelProposal(uint8 domainID, uint64 depositNonce, bytes32 dataHash) public",
         "compact": "cancelProposal(uint8,uint64,bytes32)",
@@ -474,6 +525,206 @@ module.exports = {
         "name": "cancelProposal",
         "outputs": [],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "56781388": {
+        "abi": "function castVote(uint256 proposalId, uint8 support) public virtual override returns (uint256)",
+        "compact": "castVote(uint256,uint8)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            }
+        ],
+        "name": "castVote",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "3bccf4fd": {
+        "abi": "function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s) public virtual override returns (uint256)",
+        "compact": "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "castVoteBySig",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "7b3c71d3": {
+        "abi": "function castVoteWithReason(uint256 proposalId, uint8 support, string calldata reason) public virtual override returns (uint256)",
+        "compact": "castVoteWithReason(uint256,uint8,string)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            }
+        ],
+        "name": "castVoteWithReason",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "5f398a14": {
+        "abi": "function castVoteWithReasonAndParams(uint256 proposalId, uint8 support, string calldata reason, bytes memory params) public virtual override returns (uint256)",
+        "compact": "castVoteWithReasonAndParams(uint256,uint8,string,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "params",
+                "type": "bytes"
+            }
+        ],
+        "name": "castVoteWithReasonAndParams",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "03420181": {
+        "abi": "function castVoteWithReasonAndParamsBySig(uint256 proposalId, uint8 support, string calldata reason, bytes memory params, uint8 v, bytes32 r, bytes32 s) public virtual override returns (uint256)",
+        "compact": "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "params",
+                "type": "bytes"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "castVoteWithReasonAndParamsBySig",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "91ddadf4": {
+        "abi": "function clock() public view virtual override returns (uint48)",
+        "compact": "clock()",
+        "inputs": [],
+        "name": "clock",
+        "outputs": [
+            {
+                "internalType": "uint48",
+                "name": "",
+                "type": "uint48"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "313ce567": {
@@ -653,6 +904,42 @@ module.exports = {
         "stateMutability": "payable",
         "type": "function"
     },
+    "2656227d": {
+        "abi": "function execute(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public payable virtual override returns (uint256)",
+        "compact": "execute(address[],uint256[],bytes[],bytes32)",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "descriptionHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "execute",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "e248cff2": {
         "abi": "function executeProposal(bytes32 resourceID, bytes calldata data) external override",
         "compact": "executeProposal(bytes32,bytes)",
@@ -828,6 +1115,99 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "eb9019d4": {
+        "abi": "function getVotes(address account, uint256 timepoint) public view virtual override returns (uint256)",
+        "compact": "getVotes(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "timepoint",
+                "type": "uint256"
+            }
+        ],
+        "name": "getVotes",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "9a802a6d": {
+        "abi": "function getVotesWithParams(address account, uint256 timepoint, bytes memory params) public view virtual override returns (uint256)",
+        "compact": "getVotesWithParams(address,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "timepoint",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "params",
+                "type": "bytes"
+            }
+        ],
+        "name": "getVotesWithParams",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "c59057e4": {
+        "abi": "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
+        "compact": "hashProposal(address[],uint256[],bytes[],bytes32)",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "descriptionHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "hashProposal",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
     "e985e9c5": {
         "abi": "function isApprovedForAll(address owner, address operator) external view returns (bool)",
         "compact": "isApprovedForAll(address,address)",
@@ -967,6 +1347,120 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "c01f9e37": {
+        "abi": "function proposalDeadline(uint256 proposalId) public view virtual override returns (uint256)",
+        "compact": "proposalDeadline(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "proposalDeadline",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "143489d0": {
+        "abi": "function proposalProposer(uint256 proposalId) public view virtual override returns (address)",
+        "compact": "proposalProposer(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "proposalProposer",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "2d63f693": {
+        "abi": "function proposalSnapshot(uint256 proposalId) public view virtual override returns (uint256)",
+        "compact": "proposalSnapshot(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "proposalSnapshot",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "b58131b0": {
+        "abi": "function proposalThreshold() public view virtual returns (uint256)",
+        "compact": "proposalThreshold()",
+        "inputs": [],
+        "name": "proposalThreshold",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "7d5e81e2": {
+        "abi": "function propose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) public virtual override returns (uint256)",
+        "compact": "propose(address[],uint256[],bytes[],string)",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            }
+        ],
+        "name": "propose",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "5e1fab0f": {
         "abi": "function renounceAdmin(address newAdmin) external",
         "compact": "renounceAdmin(address)",
@@ -1101,6 +1595,27 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "3e4f49e6": {
+        "abi": "function state(uint256 proposalId) public view returns (ProposalState)",
+        "compact": "state(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "state",
+        "outputs": [
+            {
+                "internalType": "ProposalState",
+                "name": "",
+                "type": "ProposalState"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "01ffc9a7": {
         "abi": "function supportsInterface(bytes4 interfaceId) public view override returns (bool)",
         "compact": "supportsInterface(bytes4)",
@@ -1132,6 +1647,21 @@ module.exports = {
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "fc0c546a": {
+        "abi": "function token() public view returns (address)",
+        "compact": "token()",
+        "inputs": [],
+        "name": "token",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
             }
         ],
         "stateMutability": "view",
@@ -1237,6 +1767,21 @@ module.exports = {
         "name": "transferOwnership",
         "outputs": [],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "54fd4d50": {
+        "abi": "function version() public view returns (string memory)",
+        "compact": "version()",
+        "inputs": [],
+        "name": "version",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "c0331b3e": {
