@@ -31,6 +31,10 @@ fwrite($go, "var signatures = map[MethodPrefix]*Abi{\n");
 
 foreach($signatures as $key => $val) {
 	// transform key
+	if (!isset($val['name'])) {
+		var_dump($val);
+		exit(1);
+	}
 	$key = 'MethodPrefix{0x'.substr($key, 0, 2).', 0x'.substr($key, 2, 2).', 0x'.substr($key, 4, 2).', 0x'.substr($key, 6, 2).'}';
 	fwrite($go, "\t$key: &Abi{\n");
 	fwrite($go, "\t\tName: \"".$val['name']."\",\n");

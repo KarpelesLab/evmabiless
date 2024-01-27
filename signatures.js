@@ -16,6 +16,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "bf0a12cf": {
+        "abi": "function ARBSYS() returns (address)",
+        "compact": "ARBSYS()",
+        "inputs": [],
+        "name": "ARBSYS",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "6697b232": {
         "abi": "error AccessControlBadConfirmation()",
         "compact": "AccessControlBadConfirmation()",
@@ -372,6 +387,39 @@ module.exports = {
         "name": "AdminChanged",
         "type": "event"
     },
+    "e194ef61": {
+        "abi": "event AffirmationCompleted(address indexed sender, address indexed executor, bytes32 indexed messageId, bool status)",
+        "anonymous": false,
+        "compact": "AffirmationCompleted(address,address,bytes32,bool)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "executor",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "messageId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "status",
+                "type": "bool"
+            }
+        ],
+        "name": "AffirmationCompleted",
+        "type": "event"
+    },
     "8c5be1e5": {
         "abi": "event Approval(address indexed owner, address indexed spender, uint256 value)",
         "anonymous": false,
@@ -547,6 +595,39 @@ module.exports = {
         "name": "BeaconUpgraded",
         "type": "event"
     },
+    "2d9d115e": {
+        "abi": "event BridgeCallTriggered(address indexed outbox, address indexed to, uint256 value, bytes data)",
+        "anonymous": false,
+        "compact": "BridgeCallTriggered(address,address,uint256,bytes)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "outbox",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "BridgeCallTriggered",
+        "type": "event"
+    },
     "a78a9be3": {
         "abi": "event Burned(address indexed operator, address indexed from, uint256 amount, bytes data, bytes operatorData)",
         "anonymous": false,
@@ -626,6 +707,21 @@ module.exports = {
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "f9d04295": {
+        "abi": "function CROSSCHAIN_ALIAS() returns (bytes32)",
+        "compact": "CROSSCHAIN_ALIAS()",
+        "inputs": [],
+        "name": "CROSSCHAIN_ALIAS",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
@@ -1049,6 +1145,27 @@ module.exports = {
         "name": "Deposit",
         "type": "event"
     },
+    "2da466a7": {
+        "abi": "event Deposited(address indexed payee, uint256 weiAmount)",
+        "anonymous": false,
+        "compact": "Deposited(address,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "weiAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "Deposited",
+        "type": "event"
+    },
     "f645eedf": {
         "abi": "error ECDSAInvalidSignature()",
         "compact": "ECDSAInvalidSignature()",
@@ -1418,6 +1535,33 @@ module.exports = {
         ],
         "name": "ERC20InvalidUnderlying",
         "type": "error"
+    },
+    "3be5b7a7": {
+        "abi": "event ERC20PaymentReleased(contract IERC20 indexed token, address to, uint256 amount)",
+        "anonymous": false,
+        "compact": "ERC20PaymentReleased(address,address,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC20PaymentReleased",
+        "type": "event"
     },
     "c0e52349": {
         "abi": "event ERC20Released(address indexed token, uint256 amount)",
@@ -1992,6 +2136,13 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "3db2a12a": {
+        "abi": "error Empty()",
+        "compact": "Empty()",
+        "inputs": [],
+        "name": "Empty",
+        "type": "error"
+    },
     "d93c0665": {
         "abi": "error EnforcedPause()",
         "compact": "EnforcedPause()",
@@ -2112,6 +2263,21 @@ module.exports = {
         "inputs": [],
         "name": "FailedInnerCall",
         "type": "error"
+    },
+    "99d0e048": {
+        "abi": "event FailedRelayedMessage(bytes32 indexed msgHash)",
+        "anonymous": false,
+        "compact": "FailedRelayedMessage(bytes32)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "msgHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "FailedRelayedMessage",
+        "type": "event"
     },
     "c1a287e2": {
         "abi": "function GRACE_PERIOD() returns (uint256)",
@@ -2401,6 +2567,63 @@ module.exports = {
         "name": "GovernorUnmetDelay",
         "type": "error"
     },
+    "ff64905f": {
+        "abi": "event InboxMessageDelivered(uint256 indexed messageNum, bytes data)",
+        "anonymous": false,
+        "compact": "InboxMessageDelivered(uint256,bytes)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "messageNum",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "InboxMessageDelivered",
+        "type": "event"
+    },
+    "ab532385": {
+        "abi": "event InboxMessageDeliveredFromOrigin(uint256 indexed messageNum)",
+        "anonymous": false,
+        "compact": "InboxMessageDeliveredFromOrigin(uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "messageNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "InboxMessageDeliveredFromOrigin",
+        "type": "event"
+    },
+    "6675ce88": {
+        "abi": "event InboxToggle(address indexed inbox, bool enabled)",
+        "anonymous": false,
+        "compact": "InboxToggle(address,bool)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "inbox",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "enabled",
+                "type": "bool"
+            }
+        ],
+        "name": "InboxToggle",
+        "type": "event"
+    },
     "c7f505b2": {
         "abi": "event Initialized(uint64 version)",
         "anonymous": false,
@@ -2411,6 +2634,21 @@ module.exports = {
                 "internalType": "uint64",
                 "name": "version",
                 "type": "uint64"
+            }
+        ],
+        "name": "Initialized",
+        "type": "event"
+    },
+    "7f26b83f": {
+        "abi": "event Initialized(uint8 version)",
+        "anonymous": false,
+        "compact": "Initialized(uint8)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint8",
+                "name": "version",
+                "type": "uint8"
             }
         ],
         "name": "Initialized",
@@ -2475,6 +2713,138 @@ module.exports = {
         "name": "InvalidShortString",
         "type": "error"
     },
+    "5baaa87d": {
+        "abi": "event L2ToL1Transaction(address caller, address indexed destination, uint256 indexed uniqueId, uint256 indexed batchNumber, uint256 indexInBatch, uint256 arbBlockNum, uint256 ethBlockNum, uint256 timestamp, uint256 callvalue, bytes data)",
+        "anonymous": false,
+        "compact": "L2ToL1Transaction(address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "caller",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "destination",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "uniqueId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "batchNumber",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "indexInBatch",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "arbBlockNum",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "ethBlockNum",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "callvalue",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "L2ToL1Transaction",
+        "type": "event"
+    },
+    "3e7aafa7": {
+        "abi": "event L2ToL1Tx(address caller, address indexed destination, uint256 indexed hash, uint256 indexed position, uint256 arbBlockNum, uint256 ethBlockNum, uint256 timestamp, uint256 callvalue, bytes data)",
+        "anonymous": false,
+        "compact": "L2ToL1Tx(address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "caller",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "destination",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "hash",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "position",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "arbBlockNum",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "ethBlockNum",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "callvalue",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "L2ToL1Tx",
+        "type": "event"
+    },
     "7ca4ac11": {
         "abi": "event LateQuorumVoteExtensionSet(uint64 oldVoteExtension, uint64 newVoteExtension)",
         "anonymous": false,
@@ -2526,6 +2896,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "d5391393": {
+        "abi": "function MINTER_ROLE() returns (bytes32)",
+        "compact": "MINTER_ROLE()",
+        "inputs": [],
+        "name": "MINTER_ROLE",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "605c2dbf": {
         "abi": "event ManagerChanged(address indexed account, address indexed newManager)",
         "anonymous": false,
@@ -2560,6 +2945,63 @@ module.exports = {
         "inputs": [],
         "name": "MerkleProofInvalidMultiproof",
         "type": "error"
+    },
+    "5e3c1311": {
+        "abi": "event MessageDelivered(uint256 indexed messageIndex, bytes32 indexed beforeInboxAcc, address inbox, uint8 kind, address sender, bytes32 messageDataHash, uint256 baseFeeL1, uint64 timestamp)",
+        "anonymous": false,
+        "compact": "MessageDelivered(uint256,bytes32,address,uint8,address,bytes32,uint256,uint64)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "messageIndex",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "beforeInboxAcc",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "inbox",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint8",
+                "name": "kind",
+                "type": "uint8"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "messageDataHash",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "baseFeeL1",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "timestamp",
+                "type": "uint64"
+            }
+        ],
+        "name": "MessageDelivered",
+        "type": "event"
     },
     "f8e1a15a": {
         "abi": "event MetadataUpdate(uint256 _tokenId)",
@@ -2681,12 +3123,34 @@ module.exports = {
         "name": "NewPendingAdmin",
         "type": "event"
     },
+    "4a74df92": {
+        "abi": "error NotCrossChainCall()",
+        "compact": "NotCrossChainCall()",
+        "inputs": [],
+        "name": "NotCrossChainCall",
+        "type": "error"
+    },
     "d7e6bcf8": {
         "abi": "error NotInitializing()",
         "compact": "NotInitializing()",
         "inputs": [],
         "name": "NotInitializing",
         "type": "error"
+    },
+    "c75184df": {
+        "abi": "function OUTBOX_VERSION() returns (uint128)",
+        "compact": "OUTBOX_VERSION()",
+        "inputs": [],
+        "name": "OUTBOX_VERSION",
+        "outputs": [
+            {
+                "internalType": "uint128",
+                "name": "",
+                "type": "uint128"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     },
     "bd9ac67a": {
         "abi": "event OperationCanceled(bytes32 indexed operationId, uint32 indexed nonce)",
@@ -2775,6 +3239,67 @@ module.exports = {
         "name": "OperationScheduled",
         "type": "event"
     },
+    "20af7f3b": {
+        "abi": "event OutBoxTransactionExecuted(address indexed to, address indexed l2Sender, uint256 indexed zero, uint256 transactionIndex)",
+        "anonymous": false,
+        "compact": "OutBoxTransactionExecuted(address,address,uint256,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "l2Sender",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "zero",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "transactionIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "OutBoxTransactionExecuted",
+        "type": "event"
+    },
+    "b4120f14": {
+        "abi": "error OutOfBounds()",
+        "compact": "OutOfBounds()",
+        "inputs": [],
+        "name": "OutOfBounds",
+        "type": "error"
+    },
+    "49477e73": {
+        "abi": "event OutboxToggle(address indexed outbox, bool enabled)",
+        "anonymous": false,
+        "compact": "OutboxToggle(address,bool)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "outbox",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "enabled",
+                "type": "bool"
+            }
+        ],
+        "name": "OutboxToggle",
+        "type": "event"
+    },
     "1e4fbdf7": {
         "abi": "error OwnableInvalidOwner(address owner)",
         "compact": "OwnableInvalidOwner(address)",
@@ -2843,6 +3368,21 @@ module.exports = {
         "name": "OwnershipTransferred",
         "type": "event"
     },
+    "e63ab1e9": {
+        "abi": "function PAUSER_ROLE() returns (bytes32)",
+        "compact": "PAUSER_ROLE()",
+        "inputs": [],
+        "name": "PAUSER_ROLE",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "8f61f4f5": {
         "abi": "function PROPOSER_ROLE() returns (bytes32)",
         "compact": "PROPOSER_ROLE()",
@@ -2886,6 +3426,69 @@ module.exports = {
             }
         ],
         "name": "Paused",
+        "type": "event"
+    },
+    "40c340f6": {
+        "abi": "event PayeeAdded(address account, uint256 shares)",
+        "anonymous": false,
+        "compact": "PayeeAdded(address,uint256)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "shares",
+                "type": "uint256"
+            }
+        ],
+        "name": "PayeeAdded",
+        "type": "event"
+    },
+    "6ef95f06": {
+        "abi": "event PaymentReceived(address from, uint256 amount)",
+        "anonymous": false,
+        "compact": "PaymentReceived(address,uint256)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "PaymentReceived",
+        "type": "event"
+    },
+    "df20fd1e": {
+        "abi": "event PaymentReleased(address to, uint256 amount)",
+        "anonymous": false,
+        "compact": "PaymentReleased(address,uint256)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "PaymentReleased",
         "type": "event"
     },
     "789cf55b": {
@@ -3144,6 +3747,70 @@ module.exports = {
         "inputs": [],
         "name": "ReentrancyGuardReentrantCall",
         "type": "error"
+    },
+    "088672c3": {
+        "abi": "event RefundsClosed()",
+        "anonymous": false,
+        "compact": "RefundsClosed()",
+        "inputs": [],
+        "name": "RefundsClosed",
+        "type": "event"
+    },
+    "599d8e5a": {
+        "abi": "event RefundsEnabled()",
+        "anonymous": false,
+        "compact": "RefundsEnabled()",
+        "inputs": [],
+        "name": "RefundsEnabled",
+        "type": "event"
+    },
+    "27333edb": {
+        "abi": "event RelayedMessage(address indexed sender, address indexed executor, bytes32 indexed messageId, bool status)",
+        "anonymous": false,
+        "compact": "RelayedMessage(address,address,bytes32,bool)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "executor",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "messageId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "status",
+                "type": "bool"
+            }
+        ],
+        "name": "RelayedMessage",
+        "type": "event"
+    },
+    "4641df4a": {
+        "abi": "event RelayedMessage(bytes32 indexed msgHash)",
+        "anonymous": false,
+        "compact": "RelayedMessage(bytes32)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "msgHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "RelayedMessage",
+        "type": "event"
     },
     "50546e66": {
         "abi": "event RevokedOperator(address indexed operator, address indexed tokenHolder)",
@@ -3495,6 +4162,54 @@ module.exports = {
         "name": "SafeERC20FailedOperation",
         "type": "error"
     },
+    "e9e13da3": {
+        "abi": "event SendMerkleUpdate(uint256 indexed reserved, bytes32 indexed hash, uint256 indexed position)",
+        "anonymous": false,
+        "compact": "SendMerkleUpdate(uint256,bytes32,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "reserved",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "hash",
+                "type": "bytes32"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "position",
+                "type": "uint256"
+            }
+        ],
+        "name": "SendMerkleUpdate",
+        "type": "event"
+    },
+    "b4df3847": {
+        "abi": "event SendRootUpdated(bytes32 indexed blockHash, bytes32 indexed outputRoot)",
+        "anonymous": false,
+        "compact": "SendRootUpdated(bytes32,bytes32)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "blockHash",
+                "type": "bytes32"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "outputRoot",
+                "type": "bytes32"
+            }
+        ],
+        "name": "SendRootUpdated",
+        "type": "event"
+    },
     "06b541dd": {
         "abi": "event Sent(address indexed operator, address indexed from, address indexed to, uint256 amount, bytes data, bytes operatorData)",
         "anonymous": false,
@@ -3540,6 +4255,75 @@ module.exports = {
         "name": "Sent",
         "type": "event"
     },
+    "cb0f7ffd": {
+        "abi": "event SentMessage(address indexed target, address sender, bytes message, uint256 messageNonce, uint256 gasLimit)",
+        "anonymous": false,
+        "compact": "SentMessage(address,address,bytes,uint256,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "target",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "message",
+                "type": "bytes"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "messageNonce",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            }
+        ],
+        "name": "SentMessage",
+        "type": "event"
+    },
+    "8c1e6003": {
+        "abi": "event SequencerInboxUpdated(address newSequencerInbox)",
+        "anonymous": false,
+        "compact": "SequencerInboxUpdated(address)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "newSequencerInbox",
+                "type": "address"
+            }
+        ],
+        "name": "SequencerInboxUpdated",
+        "type": "event"
+    },
+    "8030e83b": {
+        "abi": "event Snapshot(uint256 id)",
+        "anonymous": false,
+        "compact": "Snapshot(uint256)",
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "Snapshot",
+        "type": "event"
+    },
     "305a27a9": {
         "abi": "error StringTooLong(string str)",
         "compact": "StringTooLong(string)",
@@ -3570,6 +4354,21 @@ module.exports = {
         ],
         "name": "StringsInsufficientHexLength",
         "type": "error"
+    },
+    "0d3cf6fc": {
+        "abi": "function TIMELOCK_ADMIN_ROLE() returns (bytes32)",
+        "compact": "TIMELOCK_ADMIN_ROLE()",
+        "inputs": [],
+        "name": "TIMELOCK_ADMIN_ROLE",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     },
     "a56b7601": {
         "abi": "event TargetAdminDelayUpdated(address indexed target, uint32 delay, uint48 since)",
@@ -3943,6 +4742,48 @@ module.exports = {
         "name": "Upgraded",
         "type": "event"
     },
+    "482515ce": {
+        "abi": "event UserRequestForAffirmation(bytes32 indexed messageId, bytes encodedData)",
+        "anonymous": false,
+        "compact": "UserRequestForAffirmation(bytes32,bytes)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "messageId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "encodedData",
+                "type": "bytes"
+            }
+        ],
+        "name": "UserRequestForAffirmation",
+        "type": "event"
+    },
+    "520d2afd": {
+        "abi": "event UserRequestForSignature(bytes32 indexed messageId, bytes encodedData)",
+        "anonymous": false,
+        "compact": "UserRequestForSignature(bytes32,bytes)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "messageId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "encodedData",
+                "type": "bytes"
+            }
+        ],
+        "name": "UserRequestForSignature",
+        "type": "event"
+    },
     "b8e13888": {
         "abi": "event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason)",
         "anonymous": false,
@@ -4121,6 +4962,27 @@ module.exports = {
         "name": "Withdraw",
         "type": "event"
     },
+    "7084f547": {
+        "abi": "event Withdrawn(address indexed payee, uint256 weiAmount)",
+        "anonymous": false,
+        "compact": "Withdrawn(address,uint256)",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "weiAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "Withdrawn",
+        "type": "event"
+    },
     "b9a61961": {
         "abi": "function __acceptAdmin()",
         "compact": "__acceptAdmin()",
@@ -4172,6 +5034,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "ab5d8943": {
+        "abi": "function activeOutbox() returns (address)",
+        "compact": "activeOutbox()",
+        "inputs": [],
+        "name": "activeOutbox",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "f851a440": {
         "abi": "function admin() returns (address)",
         "compact": "admin()",
@@ -4208,6 +5085,90 @@ module.exports = {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e76f5c8d": {
+        "abi": "function allowedDelayedInboxList(uint256) returns (address)",
+        "compact": "allowedDelayedInboxList(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "allowedDelayedInboxList",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "ae60bd13": {
+        "abi": "function allowedDelayedInboxes(address inbox) returns (bool)",
+        "compact": "allowedDelayedInboxes(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "inbox",
+                "type": "address"
+            }
+        ],
+        "name": "allowedDelayedInboxes",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "945e1147": {
+        "abi": "function allowedOutboxList(uint256) returns (address)",
+        "compact": "allowedOutboxList(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "allowedOutboxList",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "413b35bd": {
+        "abi": "function allowedOutboxes(address outbox) returns (bool)",
+        "compact": "allowedOutboxes(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "outbox",
+                "type": "address"
+            }
+        ],
+        "name": "allowedOutboxes",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
             }
         ],
         "stateMutability": "view",
@@ -4294,6 +5255,72 @@ module.exports = {
             }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "2b407a82": {
+        "abi": "function arbBlockHash(uint256 arbBlockNum) returns (bytes32)",
+        "compact": "arbBlockHash(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "arbBlockNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "arbBlockHash",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "a3b1b31d": {
+        "abi": "function arbBlockNumber() returns (uint256)",
+        "compact": "arbBlockNumber()",
+        "inputs": [],
+        "name": "arbBlockNumber",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d127f54a": {
+        "abi": "function arbChainID() returns (uint256)",
+        "compact": "arbChainID()",
+        "inputs": [],
+        "name": "arbChainID",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "051038f2": {
+        "abi": "function arbOSVersion() returns (uint256)",
+        "compact": "arbOSVersion()",
+        "inputs": [],
+        "name": "arbOSVersion",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "38d52e0f": {
@@ -4388,6 +5415,32 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "4ee2cd7e": {
+        "abi": "function balanceOfAt(address account, uint256 snapshotId) returns (uint256)",
+        "compact": "balanceOfAt(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "snapshotId",
+                "type": "uint256"
+            }
+        ],
+        "name": "balanceOfAt",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "4e1273f4": {
         "abi": "function balanceOfBatch(address[] accounts, uint256[] ids) returns (uint256[])",
         "compact": "balanceOfBatch(address[],uint256[])",
@@ -4442,6 +5495,45 @@ module.exports = {
         "name": "beginDefaultAdminTransfer",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "38af3eed": {
+        "abi": "function beneficiary() returns (address)",
+        "compact": "beneficiary()",
+        "inputs": [],
+        "name": "beneficiary",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "9af6549a": {
+        "abi": "function beneficiaryWithdraw()",
+        "compact": "beneficiaryWithdraw()",
+        "inputs": [],
+        "name": "beneficiaryWithdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "e78cea92": {
+        "abi": "function bridge() returns (contract IBridge)",
+        "compact": "bridge()",
+        "inputs": [],
+        "name": "bridge",
+        "outputs": [
+            {
+                "internalType": "contract IBridge",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "f5298aca": {
@@ -4547,6 +5639,114 @@ module.exports = {
         "name": "burnFrom",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "9f0c04bf": {
+        "abi": "function calculateItemHash(address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data) returns (bytes32)",
+        "compact": "calculateItemHash(address,address,uint256,uint256,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "l2Sender",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l1Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Timestamp",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "calculateItemHash",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    "007436d3": {
+        "abi": "function calculateMerkleRoot(bytes32[] proof, uint256 path, bytes32 item) returns (bytes32)",
+        "compact": "calculateMerkleRoot(bytes32[],uint256,bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "proof",
+                "type": "bytes32[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "path",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "item",
+                "type": "bytes32"
+            }
+        ],
+        "name": "calculateMerkleRoot",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    "a66b327d": {
+        "abi": "function calculateRetryableSubmissionFee(uint256 dataLength, uint256 baseFee) returns (uint256)",
+        "compact": "calculateRetryableSubmissionFee(uint256,uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "dataLength",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "baseFee",
+                "type": "uint256"
+            }
+        ],
+        "name": "calculateRetryableSubmissionFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "b7009613": {
@@ -4829,6 +6029,47 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "3bccf4fd": {
+        "abi": "function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s) returns (uint256)",
+        "compact": "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "castVoteBySig",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "7b3c71d3": {
         "abi": "function castVoteWithReason(uint256 proposalId, uint8 support, string reason) returns (uint256)",
         "compact": "castVoteWithReason(uint256,uint8,string)",
@@ -4942,6 +6183,72 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "03420181": {
+        "abi": "function castVoteWithReasonAndParamsBySig(uint256 proposalId, uint8 support, string reason, bytes params, uint8 v, bytes32 r, bytes32 s) returns (uint256)",
+        "compact": "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "params",
+                "type": "bytes"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "castVoteWithReasonAndParamsBySig",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "8f283970": {
+        "abi": "function changeAdmin(address)",
+        "compact": "changeAdmin(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "changeAdmin",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "649a5ec7": {
         "abi": "function changeDefaultAdminDelay(uint48 newDelay)",
         "compact": "changeDefaultAdminDelay(uint48)",
@@ -4953,6 +6260,26 @@ module.exports = {
             }
         ],
         "name": "changeDefaultAdminDelay",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "7eff275e": {
+        "abi": "function changeProxyAdmin(contract ITransparentUpgradeableProxy proxy, address newAdmin)",
+        "compact": "changeProxyAdmin(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract ITransparentUpgradeableProxy",
+                "name": "proxy",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "newAdmin",
+                "type": "address"
+            }
+        ],
+        "name": "changeProxyAdmin",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -5008,6 +6335,15 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "43d726d6": {
+        "abi": "function close()",
+        "compact": "close()",
+        "inputs": [],
+        "name": "close",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     "94c7d7ee": {
@@ -5072,6 +6408,62 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "679b6ded": {
+        "abi": "function createRetryableTicket(address to, uint256 l2CallValue, uint256 maxSubmissionCost, address excessFeeRefundAddress, address callValueRefundAddress, uint256 gasLimit, uint256 maxFeePerGas, bytes data) returns (uint256)",
+        "compact": "createRetryableTicket(address,uint256,uint256,address,address,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2CallValue",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxSubmissionCost",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "excessFeeRefundAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "callValueRefundAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "createRetryableTicket",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "313ce567": {
         "abi": "function decimals() returns (uint8)",
         "compact": "decimals()",
@@ -5085,6 +6477,32 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "a457c2d7": {
+        "abi": "function decreaseAllowance(address spender, uint256 subtractedValue) returns (bool)",
+        "compact": "decreaseAllowance(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "spender",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "subtractedValue",
+                "type": "uint256"
+            }
+        ],
+        "name": "decreaseAllowance",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     "84ef8ffc": {
@@ -5152,6 +6570,42 @@ module.exports = {
         "compact": "delay()",
         "inputs": [],
         "name": "delay",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d5719dc2": {
+        "abi": "function delayedInboxAccs(uint256) returns (bytes32)",
+        "compact": "delayedInboxAccs(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "delayedInboxAccs",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "eca067ad": {
+        "abi": "function delayedMessageCount() returns (uint256)",
+        "compact": "delayedMessageCount()",
+        "inputs": [],
+        "name": "delayedMessageCount",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -5238,6 +6692,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "f340fa01": {
+        "abi": "function deposit(address payee)",
+        "compact": "deposit(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "deposit",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "6e553f65": {
         "abi": "function deposit(uint256 assets, address receiver) returns (uint256 shares)",
         "compact": "deposit(uint256,address)",
@@ -5262,6 +6731,21 @@ module.exports = {
             }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "439370b1": {
+        "abi": "function depositEth() returns (uint256)",
+        "compact": "depositEth()",
+        "inputs": [],
+        "name": "depositEth",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
         "type": "function"
     },
     "2f4f21e2": {
@@ -5314,6 +6798,42 @@ module.exports = {
             }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "e3a9db1a": {
+        "abi": "function depositsOf(address payee) returns (uint256)",
+        "compact": "depositsOf(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "depositsOf",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "b0750611": {
+        "abi": "function destinationChainId() returns (uint256)",
+        "compact": "destinationChainId()",
+        "inputs": [],
+        "name": "destinationChainId",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "0fb5a6b4": {
@@ -5376,6 +6896,15 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "8c52dc41": {
+        "abi": "function enableRefunds()",
+        "compact": "enableRefunds()",
+        "inputs": [],
+        "name": "enableRefunds",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "efbe1c1c": {
         "abi": "function end() returns (uint256)",
         "compact": "end()",
@@ -5389,6 +6918,151 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "8db5993b": {
+        "abi": "function enqueueDelayedMessage(uint8 kind, address sender, bytes32 messageDataHash) returns (uint256)",
+        "compact": "enqueueDelayedMessage(uint8,address,bytes32)",
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "kind",
+                "type": "uint8"
+            },
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "messageDataHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "enqueueDelayedMessage",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    "86598a56": {
+        "abi": "function enqueueSequencerMessage(bytes32 dataHash, uint256 afterDelayedMessagesRead, uint256 prevMessageCount, uint256 newMessageCount) returns (uint256 seqMessageIndex, bytes32 beforeAcc, bytes32 delayedAcc, bytes32 acc)",
+        "compact": "enqueueSequencerMessage(bytes32,uint256,uint256,uint256)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "dataHash",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "afterDelayedMessagesRead",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "prevMessageCount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "newMessageCount",
+                "type": "uint256"
+            }
+        ],
+        "name": "enqueueSequencerMessage",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "seqMessageIndex",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "beforeAcc",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "delayedAcc",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "acc",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "47153f82": {
+        "abi": "function execute(struct MinimalForwarder.ForwardRequest req, bytes signature) returns (bool, bytes)",
+        "compact": "execute((address,address,uint256,uint256,uint256,bytes),bytes)",
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "value",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "gas",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "nonce",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bytes",
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ],
+                "internalType": "struct MinimalForwarder.ForwardRequest",
+                "name": "req",
+                "type": "tuple"
+            },
+            {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+            }
+        ],
+        "name": "execute",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            },
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "stateMutability": "payable",
         "type": "function"
     },
     "df905caf": {
@@ -5647,6 +7321,42 @@ module.exports = {
         "stateMutability": "payable",
         "type": "function"
     },
+    "9e5d4c49": {
+        "abi": "function executeCall(address to, uint256 value, bytes data) returns (bool success, bytes returnData)",
+        "compact": "executeCall(address,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "executeCall",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "success",
+                "type": "bool"
+            },
+            {
+                "internalType": "bytes",
+                "name": "returnData",
+                "type": "bytes"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "0825f38f": {
         "abi": "function executeTransaction(address target, uint256 value, string signature, bytes data, uint256 eta) returns (bytes)",
         "compact": "executeTransaction(address,uint256,string,bytes,uint256)",
@@ -5688,6 +7398,111 @@ module.exports = {
         "stateMutability": "payable",
         "type": "function"
     },
+    "08635a95": {
+        "abi": "function executeTransaction(bytes32[] proof, uint256 index, address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data)",
+        "compact": "executeTransaction(bytes32[],uint256,address,address,uint256,uint256,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "proof",
+                "type": "bytes32[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "l2Sender",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l1Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Timestamp",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "executeTransaction",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "288e5b10": {
+        "abi": "function executeTransactionSimulation(uint256 index, address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data)",
+        "compact": "executeTransactionSimulation(uint256,address,address,uint256,uint256,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "l2Sender",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l1Block",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2Timestamp",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "executeTransactionSimulation",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "4f558e79": {
         "abi": "function exists(uint256 id) returns (bool)",
         "compact": "exists(uint256)",
@@ -5719,6 +7534,69 @@ module.exports = {
                 "internalType": "uint32",
                 "name": "",
                 "type": "uint32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e37c3289": {
+        "abi": "function failedMessageDataHash(bytes32 _messageId) returns (bytes32)",
+        "compact": "failedMessageDataHash(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_messageId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "failedMessageDataHash",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "3f9a8e7e": {
+        "abi": "function failedMessageReceiver(bytes32 _messageId) returns (address)",
+        "compact": "failedMessageReceiver(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_messageId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "failedMessageReceiver",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "4a610b04": {
+        "abi": "function failedMessageSender(bytes32 _messageId) returns (address)",
+        "compact": "failedMessageSender(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_messageId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "failedMessageSender",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
             }
         ],
         "stateMutability": "view",
@@ -5827,6 +7705,42 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "328dd982": {
+        "abi": "function getActions(uint256 proposalId) returns (address[] targets, uint256[] values, string[] signatures, bytes[] calldatas)",
+        "compact": "getActions(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getActions",
+        "outputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "string[]",
+                "name": "signatures",
+                "type": "string[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "081812fc": {
         "abi": "function getApproved(uint256 tokenId) returns (address operator)",
         "compact": "getApproved(uint256)",
@@ -5843,6 +7757,27 @@ module.exports = {
                 "internalType": "address",
                 "name": "operator",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "b4b5ea57": {
+        "abi": "function getCurrentVotes(address account) returns (uint96)",
+        "compact": "getCurrentVotes(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "getCurrentVotes",
+        "outputs": [
+            {
+                "internalType": "uint96",
+                "name": "",
+                "type": "uint96"
             }
         ],
         "stateMutability": "view",
@@ -5900,6 +7835,27 @@ module.exports = {
         "compact": "getMinDelay()",
         "inputs": [],
         "name": "getMinDelay",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "2d0335ab": {
+        "abi": "function getNonce(address from) returns (uint256)",
+        "compact": "getNonce(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            }
+        ],
+        "name": "getNonce",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -5994,6 +7950,117 @@ module.exports = {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "782d6fe1": {
+        "abi": "function getPriorVotes(address account, uint256 blockNumber) returns (uint96)",
+        "compact": "getPriorVotes(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "blockNumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "getPriorVotes",
+        "outputs": [
+            {
+                "internalType": "uint96",
+                "name": "",
+                "type": "uint96"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "f3b7dead": {
+        "abi": "function getProxyAdmin(contract ITransparentUpgradeableProxy proxy) returns (address)",
+        "compact": "getProxyAdmin(address)",
+        "inputs": [
+            {
+                "internalType": "contract ITransparentUpgradeableProxy",
+                "name": "proxy",
+                "type": "address"
+            }
+        ],
+        "name": "getProxyAdmin",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "204e1c7a": {
+        "abi": "function getProxyImplementation(contract ITransparentUpgradeableProxy proxy) returns (address)",
+        "compact": "getProxyImplementation(address)",
+        "inputs": [
+            {
+                "internalType": "contract ITransparentUpgradeableProxy",
+                "name": "proxy",
+                "type": "address"
+            }
+        ],
+        "name": "getProxyImplementation",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e23a9a52": {
+        "abi": "function getReceipt(uint256 proposalId, address voter) returns (struct IGovernorCompatibilityBravo.Receipt)",
+        "compact": "getReceipt(uint256,address)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "voter",
+                "type": "address"
+            }
+        ],
+        "name": "getReceipt",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "bool",
+                        "name": "hasVoted",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint8",
+                        "name": "support",
+                        "type": "uint8"
+                    },
+                    {
+                        "internalType": "uint96",
+                        "name": "votes",
+                        "type": "uint96"
+                    }
+                ],
+                "internalType": "struct IGovernorCompatibilityBravo.Receipt",
+                "name": "",
+                "type": "tuple"
             }
         ],
         "stateMutability": "view",
@@ -6146,6 +8213,21 @@ module.exports = {
                 "internalType": "uint48",
                 "name": "",
                 "type": "uint48"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "a94597ff": {
+        "abi": "function getStorageGasAvailable() returns (uint256)",
+        "compact": "getStorageGasAvailable()",
+        "inputs": [],
+        "name": "getStorageGasAvailable",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -6656,6 +8738,67 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "39509351": {
+        "abi": "function increaseAllowance(address spender, uint256 addedValue) returns (bool)",
+        "compact": "increaseAllowance(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "spender",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "addedValue",
+                "type": "uint256"
+            }
+        ],
+        "name": "increaseAllowance",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "c4d66de8": {
+        "abi": "function initialize(address rollup_)",
+        "compact": "initialize(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "rollup_",
+                "type": "address"
+            }
+        ],
+        "name": "initialize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "485cc955": {
+        "abi": "function initialize(contract IBridge _bridge, address _sequencerInbox)",
+        "compact": "initialize(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract IBridge",
+                "name": "_bridge",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_sequencerInbox",
+                "type": "address"
+            }
+        ],
+        "name": "initialize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "65ba36c1": {
         "abi": "function interfaceHash(string interfaceName) returns (bytes32)",
         "compact": "interfaceHash(string)",
@@ -6854,6 +8997,27 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "5a129efe": {
+        "abi": "function isSpent(uint256 index) returns (bool)",
+        "compact": "isSpent(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "isSpent",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "a166aa89": {
         "abi": "function isTargetClosed(address target) returns (bool)",
         "compact": "isTargetClosed(address)",
@@ -6865,6 +9029,21 @@ module.exports = {
             }
         ],
         "name": "isTargetClosed",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "08bd624c": {
+        "abi": "function isTopLevelCall() returns (bool)",
+        "compact": "isTopLevelCall()",
+        "inputs": [],
+        "name": "isTopLevelCall",
         "outputs": [
             {
                 "internalType": "bool",
@@ -6922,6 +9101,81 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "46547790": {
+        "abi": "function l2ToL1Block() returns (uint256)",
+        "compact": "l2ToL1Block()",
+        "inputs": [],
+        "name": "l2ToL1Block",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "8515bc6a": {
+        "abi": "function l2ToL1EthBlock() returns (uint256)",
+        "compact": "l2ToL1EthBlock()",
+        "inputs": [],
+        "name": "l2ToL1EthBlock",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "72f2a8c7": {
+        "abi": "function l2ToL1OutputId() returns (bytes32)",
+        "compact": "l2ToL1OutputId()",
+        "inputs": [],
+        "name": "l2ToL1OutputId",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "80648b02": {
+        "abi": "function l2ToL1Sender() returns (address)",
+        "compact": "l2ToL1Sender()",
+        "inputs": [],
+        "name": "l2ToL1Sender",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "b0f30537": {
+        "abi": "function l2ToL1Timestamp() returns (uint256)",
+        "compact": "l2ToL1Timestamp()",
+        "inputs": [],
+        "name": "l2ToL1Timestamp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "853551b8": {
         "abi": "function labelRole(uint64 roleId, string label)",
         "compact": "labelRole(uint64,string)",
@@ -6957,6 +9211,32 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "4dbbd506": {
+        "abi": "function mapL1SenderContractAddressToL2Alias(address sender, address unused) returns (address)",
+        "compact": "mapL1SenderContractAddressToL2Alias(address,address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "unused",
+                "type": "address"
+            }
+        ],
+        "name": "mapL1SenderContractAddressToL2Alias",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
     "402d267d": {
         "abi": "function maxDeposit(address receiver) returns (uint256 maxAssets)",
         "compact": "maxDeposit(address)",
@@ -6989,6 +9269,21 @@ module.exports = {
             }
         ],
         "name": "maxFlashLoan",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e5789d03": {
+        "abi": "function maxGasPerTx() returns (uint256)",
+        "compact": "maxGasPerTx()",
+        "inputs": [],
+        "name": "maxGasPerTx",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -7062,6 +9357,72 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "cb08a10c": {
+        "abi": "function messageCallStatus(bytes32 _messageId) returns (bool)",
+        "compact": "messageCallStatus(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_messageId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "messageCallStatus",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "669f618b": {
+        "abi": "function messageId() returns (bytes32)",
+        "compact": "messageId()",
+        "inputs": [],
+        "name": "messageId",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d67bdd25": {
+        "abi": "function messageSender() returns (address)",
+        "compact": "messageSender()",
+        "inputs": [],
+        "name": "messageSender",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "9e307dff": {
+        "abi": "function messageSourceChainId() returns (bytes32)",
+        "compact": "messageSourceChainId()",
+        "inputs": [],
+        "name": "messageSourceChainId",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "cc1b6c81": {
         "abi": "function minSetback() returns (uint32)",
         "compact": "minSetback()",
@@ -7075,6 +9436,71 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "6a627842": {
+        "abi": "function mint(address to)",
+        "compact": "mint(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            }
+        ],
+        "name": "mint",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "40c10f19": {
+        "abi": "function mint(address to, uint256 amount)",
+        "compact": "mint(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "mint",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "731133e9": {
+        "abi": "function mint(address to, uint256 id, uint256 amount, bytes data)",
+        "compact": "mint(address,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "mint",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     "94bf804d": {
@@ -7103,6 +9529,36 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "1f7fdffa": {
+        "abi": "function mintBatch(address to, uint256[] ids, uint256[] amounts, bytes data)",
+        "compact": "mintBatch(address,uint256[],uint256[],bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "amounts",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "mintBatch",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "ac9650d8": {
         "abi": "function multicall(bytes[] data) returns (bytes[] results)",
         "compact": "multicall(bytes[])",
@@ -7122,6 +9578,21 @@ module.exports = {
             }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "d74523b3": {
+        "abi": "function myCallersAddressWithoutAliasing() returns (address)",
+        "compact": "myCallersAddressWithoutAliasing()",
+        "inputs": [],
+        "name": "myCallersAddressWithoutAliasing",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "06fdde03": {
@@ -7508,6 +9979,15 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "8456cb59": {
+        "abi": "function pause()",
+        "compact": "pause()",
+        "inputs": [],
+        "name": "pause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "5c975abb": {
         "abi": "function paused() returns (bool)",
         "compact": "paused()",
@@ -7518,6 +9998,48 @@ module.exports = {
                 "internalType": "bool",
                 "name": "",
                 "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "8b83209b": {
+        "abi": "function payee(uint256 index) returns (address)",
+        "compact": "payee(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "payee",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e2982c21": {
+        "abi": "function payments(address dest) returns (uint256)",
+        "compact": "payments(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "dest",
+                "type": "address"
+            }
+        ],
+        "name": "payments",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -7638,6 +10160,21 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "c474d2c5": {
+        "abi": "function postUpgradeInit(contract IBridge _bridge)",
+        "compact": "postUpgradeInit(address)",
+        "inputs": [
+            {
+                "internalType": "contract IBridge",
+                "name": "_bridge",
+                "type": "address"
+            }
+        ],
+        "name": "postUpgradeInit",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "ef8b30f7": {
         "abi": "function previewDeposit(uint256 assets) returns (uint256 shares)",
         "compact": "previewDeposit(uint256)",
@@ -7720,6 +10257,31 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "9a7c4b71": {
+        "abi": "function processMessageFromRoot(uint256, address rootMessageSender, bytes data)",
+        "compact": "processMessageFromRoot(uint256,address,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "rootMessageSender",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "processMessageFromRoot",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     "da35c664": {
@@ -7996,6 +10558,72 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "013cf08b": {
+        "abi": "function proposals(uint256 proposalId) returns (uint256 id, address proposer, uint256 eta, uint256 startBlock, uint256 endBlock, uint256 forVotes, uint256 againstVotes, uint256 abstainVotes, bool canceled, bool executed)",
+        "compact": "proposals(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "proposals",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "proposer",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "eta",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "startBlock",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "endBlock",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "forVotes",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "againstVotes",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "abstainVotes",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "canceled",
+                "type": "bool"
+            },
+            {
+                "internalType": "bool",
+                "name": "executed",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "7d5e81e2": {
         "abi": "function propose(address[] targets, uint256[] values, bytes[] calldatas, string description) returns (uint256)",
         "compact": "propose(address[],uint256[],bytes[],string)",
@@ -8009,6 +10637,47 @@ module.exports = {
                 "internalType": "uint256[]",
                 "name": "values",
                 "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            }
+        ],
+        "name": "propose",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "da95691a": {
+        "abi": "function propose(address[] targets, uint256[] values, string[] signatures, bytes[] calldatas, string description) returns (uint256)",
+        "compact": "propose(address[],uint256[],string[],bytes[],string)",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "string[]",
+                "name": "signatures",
+                "type": "string[]"
             },
             {
                 "internalType": "bytes[]",
@@ -8232,6 +10901,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "24bc1a64": {
+        "abi": "function quorumVotes() returns (uint256)",
+        "compact": "quorumVotes()",
+        "inputs": [],
+        "name": "quorumVotes",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "ba087652": {
         "abi": "function redeem(uint256 shares, address receiver, address owner) returns (uint256 assets)",
         "compact": "redeem(uint256,address,address)",
@@ -8324,6 +11008,32 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "c45ac050": {
+        "abi": "function releasable(contract IERC20 token, address account) returns (uint256)",
+        "compact": "releasable(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "releasable",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "86d1a69f": {
         "abi": "function release()",
         "compact": "release()",
@@ -8348,6 +11058,41 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "48b75044": {
+        "abi": "function release(contract IERC20 token, address account)",
+        "compact": "release(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "release",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "b91d4001": {
+        "abi": "function releaseTime() returns (uint256)",
+        "compact": "releaseTime()",
+        "inputs": [],
+        "name": "releaseTime",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "96132521": {
         "abi": "function released() returns (uint256)",
         "compact": "released()",
@@ -8370,6 +11115,32 @@ module.exports = {
             {
                 "internalType": "address",
                 "name": "token",
+                "type": "address"
+            }
+        ],
+        "name": "released",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "406072a9": {
+        "abi": "function released(contract IERC20 token, address account) returns (uint256)",
+        "compact": "released(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
                 "type": "address"
             }
         ],
@@ -8430,6 +11201,68 @@ module.exports = {
         ],
         "name": "renounceRole",
         "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "94643f71": {
+        "abi": "function requireToConfirmMessage(address _contract, bytes _data, uint256 _gas) returns (bytes32)",
+        "compact": "requireToConfirmMessage(address,bytes,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_contract",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "_data",
+                "type": "bytes"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_gas",
+                "type": "uint256"
+            }
+        ],
+        "name": "requireToConfirmMessage",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "dc8601b3": {
+        "abi": "function requireToPassMessage(address _contract, bytes _data, uint256 _gas) returns (bytes32)",
+        "compact": "requireToPassMessage(address,bytes,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_contract",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "_data",
+                "type": "bytes"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_gas",
+                "type": "uint256"
+            }
+        ],
+        "name": "requireToPassMessage",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
         "stateMutability": "nonpayable",
         "type": "function"
     },
@@ -8495,6 +11328,42 @@ module.exports = {
         "name": "rollbackDefaultAdminDelay",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "cb23bcb5": {
+        "abi": "function rollup() returns (address)",
+        "compact": "rollup()",
+        "inputs": [],
+        "name": "rollup",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "ae6dead7": {
+        "abi": "function roots(bytes32) returns (bytes32)",
+        "compact": "roots(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "roots",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "2a55205a": {
@@ -8794,6 +11663,354 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "8a631aa6": {
+        "abi": "function sendContractTransaction(uint256 gasLimit, uint256 maxFeePerGas, address to, uint256 value, bytes data) returns (uint256)",
+        "compact": "sendContractTransaction(uint256,uint256,address,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendContractTransaction",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "5e916758": {
+        "abi": "function sendL1FundedContractTransaction(uint256 gasLimit, uint256 maxFeePerGas, address to, bytes data) returns (uint256)",
+        "compact": "sendL1FundedContractTransaction(uint256,uint256,address,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendL1FundedContractTransaction",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    "67ef3ab8": {
+        "abi": "function sendL1FundedUnsignedTransaction(uint256 gasLimit, uint256 maxFeePerGas, uint256 nonce, address to, bytes data) returns (uint256)",
+        "compact": "sendL1FundedUnsignedTransaction(uint256,uint256,uint256,address,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendL1FundedUnsignedTransaction",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    "b75436bb": {
+        "abi": "function sendL2Message(bytes messageData) returns (uint256)",
+        "compact": "sendL2Message(bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "messageData",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendL2Message",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "1fe927cf": {
+        "abi": "function sendL2MessageFromOrigin(bytes messageData) returns (uint256)",
+        "compact": "sendL2MessageFromOrigin(bytes)",
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "messageData",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendL2MessageFromOrigin",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "7aeecd2a": {
+        "abi": "function sendMerkleTreeState() returns (uint256 size, bytes32 root, bytes32[] partials)",
+        "compact": "sendMerkleTreeState()",
+        "inputs": [],
+        "name": "sendMerkleTreeState",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "size",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "root",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32[]",
+                "name": "partials",
+                "type": "bytes32[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "3dbb202b": {
+        "abi": "function sendMessage(address _target, bytes _message, uint32 _gasLimit)",
+        "compact": "sendMessage(address,bytes,uint32)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_target",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "_message",
+                "type": "bytes"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_gasLimit",
+                "type": "uint32"
+            }
+        ],
+        "name": "sendMessage",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "928c169a": {
+        "abi": "function sendTxToL1(address destination, bytes data) returns (uint256)",
+        "compact": "sendTxToL1(address,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "destination",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendTxToL1",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    "5075788b": {
+        "abi": "function sendUnsignedTransaction(uint256 gasLimit, uint256 maxFeePerGas, uint256 nonce, address to, uint256 value, bytes data) returns (uint256)",
+        "compact": "sendUnsignedTransaction(uint256,uint256,uint256,address,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "sendUnsignedTransaction",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "ee35f327": {
+        "abi": "function sequencerInbox() returns (address)",
+        "compact": "sequencerInbox()",
+        "inputs": [],
+        "name": "sequencerInbox",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "16bf5579": {
+        "abi": "function sequencerInboxAccs(uint256) returns (bytes32)",
+        "compact": "sequencerInboxAccs(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "sequencerInboxAccs",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "0084120c": {
+        "abi": "function sequencerMessageCount() returns (uint256)",
+        "compact": "sequencerMessageCount()",
+        "inputs": [],
+        "name": "sequencerMessageCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "5fca4a16": {
+        "abi": "function sequencerReportedSubMessageCount() returns (uint256)",
+        "compact": "sequencerReportedSubMessageCount()",
+        "inputs": [],
+        "name": "sequencerReportedSubMessageCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "cc3bac57": {
         "abi": "function setAccessManagerIgnored(address target, bytes4[] selectors, bool ignored)",
         "compact": "setAccessManagerIgnored(address,bytes4[],bool)",
@@ -8884,6 +12101,26 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "47fb24c5": {
+        "abi": "function setDelayedInbox(address inbox, bool enabled)",
+        "compact": "setDelayedInbox(address,bool)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "inbox",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "enabled",
+                "type": "bool"
+            }
+        ],
+        "name": "setDelayedInbox",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "a64d95ce": {
         "abi": "function setGrantDelay(uint64 roleId, uint32 newDelay)",
         "compact": "setGrantDelay(uint64,uint32)",
@@ -8944,6 +12181,21 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "d07f91e9": {
+        "abi": "function setLateQuorumVoteExtension(uint64 newVoteExtension)",
+        "compact": "setLateQuorumVoteExtension(uint64)",
+        "inputs": [
+            {
+                "internalType": "uint64",
+                "name": "newVoteExtension",
+                "type": "uint64"
+            }
+        ],
+        "name": "setLateQuorumVoteExtension",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "5df8122f": {
         "abi": "function setManager(address account, address newManager)",
         "compact": "setManager(address,address)",
@@ -8960,6 +12212,26 @@ module.exports = {
             }
         ],
         "name": "setManager",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "cee3d728": {
+        "abi": "function setOutbox(address inbox, bool enabled)",
+        "compact": "setOutbox(address,bool)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "inbox",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "enabled",
+                "type": "bool"
+            }
+        ],
+        "name": "setOutbox",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -9034,6 +12306,21 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "4f61f850": {
+        "abi": "function setSequencerInbox(address _sequencerInbox)",
+        "compact": "setSequencerInbox(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_sequencerInbox",
+                "type": "address"
+            }
+        ],
+        "name": "setSequencerInbox",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "d22b5989": {
         "abi": "function setTargetAdminDelay(address target, uint32 newDelay)",
         "compact": "setTargetAdminDelay(address,uint32)",
@@ -9099,6 +12386,21 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "70b0f660": {
+        "abi": "function setVotingDelay(uint256 newVotingDelay)",
+        "compact": "setVotingDelay(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "newVotingDelay",
+                "type": "uint256"
+            }
+        ],
+        "name": "setVotingDelay",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "79051887": {
         "abi": "function setVotingDelay(uint48 newVotingDelay)",
         "compact": "setVotingDelay(uint48)",
@@ -9110,6 +12412,21 @@ module.exports = {
             }
         ],
         "name": "setVotingDelay",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "ea0217cf": {
+        "abi": "function setVotingPeriod(uint256 newVotingPeriod)",
+        "compact": "setVotingPeriod(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "newVotingPeriod",
+                "type": "uint256"
+            }
+        ],
+        "name": "setVotingPeriod",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -9129,6 +12446,63 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "ce7c2ac2": {
+        "abi": "function shares(address account) returns (uint256)",
+        "compact": "shares(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "shares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "1544298e": {
+        "abi": "function sourceChainId() returns (uint256)",
+        "compact": "sourceChainId()",
+        "inputs": [],
+        "name": "sourceChainId",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d5b5cc23": {
+        "abi": "function spent(uint256) returns (bytes32)",
+        "compact": "spent(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "spent",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "be9a6555": {
         "abi": "function start() returns (uint256)",
         "compact": "start()",
@@ -9139,6 +12513,21 @@ module.exports = {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "c19d93fb": {
+        "abi": "function state() returns (enum RefundEscrow.State)",
+        "compact": "state()",
+        "inputs": [],
+        "name": "state",
+        "outputs": [
+            {
+                "internalType": "enum RefundEscrow.State",
+                "name": "",
+                "type": "uint8"
             }
         ],
         "stateMutability": "view",
@@ -9163,6 +12552,32 @@ module.exports = {
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    "7a88b107": {
+        "abi": "function submitBatchSpendingReport(address batchPoster, bytes32 dataHash) returns (uint256 msgNum)",
+        "compact": "submitBatchSpendingReport(address,bytes32)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "batchPoster",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "dataHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "submitBatchSpendingReport",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "msgNum",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     "01ffc9a7": {
@@ -9394,6 +12809,57 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "e33b7de3": {
+        "abi": "function totalReleased() returns (uint256)",
+        "compact": "totalReleased()",
+        "inputs": [],
+        "name": "totalReleased",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d79779b2": {
+        "abi": "function totalReleased(contract IERC20 token) returns (uint256)",
+        "compact": "totalReleased(address)",
+        "inputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
+            }
+        ],
+        "name": "totalReleased",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "3a98ef39": {
+        "abi": "function totalShares() returns (uint256)",
+        "compact": "totalShares()",
+        "inputs": [],
+        "name": "totalShares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "18160ddd": {
         "abi": "function totalSupply() returns (uint256)",
         "compact": "totalSupply()",
@@ -9425,6 +12891,42 @@ module.exports = {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "981b24d0": {
+        "abi": "function totalSupplyAt(uint256 snapshotId) returns (uint256)",
+        "compact": "totalSupplyAt(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "snapshotId",
+                "type": "uint256"
+            }
+        ],
+        "name": "totalSupplyAt",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "0ac1c313": {
+        "abi": "function transactionHash() returns (bytes32)",
+        "compact": "transactionHash()",
+        "inputs": [],
+        "name": "transactionHash",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
@@ -9656,6 +13158,71 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "3f4ba83a": {
+        "abi": "function unpause()",
+        "compact": "unpause()",
+        "inputs": [],
+        "name": "unpause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "6e6e8a6a": {
+        "abi": "function unsafeCreateRetryableTicket(address to, uint256 l2CallValue, uint256 maxSubmissionCost, address excessFeeRefundAddress, address callValueRefundAddress, uint256 gasLimit, uint256 maxFeePerGas, bytes data) returns (uint256)",
+        "compact": "unsafeCreateRetryableTicket(address,uint256,uint256,address,address,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "l2CallValue",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxSubmissionCost",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "excessFeeRefundAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "callValueRefundAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "gasLimit",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxFeePerGas",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "unsafeCreateRetryableTicket",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "18ff183c": {
         "abi": "function updateAuthority(address target, address newAuthority)",
         "compact": "updateAuthority(address,address)",
@@ -9726,6 +13293,26 @@ module.exports = {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    "a04cee60": {
+        "abi": "function updateSendRoot(bytes32 sendRoot, bytes32 l2BlockHash)",
+        "compact": "updateSendRoot(bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "sendRoot",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "l2BlockHash",
+                "type": "bytes32"
+            }
+        ],
+        "name": "updateSendRoot",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "a890c910": {
         "abi": "function updateTimelock(contract ICompoundTimelock newTimelock)",
         "compact": "updateTimelock(address)",
@@ -9737,6 +13324,26 @@ module.exports = {
             }
         ],
         "name": "updateTimelock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "99a88ec4": {
+        "abi": "function upgrade(contract ITransparentUpgradeableProxy proxy, address implementation)",
+        "compact": "upgrade(address,address)",
+        "inputs": [
+            {
+                "internalType": "contract ITransparentUpgradeableProxy",
+                "name": "proxy",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+            }
+        ],
+        "name": "upgrade",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -9817,6 +13424,64 @@ module.exports = {
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "bf5d3bdb": {
+        "abi": "function verify(struct MinimalForwarder.ForwardRequest req, bytes signature) returns (bool)",
+        "compact": "verify((address,address,uint256,uint256,uint256,bytes),bytes)",
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "value",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "gas",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "nonce",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bytes",
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ],
+                "internalType": "struct MinimalForwarder.ForwardRequest",
+                "name": "req",
+                "type": "tuple"
+            },
+            {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+            }
+        ],
+        "name": "verify",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
             }
         ],
         "stateMutability": "view",
@@ -9972,6 +13637,36 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "175a260b": {
+        "abi": "function wasMyCallersAddressAliased() returns (bool)",
+        "compact": "wasMyCallersAddressAliased()",
+        "inputs": [],
+        "name": "wasMyCallersAddressAliased",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "51cff8d9": {
+        "abi": "function withdraw(address payable payee)",
+        "compact": "withdraw(address)",
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     "b460af94": {
         "abi": "function withdraw(uint256 assets, address receiver, address owner) returns (uint256 shares)",
         "compact": "withdraw(uint256,address,address)",
@@ -10000,6 +13695,42 @@ module.exports = {
                 "type": "uint256"
             }
         ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "25e16063": {
+        "abi": "function withdrawEth(address destination) returns (uint256)",
+        "compact": "withdrawEth(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "destination",
+                "type": "address"
+            }
+        ],
+        "name": "withdrawEth",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    "31b3eb94": {
+        "abi": "function withdrawPayments(address payable payee)",
+        "compact": "withdrawPayments(address)",
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "withdrawPayments",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
     },
@@ -10053,6 +13784,42 @@ module.exports = {
             }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "685ca194": {
+        "abi": "function withdrawalAllowed(address payee) returns (bool)",
+        "compact": "withdrawalAllowed(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "withdrawalAllowed",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "6e296e45": {
+        "abi": "function xDomainMessageSender() returns (address)",
+        "compact": "xDomainMessageSender()",
+        "inputs": [],
+        "name": "xDomainMessageSender",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     }
 };

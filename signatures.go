@@ -18,6 +18,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xbf, 0x0a, 0x12, 0xcf}: &Abi{
+		Name:            "ARBSYS",
+		ABI:             "function ARBSYS() returns (address)",
+		Compact:         "ARBSYS()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
 	MethodPrefix{0x66, 0x97, 0xb2, 0x32}: &Abi{
 		Name:    "AccessControlBadConfirmation",
 		ABI:     "error AccessControlBadConfirmation()",
@@ -367,6 +382,34 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xe1, 0x94, 0xef, 0x61}: &Abi{
+		Name:    "AffirmationCompleted",
+		ABI:     "event AffirmationCompleted(address indexed sender, address indexed executor, bytes32 indexed messageId, bool status)",
+		Compact: "AffirmationCompleted(address,address,bytes32,bool)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "executor",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "status",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0x8c, 0x5b, 0xe1, 0xe5}: &Abi{
 		Name:    "Approval",
 		ABI:     "event Approval(address indexed owner, address indexed spender, uint256 value)",
@@ -521,6 +564,34 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x2d, 0x9d, 0x11, 0x5e}: &Abi{
+		Name:    "BridgeCallTriggered",
+		ABI:     "event BridgeCallTriggered(address indexed outbox, address indexed to, uint256 value, bytes data)",
+		Compact: "BridgeCallTriggered(address,address,uint256,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "outbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
 	MethodPrefix{0xa7, 0x8a, 0x9b, 0xe3}: &Abi{
 		Name:    "Burned",
 		ABI:     "event Burned(address indexed operator, address indexed from, uint256 amount, bytes data, bytes operatorData)",
@@ -596,6 +667,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "string",
 				InternalType: "string",
+			},
+		},
+	},
+	MethodPrefix{0xf9, 0xd0, 0x42, 0x95}: &Abi{
+		Name:            "CROSSCHAIN_ALIAS",
+		ABI:             "function CROSSCHAIN_ALIAS() returns (bytes32)",
+		Compact:         "CROSSCHAIN_ALIAS()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
 			},
 		},
 	},
@@ -960,6 +1046,24 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 			&AbiIO{
 				Name:         "shares",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x2d, 0xa4, 0x66, 0xa7}: &Abi{
+		Name:    "Deposited",
+		ABI:     "event Deposited(address indexed payee, uint256 weiAmount)",
+		Compact: "Deposited(address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "weiAmount",
 				Type:         "uint256",
 				InternalType: "uint256",
 			},
@@ -1331,6 +1435,29 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "token",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x3b, 0xe5, 0xb7, 0xa7}: &Abi{
+		Name:    "ERC20PaymentReleased",
+		ABI:     "event ERC20PaymentReleased(contract IERC20 indexed token, address to, uint256 amount)",
+		Compact: "ERC20PaymentReleased(address,address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "contract IERC20",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -1904,6 +2031,13 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x3d, 0xb2, 0xa1, 0x2a}: &Abi{
+		Name:    "Empty",
+		ABI:     "error Empty()",
+		Compact: "Empty()",
+		Type:    "error",
+		Inputs:  []*AbiIO{},
+	},
 	MethodPrefix{0xd9, 0x3c, 0x06, 0x65}: &Abi{
 		Name:    "EnforcedPause",
 		ABI:     "error EnforcedPause()",
@@ -2011,6 +2145,19 @@ var signatures = map[MethodPrefix]*Abi{
 		Compact: "FailedInnerCall()",
 		Type:    "error",
 		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x99, 0xd0, 0xe0, 0x48}: &Abi{
+		Name:    "FailedRelayedMessage",
+		ABI:     "event FailedRelayedMessage(bytes32 indexed msgHash)",
+		Compact: "FailedRelayedMessage(bytes32)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "msgHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
 	},
 	MethodPrefix{0xc1, 0xa2, 0x87, 0xe2}: &Abi{
 		Name:            "GRACE_PERIOD",
@@ -2300,6 +2447,55 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xff, 0x64, 0x90, 0x5f}: &Abi{
+		Name:    "InboxMessageDelivered",
+		ABI:     "event InboxMessageDelivered(uint256 indexed messageNum, bytes data)",
+		Compact: "InboxMessageDelivered(uint256,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
+	MethodPrefix{0xab, 0x53, 0x23, 0x85}: &Abi{
+		Name:    "InboxMessageDeliveredFromOrigin",
+		ABI:     "event InboxMessageDeliveredFromOrigin(uint256 indexed messageNum)",
+		Compact: "InboxMessageDeliveredFromOrigin(uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x66, 0x75, 0xce, 0x88}: &Abi{
+		Name:    "InboxToggle",
+		ABI:     "event InboxToggle(address indexed inbox, bool enabled)",
+		Compact: "InboxToggle(address,bool)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "inbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "enabled",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0xc7, 0xf5, 0x05, 0xb2}: &Abi{
 		Name:    "Initialized",
 		ABI:     "event Initialized(uint64 version)",
@@ -2310,6 +2506,19 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "version",
 				Type:         "uint64",
 				InternalType: "uint64",
+			},
+		},
+	},
+	MethodPrefix{0x7f, 0x26, 0xb8, 0x3f}: &Abi{
+		Name:    "Initialized",
+		ABI:     "event Initialized(uint8 version)",
+		Compact: "Initialized(uint8)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "version",
+				Type:         "uint8",
+				InternalType: "uint8",
 			},
 		},
 	},
@@ -2368,6 +2577,117 @@ var signatures = map[MethodPrefix]*Abi{
 		Type:    "error",
 		Inputs:  []*AbiIO{},
 	},
+	MethodPrefix{0x5b, 0xaa, 0xa8, 0x7d}: &Abi{
+		Name:    "L2ToL1Transaction",
+		ABI:     "event L2ToL1Transaction(address caller, address indexed destination, uint256 indexed uniqueId, uint256 indexed batchNumber, uint256 indexInBatch, uint256 arbBlockNum, uint256 ethBlockNum, uint256 timestamp, uint256 callvalue, bytes data)",
+		Compact: "L2ToL1Transaction(address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "caller",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "destination",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "uniqueId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "batchNumber",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "indexInBatch",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "arbBlockNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "ethBlockNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "timestamp",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "callvalue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
+	MethodPrefix{0x3e, 0x7a, 0xaf, 0xa7}: &Abi{
+		Name:    "L2ToL1Tx",
+		ABI:     "event L2ToL1Tx(address caller, address indexed destination, uint256 indexed hash, uint256 indexed position, uint256 arbBlockNum, uint256 ethBlockNum, uint256 timestamp, uint256 callvalue, bytes data)",
+		Compact: "L2ToL1Tx(address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "caller",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "destination",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "hash",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "position",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "arbBlockNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "ethBlockNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "timestamp",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "callvalue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
 	MethodPrefix{0x7c, 0xa4, 0xac, 0x11}: &Abi{
 		Name:    "LateQuorumVoteExtensionSet",
 		ABI:     "event LateQuorumVoteExtensionSet(uint64 oldVoteExtension, uint64 newVoteExtension)",
@@ -2416,6 +2736,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xd5, 0x39, 0x13, 0x93}: &Abi{
+		Name:            "MINTER_ROLE",
+		ABI:             "function MINTER_ROLE() returns (bytes32)",
+		Compact:         "MINTER_ROLE()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
 	MethodPrefix{0x60, 0x5c, 0x2d, 0xbf}: &Abi{
 		Name:    "ManagerChanged",
 		ABI:     "event ManagerChanged(address indexed account, address indexed newManager)",
@@ -2447,6 +2782,54 @@ var signatures = map[MethodPrefix]*Abi{
 		Compact: "MerkleProofInvalidMultiproof()",
 		Type:    "error",
 		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x5e, 0x3c, 0x13, 0x11}: &Abi{
+		Name:    "MessageDelivered",
+		ABI:     "event MessageDelivered(uint256 indexed messageIndex, bytes32 indexed beforeInboxAcc, address inbox, uint8 kind, address sender, bytes32 messageDataHash, uint256 baseFeeL1, uint64 timestamp)",
+		Compact: "MessageDelivered(uint256,bytes32,address,uint8,address,bytes32,uint256,uint64)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageIndex",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "beforeInboxAcc",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "inbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "kind",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "messageDataHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "baseFeeL1",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "timestamp",
+				Type:         "uint64",
+				InternalType: "uint64",
+			},
+		},
 	},
 	MethodPrefix{0xf8, 0xe1, 0xa1, 0x5a}: &Abi{
 		Name:    "MetadataUpdate",
@@ -2551,12 +2934,34 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x4a, 0x74, 0xdf, 0x92}: &Abi{
+		Name:    "NotCrossChainCall",
+		ABI:     "error NotCrossChainCall()",
+		Compact: "NotCrossChainCall()",
+		Type:    "error",
+		Inputs:  []*AbiIO{},
+	},
 	MethodPrefix{0xd7, 0xe6, 0xbc, 0xf8}: &Abi{
 		Name:    "NotInitializing",
 		ABI:     "error NotInitializing()",
 		Compact: "NotInitializing()",
 		Type:    "error",
 		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0xc7, 0x51, 0x84, 0xdf}: &Abi{
+		Name:            "OUTBOX_VERSION",
+		ABI:             "function OUTBOX_VERSION() returns (uint128)",
+		Compact:         "OUTBOX_VERSION()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint128",
+				InternalType: "uint128",
+			},
+		},
 	},
 	MethodPrefix{0xbd, 0x9a, 0xc6, 0x7a}: &Abi{
 		Name:    "OperationCanceled",
@@ -2632,6 +3037,59 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x20, 0xaf, 0x7f, 0x3b}: &Abi{
+		Name:    "OutBoxTransactionExecuted",
+		ABI:     "event OutBoxTransactionExecuted(address indexed to, address indexed l2Sender, uint256 indexed zero, uint256 transactionIndex)",
+		Compact: "OutBoxTransactionExecuted(address,address,uint256,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2Sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "zero",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "transactionIndex",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xb4, 0x12, 0x0f, 0x14}: &Abi{
+		Name:    "OutOfBounds",
+		ABI:     "error OutOfBounds()",
+		Compact: "OutOfBounds()",
+		Type:    "error",
+		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x49, 0x47, 0x7e, 0x73}: &Abi{
+		Name:    "OutboxToggle",
+		ABI:     "event OutboxToggle(address indexed outbox, bool enabled)",
+		Compact: "OutboxToggle(address,bool)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "outbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "enabled",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0x1e, 0x4f, 0xbd, 0xf7}: &Abi{
 		Name:    "OwnableInvalidOwner",
 		ABI:     "error OwnableInvalidOwner(address owner)",
@@ -2694,6 +3152,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xe6, 0x3a, 0xb1, 0xe9}: &Abi{
+		Name:            "PAUSER_ROLE",
+		ABI:             "function PAUSER_ROLE() returns (bytes32)",
+		Compact:         "PAUSER_ROLE()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
 	MethodPrefix{0x8f, 0x61, 0xf4, 0xf5}: &Abi{
 		Name:            "PROPOSER_ROLE",
 		ABI:             "function PROPOSER_ROLE() returns (bytes32)",
@@ -2734,6 +3207,60 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "account",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x40, 0xc3, 0x40, 0xf6}: &Abi{
+		Name:    "PayeeAdded",
+		ABI:     "event PayeeAdded(address account, uint256 shares)",
+		Compact: "PayeeAdded(address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "shares",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x6e, 0xf9, 0x5f, 0x06}: &Abi{
+		Name:    "PaymentReceived",
+		ABI:     "event PaymentReceived(address from, uint256 amount)",
+		Compact: "PaymentReceived(address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "from",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xdf, 0x20, 0xfd, 0x1e}: &Abi{
+		Name:    "PaymentReleased",
+		ABI:     "event PaymentReleased(address to, uint256 amount)",
+		Compact: "PaymentReleased(address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -2960,6 +3487,61 @@ var signatures = map[MethodPrefix]*Abi{
 		Compact: "ReentrancyGuardReentrantCall()",
 		Type:    "error",
 		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x08, 0x86, 0x72, 0xc3}: &Abi{
+		Name:    "RefundsClosed",
+		ABI:     "event RefundsClosed()",
+		Compact: "RefundsClosed()",
+		Type:    "event",
+		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x59, 0x9d, 0x8e, 0x5a}: &Abi{
+		Name:    "RefundsEnabled",
+		ABI:     "event RefundsEnabled()",
+		Compact: "RefundsEnabled()",
+		Type:    "event",
+		Inputs:  []*AbiIO{},
+	},
+	MethodPrefix{0x27, 0x33, 0x3e, 0xdb}: &Abi{
+		Name:    "RelayedMessage",
+		ABI:     "event RelayedMessage(address indexed sender, address indexed executor, bytes32 indexed messageId, bool status)",
+		Compact: "RelayedMessage(address,address,bytes32,bool)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "executor",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "status",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x46, 0x41, 0xdf, 0x4a}: &Abi{
+		Name:    "RelayedMessage",
+		ABI:     "event RelayedMessage(bytes32 indexed msgHash)",
+		Compact: "RelayedMessage(bytes32)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "msgHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
 	},
 	MethodPrefix{0x50, 0x54, 0x6e, 0x66}: &Abi{
 		Name:    "RevokedOperator",
@@ -3274,6 +3856,47 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xe9, 0xe1, 0x3d, 0xa3}: &Abi{
+		Name:    "SendMerkleUpdate",
+		ABI:     "event SendMerkleUpdate(uint256 indexed reserved, bytes32 indexed hash, uint256 indexed position)",
+		Compact: "SendMerkleUpdate(uint256,bytes32,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "reserved",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "hash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "position",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xb4, 0xdf, 0x38, 0x47}: &Abi{
+		Name:    "SendRootUpdated",
+		ABI:     "event SendRootUpdated(bytes32 indexed blockHash, bytes32 indexed outputRoot)",
+		Compact: "SendRootUpdated(bytes32,bytes32)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "blockHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "outputRoot",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
 	MethodPrefix{0x06, 0xb5, 0x41, 0xdd}: &Abi{
 		Name:    "Sent",
 		ABI:     "event Sent(address indexed operator, address indexed from, address indexed to, uint256 amount, bytes data, bytes operatorData)",
@@ -3312,6 +3935,65 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xcb, 0x0f, 0x7f, 0xfd}: &Abi{
+		Name:    "SentMessage",
+		ABI:     "event SentMessage(address indexed target, address sender, bytes message, uint256 messageNonce, uint256 gasLimit)",
+		Compact: "SentMessage(address,address,bytes,uint256,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "target",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "message",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "messageNonce",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x8c, 0x1e, 0x60, 0x03}: &Abi{
+		Name:    "SequencerInboxUpdated",
+		ABI:     "event SequencerInboxUpdated(address newSequencerInbox)",
+		Compact: "SequencerInboxUpdated(address)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "newSequencerInbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x80, 0x30, 0xe8, 0x3b}: &Abi{
+		Name:    "Snapshot",
+		ABI:     "event Snapshot(uint256 id)",
+		Compact: "Snapshot(uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "id",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x30, 0x5a, 0x27, 0xa9}: &Abi{
 		Name:    "StringTooLong",
 		ABI:     "error StringTooLong(string str)",
@@ -3340,6 +4022,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "length",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x0d, 0x3c, 0xf6, 0xfc}: &Abi{
+		Name:            "TIMELOCK_ADMIN_ROLE",
+		ABI:             "function TIMELOCK_ADMIN_ROLE() returns (bytes32)",
+		Compact:         "TIMELOCK_ADMIN_ROLE()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
 			},
 		},
 	},
@@ -3678,6 +4375,42 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x48, 0x25, 0x15, 0xce}: &Abi{
+		Name:    "UserRequestForAffirmation",
+		ABI:     "event UserRequestForAffirmation(bytes32 indexed messageId, bytes encodedData)",
+		Compact: "UserRequestForAffirmation(bytes32,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "encodedData",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
+	MethodPrefix{0x52, 0x0d, 0x2a, 0xfd}: &Abi{
+		Name:    "UserRequestForSignature",
+		ABI:     "event UserRequestForSignature(bytes32 indexed messageId, bytes encodedData)",
+		Compact: "UserRequestForSignature(bytes32,bytes)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "encodedData",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
 	MethodPrefix{0xb8, 0xe1, 0x38, 0x88}: &Abi{
 		Name:    "VoteCast",
 		ABI:     "event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason)",
@@ -3831,6 +4564,24 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x70, 0x84, 0xf5, 0x47}: &Abi{
+		Name:    "Withdrawn",
+		ABI:     "event Withdrawn(address indexed payee, uint256 weiAmount)",
+		Compact: "Withdrawn(address,uint256)",
+		Type:    "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "weiAmount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0xb9, 0xa6, 0x19, 0x61}: &Abi{
 		Name:            "__acceptAdmin",
 		ABI:             "function __acceptAdmin()",
@@ -3882,6 +4633,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xab, 0x5d, 0x89, 0x43}: &Abi{
+		Name:            "activeOutbox",
+		ABI:             "function activeOutbox() returns (address)",
+		Compact:         "activeOutbox()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
 	MethodPrefix{0xf8, 0x51, 0xa4, 0x40}: &Abi{
 		Name:            "admin",
 		ABI:             "function admin() returns (address)",
@@ -3920,6 +4686,90 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xe7, 0x6f, 0x5c, 0x8d}: &Abi{
+		Name:            "allowedDelayedInboxList",
+		ABI:             "function allowedDelayedInboxList(uint256) returns (address)",
+		Compact:         "allowedDelayedInboxList(uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xae, 0x60, 0xbd, 0x13}: &Abi{
+		Name:            "allowedDelayedInboxes",
+		ABI:             "function allowedDelayedInboxes(address inbox) returns (bool)",
+		Compact:         "allowedDelayedInboxes(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "inbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x94, 0x5e, 0x11, 0x47}: &Abi{
+		Name:            "allowedOutboxList",
+		ABI:             "function allowedOutboxList(uint256) returns (address)",
+		Compact:         "allowedOutboxList(uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x41, 0x3b, 0x35, 0xbd}: &Abi{
+		Name:            "allowedOutboxes",
+		ABI:             "function allowedOutboxes(address outbox) returns (bool)",
+		Compact:         "allowedOutboxes(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "outbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
 			},
 		},
 	},
@@ -4003,6 +4853,72 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "bool",
 				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x2b, 0x40, 0x7a, 0x82}: &Abi{
+		Name:            "arbBlockHash",
+		ABI:             "function arbBlockHash(uint256 arbBlockNum) returns (bytes32)",
+		Compact:         "arbBlockHash(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "arbBlockNum",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0xa3, 0xb1, 0xb3, 0x1d}: &Abi{
+		Name:            "arbBlockNumber",
+		ABI:             "function arbBlockNumber() returns (uint256)",
+		Compact:         "arbBlockNumber()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xd1, 0x27, 0xf5, 0x4a}: &Abi{
+		Name:            "arbChainID",
+		ABI:             "function arbChainID() returns (uint256)",
+		Compact:         "arbChainID()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x05, 0x10, 0x38, 0xf2}: &Abi{
+		Name:            "arbOSVersion",
+		ABI:             "function arbOSVersion() returns (uint256)",
+		Compact:         "arbOSVersion()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -4098,6 +5014,32 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x4e, 0xe2, 0xcd, 0x7e}: &Abi{
+		Name:            "balanceOfAt",
+		ABI:             "function balanceOfAt(address account, uint256 snapshotId) returns (uint256)",
+		Compact:         "balanceOfAt(address,uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "snapshotId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x4e, 0x12, 0x73, 0xf4}: &Abi{
 		Name:            "balanceOfBatch",
 		ABI:             "function balanceOfBatch(address[] accounts, uint256[] ids) returns (uint256[])",
@@ -4153,6 +5095,45 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x38, 0xaf, 0x3e, 0xed}: &Abi{
+		Name:            "beneficiary",
+		ABI:             "function beneficiary() returns (address)",
+		Compact:         "beneficiary()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x9a, 0xf6, 0x54, 0x9a}: &Abi{
+		Name:            "beneficiaryWithdraw",
+		ABI:             "function beneficiaryWithdraw()",
+		Compact:         "beneficiaryWithdraw()",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
+	MethodPrefix{0xe7, 0x8c, 0xea, 0x92}: &Abi{
+		Name:            "bridge",
+		ABI:             "function bridge() returns (contract IBridge)",
+		Compact:         "bridge()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "contract IBridge",
+			},
+		},
 	},
 	MethodPrefix{0xf5, 0x29, 0x8a, 0xca}: &Abi{
 		Name:            "burn",
@@ -4258,6 +5239,114 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x9f, 0x0c, 0x04, 0xbf}: &Abi{
+		Name:            "calculateItemHash",
+		ABI:             "function calculateItemHash(address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data) returns (bytes32)",
+		Compact:         "calculateItemHash(address,address,uint256,uint256,uint256,uint256,bytes)",
+		StateMutability: "pure",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "l2Sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l1Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l2Timestamp",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x00, 0x74, 0x36, 0xd3}: &Abi{
+		Name:            "calculateMerkleRoot",
+		ABI:             "function calculateMerkleRoot(bytes32[] proof, uint256 path, bytes32 item) returns (bytes32)",
+		Compact:         "calculateMerkleRoot(bytes32[],uint256,bytes32)",
+		StateMutability: "pure",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proof",
+				Type:         "bytes32[]",
+				InternalType: "bytes32[]",
+			},
+			&AbiIO{
+				Name:         "path",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "item",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0xa6, 0x6b, 0x32, 0x7d}: &Abi{
+		Name:            "calculateRetryableSubmissionFee",
+		ABI:             "function calculateRetryableSubmissionFee(uint256 dataLength, uint256 baseFee) returns (uint256)",
+		Compact:         "calculateRetryableSubmissionFee(uint256,uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "dataLength",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "baseFee",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
 	},
 	MethodPrefix{0xb7, 0x00, 0x96, 0x13}: &Abi{
 		Name:            "canCall",
@@ -4539,6 +5628,47 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x3b, 0xcc, 0xf4, 0xfd}: &Abi{
+		Name:            "castVoteBySig",
+		ABI:             "function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s) returns (uint256)",
+		Compact:         "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "v",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "r",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "s",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x7b, 0x3c, 0x71, 0xd3}: &Abi{
 		Name:            "castVoteWithReason",
 		ABI:             "function castVoteWithReason(uint256 proposalId, uint8 support, string reason) returns (uint256)",
@@ -4652,6 +5782,72 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x03, 0x42, 0x01, 0x81}: &Abi{
+		Name:            "castVoteWithReasonAndParamsBySig",
+		ABI:             "function castVoteWithReasonAndParamsBySig(uint256 proposalId, uint8 support, string reason, bytes params, uint8 v, bytes32 r, bytes32 s) returns (uint256)",
+		Compact:         "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+			&AbiIO{
+				Name:         "params",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "v",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "r",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "s",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x8f, 0x28, 0x39, 0x70}: &Abi{
+		Name:            "changeAdmin",
+		ABI:             "function changeAdmin(address)",
+		Compact:         "changeAdmin(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x64, 0x9a, 0x5e, 0xc7}: &Abi{
 		Name:            "changeDefaultAdminDelay",
 		ABI:             "function changeDefaultAdminDelay(uint48 newDelay)",
@@ -4663,6 +5859,26 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "newDelay",
 				Type:         "uint48",
 				InternalType: "uint48",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x7e, 0xff, 0x27, 0x5e}: &Abi{
+		Name:            "changeProxyAdmin",
+		ABI:             "function changeProxyAdmin(contract ITransparentUpgradeableProxy proxy, address newAdmin)",
+		Compact:         "changeProxyAdmin(address,address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proxy",
+				Type:         "address",
+				InternalType: "contract ITransparentUpgradeableProxy",
+			},
+			&AbiIO{
+				Name:         "newAdmin",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -4707,6 +5923,15 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "uint48",
 			},
 		},
+	},
+	MethodPrefix{0x43, 0xd7, 0x26, 0xd6}: &Abi{
+		Name:            "close",
+		ABI:             "function close()",
+		Compact:         "close()",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
 	},
 	MethodPrefix{0x94, 0xc7, 0xd7, 0xee}: &Abi{
 		Name:            "consumeScheduledOp",
@@ -4770,6 +5995,62 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x67, 0x9b, 0x6d, 0xed}: &Abi{
+		Name:            "createRetryableTicket",
+		ABI:             "function createRetryableTicket(address to, uint256 l2CallValue, uint256 maxSubmissionCost, address excessFeeRefundAddress, address callValueRefundAddress, uint256 gasLimit, uint256 maxFeePerGas, bytes data) returns (uint256)",
+		Compact:         "createRetryableTicket(address,uint256,uint256,address,address,uint256,uint256,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2CallValue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxSubmissionCost",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "excessFeeRefundAddress",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "callValueRefundAddress",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x31, 0x3c, 0xe5, 0x67}: &Abi{
 		Name:            "decimals",
 		ABI:             "function decimals() returns (uint8)",
@@ -4782,6 +6063,32 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint8",
 				InternalType: "uint8",
+			},
+		},
+	},
+	MethodPrefix{0xa4, 0x57, 0xc2, 0xd7}: &Abi{
+		Name:            "decreaseAllowance",
+		ABI:             "function decreaseAllowance(address spender, uint256 subtractedValue) returns (bool)",
+		Compact:         "decreaseAllowance(address,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "spender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "subtractedValue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
 			},
 		},
 	},
@@ -4849,6 +6156,42 @@ var signatures = map[MethodPrefix]*Abi{
 		Name:            "delay",
 		ABI:             "function delay() returns (uint256)",
 		Compact:         "delay()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xd5, 0x71, 0x9d, 0xc2}: &Abi{
+		Name:            "delayedInboxAccs",
+		ABI:             "function delayedInboxAccs(uint256) returns (bytes32)",
+		Compact:         "delayedInboxAccs(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0xec, 0xa0, 0x67, 0xad}: &Abi{
+		Name:            "delayedMessageCount",
+		ABI:             "function delayedMessageCount() returns (uint256)",
+		Compact:         "delayedMessageCount()",
 		StateMutability: "view",
 		Type:            "function",
 		Inputs:          []*AbiIO{},
@@ -4936,6 +6279,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xf3, 0x40, 0xfa, 0x01}: &Abi{
+		Name:            "deposit",
+		ABI:             "function deposit(address payee)",
+		Compact:         "deposit(address)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x6e, 0x55, 0x3f, 0x65}: &Abi{
 		Name:            "deposit",
 		ABI:             "function deposit(uint256 assets, address receiver) returns (uint256 shares)",
@@ -4957,6 +6315,21 @@ var signatures = map[MethodPrefix]*Abi{
 		Outputs: []*AbiIO{
 			&AbiIO{
 				Name:         "shares",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x43, 0x93, 0x70, 0xb1}: &Abi{
+		Name:            "depositEth",
+		ABI:             "function depositEth() returns (uint256)",
+		Compact:         "depositEth()",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
 			},
@@ -5011,6 +6384,42 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "bool",
 				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0xe3, 0xa9, 0xdb, 0x1a}: &Abi{
+		Name:            "depositsOf",
+		ABI:             "function depositsOf(address payee) returns (uint256)",
+		Compact:         "depositsOf(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xb0, 0x75, 0x06, 0x11}: &Abi{
+		Name:            "destinationChainId",
+		ABI:             "function destinationChainId() returns (uint256)",
+		Compact:         "destinationChainId()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -5074,6 +6483,15 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x8c, 0x52, 0xdc, 0x41}: &Abi{
+		Name:            "enableRefunds",
+		ABI:             "function enableRefunds()",
+		Compact:         "enableRefunds()",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
 	MethodPrefix{0xef, 0xbe, 0x1c, 0x1c}: &Abi{
 		Name:            "end",
 		ABI:             "function end() returns (uint256)",
@@ -5086,6 +6504,119 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x8d, 0xb5, 0x99, 0x3b}: &Abi{
+		Name:            "enqueueDelayedMessage",
+		ABI:             "function enqueueDelayedMessage(uint8 kind, address sender, bytes32 messageDataHash) returns (uint256)",
+		Compact:         "enqueueDelayedMessage(uint8,address,bytes32)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "kind",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "messageDataHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x86, 0x59, 0x8a, 0x56}: &Abi{
+		Name:            "enqueueSequencerMessage",
+		ABI:             "function enqueueSequencerMessage(bytes32 dataHash, uint256 afterDelayedMessagesRead, uint256 prevMessageCount, uint256 newMessageCount) returns (uint256 seqMessageIndex, bytes32 beforeAcc, bytes32 delayedAcc, bytes32 acc)",
+		Compact:         "enqueueSequencerMessage(bytes32,uint256,uint256,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "dataHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "afterDelayedMessagesRead",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "prevMessageCount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "newMessageCount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "seqMessageIndex",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "beforeAcc",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "delayedAcc",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "acc",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x47, 0x15, 0x3f, 0x82}: &Abi{
+		Name:            "execute",
+		ABI:             "function execute(struct MinimalForwarder.ForwardRequest req, bytes signature) returns (bool, bytes)",
+		Compact:         "execute((address,address,uint256,uint256,uint256,bytes),bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "req",
+				Type:         "tuple",
+				InternalType: "struct MinimalForwarder.ForwardRequest",
+			},
+			&AbiIO{
+				Name:         "signature",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes",
+				InternalType: "bytes",
 			},
 		},
 	},
@@ -5271,6 +6802,42 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x9e, 0x5d, 0x4c, 0x49}: &Abi{
+		Name:            "executeCall",
+		ABI:             "function executeCall(address to, uint256 value, bytes data) returns (bool success, bytes returnData)",
+		Compact:         "executeCall(address,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "success",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+			&AbiIO{
+				Name:         "returnData",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
 	MethodPrefix{0x08, 0x25, 0xf3, 0x8f}: &Abi{
 		Name:            "executeTransaction",
 		ABI:             "function executeTransaction(address target, uint256 value, string signature, bytes data, uint256 eta) returns (bytes)",
@@ -5312,6 +6879,111 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x08, 0x63, 0x5a, 0x95}: &Abi{
+		Name:            "executeTransaction",
+		ABI:             "function executeTransaction(bytes32[] proof, uint256 index, address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data)",
+		Compact:         "executeTransaction(bytes32[],uint256,address,address,uint256,uint256,uint256,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proof",
+				Type:         "bytes32[]",
+				InternalType: "bytes32[]",
+			},
+			&AbiIO{
+				Name:         "index",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l2Sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l1Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l2Timestamp",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x28, 0x8e, 0x5b, 0x10}: &Abi{
+		Name:            "executeTransactionSimulation",
+		ABI:             "function executeTransactionSimulation(uint256 index, address l2Sender, address to, uint256 l2Block, uint256 l1Block, uint256 l2Timestamp, uint256 value, bytes data)",
+		Compact:         "executeTransactionSimulation(uint256,address,address,uint256,uint256,uint256,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "index",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l2Sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l1Block",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "l2Timestamp",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x4f, 0x55, 0x8e, 0x79}: &Abi{
 		Name:            "exists",
 		ABI:             "function exists(uint256 id) returns (bool)",
@@ -5345,6 +7017,69 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint32",
 				InternalType: "uint32",
+			},
+		},
+	},
+	MethodPrefix{0xe3, 0x7c, 0x32, 0x89}: &Abi{
+		Name:            "failedMessageDataHash",
+		ABI:             "function failedMessageDataHash(bytes32 _messageId) returns (bytes32)",
+		Compact:         "failedMessageDataHash(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x3f, 0x9a, 0x8e, 0x7e}: &Abi{
+		Name:            "failedMessageReceiver",
+		ABI:             "function failedMessageReceiver(bytes32 _messageId) returns (address)",
+		Compact:         "failedMessageReceiver(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x4a, 0x61, 0x0b, 0x04}: &Abi{
+		Name:            "failedMessageSender",
+		ABI:             "function failedMessageSender(bytes32 _messageId) returns (address)",
+		Compact:         "failedMessageSender(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 	},
@@ -5451,6 +7186,42 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x32, 0x8d, 0xd9, 0x82}: &Abi{
+		Name:            "getActions",
+		ABI:             "function getActions(uint256 proposalId) returns (address[] targets, uint256[] values, string[] signatures, bytes[] calldatas)",
+		Compact:         "getActions(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "signatures",
+				Type:         "string[]",
+				InternalType: "string[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+		},
+	},
 	MethodPrefix{0x08, 0x18, 0x12, 0xfc}: &Abi{
 		Name:            "getApproved",
 		ABI:             "function getApproved(uint256 tokenId) returns (address operator)",
@@ -5469,6 +7240,27 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "operator",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xb4, 0xb5, 0xea, 0x57}: &Abi{
+		Name:            "getCurrentVotes",
+		ABI:             "function getCurrentVotes(address account) returns (uint96)",
+		Compact:         "getCurrentVotes(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint96",
+				InternalType: "uint96",
 			},
 		},
 	},
@@ -5526,6 +7318,27 @@ var signatures = map[MethodPrefix]*Abi{
 		StateMutability: "view",
 		Type:            "function",
 		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x2d, 0x03, 0x35, 0xab}: &Abi{
+		Name:            "getNonce",
+		ABI:             "function getNonce(address from) returns (uint256)",
+		Compact:         "getNonce(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "from",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
 		Outputs: []*AbiIO{
 			&AbiIO{
 				Name:         "",
@@ -5620,6 +7433,100 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x78, 0x2d, 0x6f, 0xe1}: &Abi{
+		Name:            "getPriorVotes",
+		ABI:             "function getPriorVotes(address account, uint256 blockNumber) returns (uint96)",
+		Compact:         "getPriorVotes(address,uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "blockNumber",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint96",
+				InternalType: "uint96",
+			},
+		},
+	},
+	MethodPrefix{0xf3, 0xb7, 0xde, 0xad}: &Abi{
+		Name:            "getProxyAdmin",
+		ABI:             "function getProxyAdmin(contract ITransparentUpgradeableProxy proxy) returns (address)",
+		Compact:         "getProxyAdmin(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proxy",
+				Type:         "address",
+				InternalType: "contract ITransparentUpgradeableProxy",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x20, 0x4e, 0x1c, 0x7a}: &Abi{
+		Name:            "getProxyImplementation",
+		ABI:             "function getProxyImplementation(contract ITransparentUpgradeableProxy proxy) returns (address)",
+		Compact:         "getProxyImplementation(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proxy",
+				Type:         "address",
+				InternalType: "contract ITransparentUpgradeableProxy",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xe2, 0x3a, 0x9a, 0x52}: &Abi{
+		Name:            "getReceipt",
+		ABI:             "function getReceipt(uint256 proposalId, address voter) returns (struct IGovernorCompatibilityBravo.Receipt)",
+		Compact:         "getReceipt(uint256,address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "voter",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "tuple",
+				InternalType: "struct IGovernorCompatibilityBravo.Receipt",
 			},
 		},
 	},
@@ -5772,6 +7679,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint48",
 				InternalType: "uint48",
+			},
+		},
+	},
+	MethodPrefix{0xa9, 0x45, 0x97, 0xff}: &Abi{
+		Name:            "getStorageGasAvailable",
+		ABI:             "function getStorageGasAvailable() returns (uint256)",
+		Compact:         "getStorageGasAvailable()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -6280,6 +8202,67 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x39, 0x50, 0x93, 0x51}: &Abi{
+		Name:            "increaseAllowance",
+		ABI:             "function increaseAllowance(address spender, uint256 addedValue) returns (bool)",
+		Compact:         "increaseAllowance(address,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "spender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "addedValue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0xc4, 0xd6, 0x6d, 0xe8}: &Abi{
+		Name:            "initialize",
+		ABI:             "function initialize(address rollup_)",
+		Compact:         "initialize(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "rollup_",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x48, 0x5c, 0xc9, 0x55}: &Abi{
+		Name:            "initialize",
+		ABI:             "function initialize(contract IBridge _bridge, address _sequencerInbox)",
+		Compact:         "initialize(address,address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_bridge",
+				Type:         "address",
+				InternalType: "contract IBridge",
+			},
+			&AbiIO{
+				Name:         "_sequencerInbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x65, 0xba, 0x36, 0xc1}: &Abi{
 		Name:            "interfaceHash",
 		ABI:             "function interfaceHash(string interfaceName) returns (bytes32)",
@@ -6478,6 +8461,27 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x5a, 0x12, 0x9e, 0xfe}: &Abi{
+		Name:            "isSpent",
+		ABI:             "function isSpent(uint256 index) returns (bool)",
+		Compact:         "isSpent(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "index",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0xa1, 0x66, 0xaa, 0x89}: &Abi{
 		Name:            "isTargetClosed",
 		ABI:             "function isTargetClosed(address target) returns (bool)",
@@ -6491,6 +8495,21 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "address",
 			},
 		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x08, 0xbd, 0x62, 0x4c}: &Abi{
+		Name:            "isTopLevelCall",
+		ABI:             "function isTopLevelCall() returns (bool)",
+		Compact:         "isTopLevelCall()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
 		Outputs: []*AbiIO{
 			&AbiIO{
 				Name:         "",
@@ -6546,6 +8565,81 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x46, 0x54, 0x77, 0x90}: &Abi{
+		Name:            "l2ToL1Block",
+		ABI:             "function l2ToL1Block() returns (uint256)",
+		Compact:         "l2ToL1Block()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x85, 0x15, 0xbc, 0x6a}: &Abi{
+		Name:            "l2ToL1EthBlock",
+		ABI:             "function l2ToL1EthBlock() returns (uint256)",
+		Compact:         "l2ToL1EthBlock()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x72, 0xf2, 0xa8, 0xc7}: &Abi{
+		Name:            "l2ToL1OutputId",
+		ABI:             "function l2ToL1OutputId() returns (bytes32)",
+		Compact:         "l2ToL1OutputId()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x80, 0x64, 0x8b, 0x02}: &Abi{
+		Name:            "l2ToL1Sender",
+		ABI:             "function l2ToL1Sender() returns (address)",
+		Compact:         "l2ToL1Sender()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xb0, 0xf3, 0x05, 0x37}: &Abi{
+		Name:            "l2ToL1Timestamp",
+		ABI:             "function l2ToL1Timestamp() returns (uint256)",
+		Compact:         "l2ToL1Timestamp()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x85, 0x35, 0x51, 0xb8}: &Abi{
 		Name:            "labelRole",
 		ABI:             "function labelRole(uint64 roleId, string label)",
@@ -6578,6 +8672,32 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint48",
 				InternalType: "uint48",
+			},
+		},
+	},
+	MethodPrefix{0x4d, 0xbb, 0xd5, 0x06}: &Abi{
+		Name:            "mapL1SenderContractAddressToL2Alias",
+		ABI:             "function mapL1SenderContractAddressToL2Alias(address sender, address unused) returns (address)",
+		Compact:         "mapL1SenderContractAddressToL2Alias(address,address)",
+		StateMutability: "pure",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "unused",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 	},
@@ -6615,6 +8735,21 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "address",
 			},
 		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xe5, 0x78, 0x9d, 0x03}: &Abi{
+		Name:            "maxGasPerTx",
+		ABI:             "function maxGasPerTx() returns (uint256)",
+		Compact:         "maxGasPerTx()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
 		Outputs: []*AbiIO{
 			&AbiIO{
 				Name:         "",
@@ -6686,6 +8821,72 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xcb, 0x08, 0xa1, 0x0c}: &Abi{
+		Name:            "messageCallStatus",
+		ABI:             "function messageCallStatus(bytes32 _messageId) returns (bool)",
+		Compact:         "messageCallStatus(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_messageId",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x66, 0x9f, 0x61, 0x8b}: &Abi{
+		Name:            "messageId",
+		ABI:             "function messageId() returns (bytes32)",
+		Compact:         "messageId()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0xd6, 0x7b, 0xdd, 0x25}: &Abi{
+		Name:            "messageSender",
+		ABI:             "function messageSender() returns (address)",
+		Compact:         "messageSender()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x9e, 0x30, 0x7d, 0xff}: &Abi{
+		Name:            "messageSourceChainId",
+		ABI:             "function messageSourceChainId() returns (bytes32)",
+		Compact:         "messageSourceChainId()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
 	MethodPrefix{0xcc, 0x1b, 0x6c, 0x81}: &Abi{
 		Name:            "minSetback",
 		ABI:             "function minSetback() returns (uint32)",
@@ -6700,6 +8901,71 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "uint32",
 			},
 		},
+	},
+	MethodPrefix{0x6a, 0x62, 0x78, 0x42}: &Abi{
+		Name:            "mint",
+		ABI:             "function mint(address to)",
+		Compact:         "mint(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x40, 0xc1, 0x0f, 0x19}: &Abi{
+		Name:            "mint",
+		ABI:             "function mint(address to, uint256 amount)",
+		Compact:         "mint(address,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x73, 0x11, 0x33, 0xe9}: &Abi{
+		Name:            "mint",
+		ABI:             "function mint(address to, uint256 id, uint256 amount, bytes data)",
+		Compact:         "mint(address,uint256,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "id",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
 	},
 	MethodPrefix{0x94, 0xbf, 0x80, 0x4d}: &Abi{
 		Name:            "mint",
@@ -6727,6 +8993,36 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x1f, 0x7f, 0xdf, 0xfa}: &Abi{
+		Name:            "mintBatch",
+		ABI:             "function mintBatch(address to, uint256[] ids, uint256[] amounts, bytes data)",
+		Compact:         "mintBatch(address,uint256[],uint256[],bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "ids",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "amounts",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xac, 0x96, 0x50, 0xd8}: &Abi{
 		Name:            "multicall",
 		ABI:             "function multicall(bytes[] data) returns (bytes[] results)",
@@ -6745,6 +9041,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "results",
 				Type:         "bytes[]",
 				InternalType: "bytes[]",
+			},
+		},
+	},
+	MethodPrefix{0xd7, 0x45, 0x23, 0xb3}: &Abi{
+		Name:            "myCallersAddressWithoutAliasing",
+		ABI:             "function myCallersAddressWithoutAliasing() returns (address)",
+		Compact:         "myCallersAddressWithoutAliasing()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 	},
@@ -7132,6 +9443,15 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x84, 0x56, 0xcb, 0x59}: &Abi{
+		Name:            "pause",
+		ABI:             "function pause()",
+		Compact:         "pause()",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
 	MethodPrefix{0x5c, 0x97, 0x5a, 0xbb}: &Abi{
 		Name:            "paused",
 		ABI:             "function paused() returns (bool)",
@@ -7144,6 +9464,48 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "bool",
 				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x8b, 0x83, 0x20, 0x9b}: &Abi{
+		Name:            "payee",
+		ABI:             "function payee(uint256 index) returns (address)",
+		Compact:         "payee(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "index",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xe2, 0x98, 0x2c, 0x21}: &Abi{
+		Name:            "payments",
+		ABI:             "function payments(address dest) returns (uint256)",
+		Compact:         "payments(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "dest",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -7262,6 +9624,21 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xc4, 0x74, 0xd2, 0xc5}: &Abi{
+		Name:            "postUpgradeInit",
+		ABI:             "function postUpgradeInit(contract IBridge _bridge)",
+		Compact:         "postUpgradeInit(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_bridge",
+				Type:         "address",
+				InternalType: "contract IBridge",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xef, 0x8b, 0x30, 0xf7}: &Abi{
 		Name:            "previewDeposit",
 		ABI:             "function previewDeposit(uint256 assets) returns (uint256 shares)",
@@ -7345,6 +9722,31 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "uint256",
 			},
 		},
+	},
+	MethodPrefix{0x9a, 0x7c, 0x4b, 0x71}: &Abi{
+		Name:            "processMessageFromRoot",
+		ABI:             "function processMessageFromRoot(uint256, address rootMessageSender, bytes data)",
+		Compact:         "processMessageFromRoot(uint256,address,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "rootMessageSender",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
 	},
 	MethodPrefix{0xda, 0x35, 0xc6, 0x64}: &Abi{
 		Name:            "proposalCount",
@@ -7620,6 +10022,72 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x01, 0x3c, 0xf0, 0x8b}: &Abi{
+		Name:            "proposals",
+		ABI:             "function proposals(uint256 proposalId) returns (uint256 id, address proposer, uint256 eta, uint256 startBlock, uint256 endBlock, uint256 forVotes, uint256 againstVotes, uint256 abstainVotes, bool canceled, bool executed)",
+		Compact:         "proposals(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "id",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "proposer",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "eta",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "startBlock",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "endBlock",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "forVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "againstVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "abstainVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "canceled",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+			&AbiIO{
+				Name:         "executed",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0x7d, 0x5e, 0x81, 0xe2}: &Abi{
 		Name:            "propose",
 		ABI:             "function propose(address[] targets, uint256[] values, bytes[] calldatas, string description) returns (uint256)",
@@ -7636,6 +10104,47 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "values",
 				Type:         "uint256[]",
 				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "description",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xda, 0x95, 0x69, 0x1a}: &Abi{
+		Name:            "propose",
+		ABI:             "function propose(address[] targets, uint256[] values, string[] signatures, bytes[] calldatas, string description) returns (uint256)",
+		Compact:         "propose(address[],uint256[],string[],bytes[],string)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "signatures",
+				Type:         "string[]",
+				InternalType: "string[]",
 			},
 			&AbiIO{
 				Name:         "calldatas",
@@ -7856,6 +10365,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x24, 0xbc, 0x1a, 0x64}: &Abi{
+		Name:            "quorumVotes",
+		ABI:             "function quorumVotes() returns (uint256)",
+		Compact:         "quorumVotes()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0xba, 0x08, 0x76, 0x52}: &Abi{
 		Name:            "redeem",
 		ABI:             "function redeem(uint256 shares, address receiver, address owner) returns (uint256 assets)",
@@ -7948,6 +10472,32 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xc4, 0x5a, 0xc0, 0x50}: &Abi{
+		Name:            "releasable",
+		ABI:             "function releasable(contract IERC20 token, address account) returns (uint256)",
+		Compact:         "releasable(address,address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "contract IERC20",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x86, 0xd1, 0xa6, 0x9f}: &Abi{
 		Name:            "release",
 		ABI:             "function release()",
@@ -7971,6 +10521,41 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x48, 0xb7, 0x50, 0x44}: &Abi{
+		Name:            "release",
+		ABI:             "function release(contract IERC20 token, address account)",
+		Compact:         "release(address,address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "contract IERC20",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xb9, 0x1d, 0x40, 0x01}: &Abi{
+		Name:            "releaseTime",
+		ABI:             "function releaseTime() returns (uint256)",
+		Compact:         "releaseTime()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
 	},
 	MethodPrefix{0x96, 0x13, 0x25, 0x21}: &Abi{
 		Name:            "released",
@@ -7996,6 +10581,32 @@ var signatures = map[MethodPrefix]*Abi{
 		Inputs: []*AbiIO{
 			&AbiIO{
 				Name:         "token",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x40, 0x60, 0x72, 0xa9}: &Abi{
+		Name:            "released",
+		ABI:             "function released(contract IERC20 token, address account) returns (uint256)",
+		Compact:         "released(address,address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "contract IERC20",
+			},
+			&AbiIO{
+				Name:         "account",
 				Type:         "address",
 				InternalType: "address",
 			},
@@ -8056,6 +10667,68 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x94, 0x64, 0x3f, 0x71}: &Abi{
+		Name:            "requireToConfirmMessage",
+		ABI:             "function requireToConfirmMessage(address _contract, bytes _data, uint256 _gas) returns (bytes32)",
+		Compact:         "requireToConfirmMessage(address,bytes,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_contract",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "_data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "_gas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0xdc, 0x86, 0x01, 0xb3}: &Abi{
+		Name:            "requireToPassMessage",
+		ABI:             "function requireToPassMessage(address _contract, bytes _data, uint256 _gas) returns (bytes32)",
+		Compact:         "requireToPassMessage(address,bytes,uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_contract",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "_data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "_gas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
 	},
 	MethodPrefix{0xfa, 0xd8, 0xb3, 0x2a}: &Abi{
 		Name:            "revokeOperator",
@@ -8120,6 +10793,42 @@ var signatures = map[MethodPrefix]*Abi{
 		Type:            "function",
 		Inputs:          []*AbiIO{},
 		Outputs:         []*AbiIO{},
+	},
+	MethodPrefix{0xcb, 0x23, 0xbc, 0xb5}: &Abi{
+		Name:            "rollup",
+		ABI:             "function rollup() returns (address)",
+		Compact:         "rollup()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xae, 0x6d, 0xea, 0xd7}: &Abi{
+		Name:            "roots",
+		ABI:             "function roots(bytes32) returns (bytes32)",
+		Compact:         "roots(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
 	},
 	MethodPrefix{0x2a, 0x55, 0x20, 0x5a}: &Abi{
 		Name:            "royaltyInfo",
@@ -8418,6 +11127,354 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x8a, 0x63, 0x1a, 0xa6}: &Abi{
+		Name:            "sendContractTransaction",
+		ABI:             "function sendContractTransaction(uint256 gasLimit, uint256 maxFeePerGas, address to, uint256 value, bytes data) returns (uint256)",
+		Compact:         "sendContractTransaction(uint256,uint256,address,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x5e, 0x91, 0x67, 0x58}: &Abi{
+		Name:            "sendL1FundedContractTransaction",
+		ABI:             "function sendL1FundedContractTransaction(uint256 gasLimit, uint256 maxFeePerGas, address to, bytes data) returns (uint256)",
+		Compact:         "sendL1FundedContractTransaction(uint256,uint256,address,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x67, 0xef, 0x3a, 0xb8}: &Abi{
+		Name:            "sendL1FundedUnsignedTransaction",
+		ABI:             "function sendL1FundedUnsignedTransaction(uint256 gasLimit, uint256 maxFeePerGas, uint256 nonce, address to, bytes data) returns (uint256)",
+		Compact:         "sendL1FundedUnsignedTransaction(uint256,uint256,uint256,address,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "nonce",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xb7, 0x54, 0x36, 0xbb}: &Abi{
+		Name:            "sendL2Message",
+		ABI:             "function sendL2Message(bytes messageData) returns (uint256)",
+		Compact:         "sendL2Message(bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageData",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x1f, 0xe9, 0x27, 0xcf}: &Abi{
+		Name:            "sendL2MessageFromOrigin",
+		ABI:             "function sendL2MessageFromOrigin(bytes messageData) returns (uint256)",
+		Compact:         "sendL2MessageFromOrigin(bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "messageData",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x7a, 0xee, 0xcd, 0x2a}: &Abi{
+		Name:            "sendMerkleTreeState",
+		ABI:             "function sendMerkleTreeState() returns (uint256 size, bytes32 root, bytes32[] partials)",
+		Compact:         "sendMerkleTreeState()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "size",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "root",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "partials",
+				Type:         "bytes32[]",
+				InternalType: "bytes32[]",
+			},
+		},
+	},
+	MethodPrefix{0x3d, 0xbb, 0x20, 0x2b}: &Abi{
+		Name:            "sendMessage",
+		ABI:             "function sendMessage(address _target, bytes _message, uint32 _gasLimit)",
+		Compact:         "sendMessage(address,bytes,uint32)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_target",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "_message",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+			&AbiIO{
+				Name:         "_gasLimit",
+				Type:         "uint32",
+				InternalType: "uint32",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x92, 0x8c, 0x16, 0x9a}: &Abi{
+		Name:            "sendTxToL1",
+		ABI:             "function sendTxToL1(address destination, bytes data) returns (uint256)",
+		Compact:         "sendTxToL1(address,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "destination",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x50, 0x75, 0x78, 0x8b}: &Abi{
+		Name:            "sendUnsignedTransaction",
+		ABI:             "function sendUnsignedTransaction(uint256 gasLimit, uint256 maxFeePerGas, uint256 nonce, address to, uint256 value, bytes data) returns (uint256)",
+		Compact:         "sendUnsignedTransaction(uint256,uint256,uint256,address,uint256,bytes)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "nonce",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "value",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xee, 0x35, 0xf3, 0x27}: &Abi{
+		Name:            "sequencerInbox",
+		ABI:             "function sequencerInbox() returns (address)",
+		Compact:         "sequencerInbox()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0x16, 0xbf, 0x55, 0x79}: &Abi{
+		Name:            "sequencerInboxAccs",
+		ABI:             "function sequencerInboxAccs(uint256) returns (bytes32)",
+		Compact:         "sequencerInboxAccs(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
+	MethodPrefix{0x00, 0x84, 0x12, 0x0c}: &Abi{
+		Name:            "sequencerMessageCount",
+		ABI:             "function sequencerMessageCount() returns (uint256)",
+		Compact:         "sequencerMessageCount()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x5f, 0xca, 0x4a, 0x16}: &Abi{
+		Name:            "sequencerReportedSubMessageCount",
+		ABI:             "function sequencerReportedSubMessageCount() returns (uint256)",
+		Compact:         "sequencerReportedSubMessageCount()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0xcc, 0x3b, 0xac, 0x57}: &Abi{
 		Name:            "setAccessManagerIgnored",
 		ABI:             "function setAccessManagerIgnored(address target, bytes4[] selectors, bool ignored)",
@@ -8508,6 +11565,26 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x47, 0xfb, 0x24, 0xc5}: &Abi{
+		Name:            "setDelayedInbox",
+		ABI:             "function setDelayedInbox(address inbox, bool enabled)",
+		Compact:         "setDelayedInbox(address,bool)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "inbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "enabled",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xa6, 0x4d, 0x95, 0xce}: &Abi{
 		Name:            "setGrantDelay",
 		ABI:             "function setGrantDelay(uint64 roleId, uint32 newDelay)",
@@ -8568,6 +11645,21 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xd0, 0x7f, 0x91, 0xe9}: &Abi{
+		Name:            "setLateQuorumVoteExtension",
+		ABI:             "function setLateQuorumVoteExtension(uint64 newVoteExtension)",
+		Compact:         "setLateQuorumVoteExtension(uint64)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "newVoteExtension",
+				Type:         "uint64",
+				InternalType: "uint64",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x5d, 0xf8, 0x12, 0x2f}: &Abi{
 		Name:            "setManager",
 		ABI:             "function setManager(address account, address newManager)",
@@ -8584,6 +11676,26 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "newManager",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xce, 0xe3, 0xd7, 0x28}: &Abi{
+		Name:            "setOutbox",
+		ABI:             "function setOutbox(address inbox, bool enabled)",
+		Compact:         "setOutbox(address,bool)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "inbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "enabled",
+				Type:         "bool",
+				InternalType: "bool",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -8658,6 +11770,21 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x4f, 0x61, 0xf8, 0x50}: &Abi{
+		Name:            "setSequencerInbox",
+		ABI:             "function setSequencerInbox(address _sequencerInbox)",
+		Compact:         "setSequencerInbox(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "_sequencerInbox",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xd2, 0x2b, 0x59, 0x89}: &Abi{
 		Name:            "setTargetAdminDelay",
 		ABI:             "function setTargetAdminDelay(address target, uint32 newDelay)",
@@ -8723,6 +11850,21 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x70, 0xb0, 0xf6, 0x60}: &Abi{
+		Name:            "setVotingDelay",
+		ABI:             "function setVotingDelay(uint256 newVotingDelay)",
+		Compact:         "setVotingDelay(uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "newVotingDelay",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x79, 0x05, 0x18, 0x87}: &Abi{
 		Name:            "setVotingDelay",
 		ABI:             "function setVotingDelay(uint48 newVotingDelay)",
@@ -8734,6 +11876,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "newVotingDelay",
 				Type:         "uint48",
 				InternalType: "uint48",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xea, 0x02, 0x17, 0xcf}: &Abi{
+		Name:            "setVotingPeriod",
+		ABI:             "function setVotingPeriod(uint256 newVotingPeriod)",
+		Compact:         "setVotingPeriod(uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "newVotingPeriod",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -8753,6 +11910,63 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xce, 0x7c, 0x2a, 0xc2}: &Abi{
+		Name:            "shares",
+		ABI:             "function shares(address account) returns (uint256)",
+		Compact:         "shares(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x15, 0x44, 0x29, 0x8e}: &Abi{
+		Name:            "sourceChainId",
+		ABI:             "function sourceChainId() returns (uint256)",
+		Compact:         "sourceChainId()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xd5, 0xb5, 0xcc, 0x23}: &Abi{
+		Name:            "spent",
+		ABI:             "function spent(uint256) returns (bytes32)",
+		Compact:         "spent(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+	},
 	MethodPrefix{0xbe, 0x9a, 0x65, 0x55}: &Abi{
 		Name:            "start",
 		ABI:             "function start() returns (uint256)",
@@ -8765,6 +11979,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xc1, 0x9d, 0x93, 0xfb}: &Abi{
+		Name:            "state",
+		ABI:             "function state() returns (enum RefundEscrow.State)",
+		Compact:         "state()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint8",
+				InternalType: "enum RefundEscrow.State",
 			},
 		},
 	},
@@ -8786,6 +12015,32 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint8",
 				InternalType: "enum IGovernor.ProposalState",
+			},
+		},
+	},
+	MethodPrefix{0x7a, 0x88, 0xb1, 0x07}: &Abi{
+		Name:            "submitBatchSpendingReport",
+		ABI:             "function submitBatchSpendingReport(address batchPoster, bytes32 dataHash) returns (uint256 msgNum)",
+		Compact:         "submitBatchSpendingReport(address,bytes32)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "batchPoster",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "dataHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "msgNum",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -9018,6 +12273,57 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xe3, 0x3b, 0x7d, 0xe3}: &Abi{
+		Name:            "totalReleased",
+		ABI:             "function totalReleased() returns (uint256)",
+		Compact:         "totalReleased()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xd7, 0x97, 0x79, 0xb2}: &Abi{
+		Name:            "totalReleased",
+		ABI:             "function totalReleased(contract IERC20 token) returns (uint256)",
+		Compact:         "totalReleased(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "contract IERC20",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x3a, 0x98, 0xef, 0x39}: &Abi{
+		Name:            "totalShares",
+		ABI:             "function totalShares() returns (uint256)",
+		Compact:         "totalShares()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x18, 0x16, 0x0d, 0xdd}: &Abi{
 		Name:            "totalSupply",
 		ABI:             "function totalSupply() returns (uint256)",
@@ -9051,6 +12357,42 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x98, 0x1b, 0x24, 0xd0}: &Abi{
+		Name:            "totalSupplyAt",
+		ABI:             "function totalSupplyAt(uint256 snapshotId) returns (uint256)",
+		Compact:         "totalSupplyAt(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "snapshotId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x0a, 0xc1, 0xc3, 0x13}: &Abi{
+		Name:            "transactionHash",
+		ABI:             "function transactionHash() returns (bytes32)",
+		Compact:         "transactionHash()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
 			},
 		},
 	},
@@ -9280,6 +12622,71 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x3f, 0x4b, 0xa8, 0x3a}: &Abi{
+		Name:            "unpause",
+		ABI:             "function unpause()",
+		Compact:         "unpause()",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
+	MethodPrefix{0x6e, 0x6e, 0x8a, 0x6a}: &Abi{
+		Name:            "unsafeCreateRetryableTicket",
+		ABI:             "function unsafeCreateRetryableTicket(address to, uint256 l2CallValue, uint256 maxSubmissionCost, address excessFeeRefundAddress, address callValueRefundAddress, uint256 gasLimit, uint256 maxFeePerGas, bytes data) returns (uint256)",
+		Compact:         "unsafeCreateRetryableTicket(address,uint256,uint256,address,address,uint256,uint256,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "to",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "l2CallValue",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxSubmissionCost",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "excessFeeRefundAddress",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "callValueRefundAddress",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "gasLimit",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "maxFeePerGas",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "data",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x18, 0xff, 0x18, 0x3c}: &Abi{
 		Name:            "updateAuthority",
 		ABI:             "function updateAuthority(address target, address newAuthority)",
@@ -9350,6 +12757,26 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xa0, 0x4c, 0xee, 0x60}: &Abi{
+		Name:            "updateSendRoot",
+		ABI:             "function updateSendRoot(bytes32 sendRoot, bytes32 l2BlockHash)",
+		Compact:         "updateSendRoot(bytes32,bytes32)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "sendRoot",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "l2BlockHash",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xa8, 0x90, 0xc9, 0x10}: &Abi{
 		Name:            "updateTimelock",
 		ABI:             "function updateTimelock(contract ICompoundTimelock newTimelock)",
@@ -9361,6 +12788,26 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "newTimelock",
 				Type:         "address",
 				InternalType: "contract ICompoundTimelock",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x99, 0xa8, 0x8e, 0xc4}: &Abi{
+		Name:            "upgrade",
+		ABI:             "function upgrade(contract ITransparentUpgradeableProxy proxy, address implementation)",
+		Compact:         "upgrade(address,address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proxy",
+				Type:         "address",
+				InternalType: "contract ITransparentUpgradeableProxy",
+			},
+			&AbiIO{
+				Name:         "implementation",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -9443,6 +12890,32 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "string",
 				InternalType: "string",
+			},
+		},
+	},
+	MethodPrefix{0xbf, 0x5d, 0x3b, 0xdb}: &Abi{
+		Name:            "verify",
+		ABI:             "function verify(struct MinimalForwarder.ForwardRequest req, bytes signature) returns (bool)",
+		Compact:         "verify((address,address,uint256,uint256,uint256,bytes),bytes)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "req",
+				Type:         "tuple",
+				InternalType: "struct MinimalForwarder.ForwardRequest",
+			},
+			&AbiIO{
+				Name:         "signature",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
 			},
 		},
 	},
@@ -9559,6 +13032,36 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x17, 0x5a, 0x26, 0x0b}: &Abi{
+		Name:            "wasMyCallersAddressAliased",
+		ABI:             "function wasMyCallersAddressAliased() returns (bool)",
+		Compact:         "wasMyCallersAddressAliased()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x51, 0xcf, 0xf8, 0xd9}: &Abi{
+		Name:            "withdraw",
+		ABI:             "function withdraw(address payable payee)",
+		Compact:         "withdraw(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address payable",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0xb4, 0x60, 0xaf, 0x94}: &Abi{
 		Name:            "withdraw",
 		ABI:             "function withdraw(uint256 assets, address receiver, address owner) returns (uint256 shares)",
@@ -9589,6 +13092,42 @@ var signatures = map[MethodPrefix]*Abi{
 				InternalType: "uint256",
 			},
 		},
+	},
+	MethodPrefix{0x25, 0xe1, 0x60, 0x63}: &Abi{
+		Name:            "withdrawEth",
+		ABI:             "function withdrawEth(address destination) returns (uint256)",
+		Compact:         "withdrawEth(address)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "destination",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x31, 0xb3, 0xeb, 0x94}: &Abi{
+		Name:            "withdrawPayments",
+		ABI:             "function withdrawPayments(address payable payee)",
+		Compact:         "withdrawPayments(address)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address payable",
+			},
+		},
+		Outputs: []*AbiIO{},
 	},
 	MethodPrefix{0x20, 0x5c, 0x28, 0x78}: &Abi{
 		Name:            "withdrawTo",
@@ -9639,6 +13178,42 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "bool",
 				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x68, 0x5c, 0xa1, 0x94}: &Abi{
+		Name:            "withdrawalAllowed",
+		ABI:             "function withdrawalAllowed(address payee) returns (bool)",
+		Compact:         "withdrawalAllowed(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x6e, 0x29, 0x6e, 0x45}: &Abi{
+		Name:            "xDomainMessageSender",
+		ABI:             "function xDomainMessageSender() returns (address)",
+		Compact:         "xDomainMessageSender()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 	},
