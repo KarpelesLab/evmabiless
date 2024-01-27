@@ -66,6 +66,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "dd4e2ba5": {
+        "abi": "function COUNTING_MODE() public view virtual returns (string memory)",
+        "compact": "COUNTING_MODE()",
+        "inputs": [],
+        "name": "COUNTING_MODE",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "3644e515": {
         "abi": "function DOMAIN_SEPARATOR() external view returns (bytes32)",
         "compact": "DOMAIN_SEPARATOR()",
@@ -232,6 +247,91 @@ module.exports = {
             }
         ],
         "name": "PaymentReleased",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "789cf55b": {
+        "abi": "event ProposalCanceled(uint256 proposalId)",
+        "compact": "ProposalCanceled(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ProposalCanceled",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "7d84a626": {
+        "abi": "event ProposalCreated(uint256 proposalId, address proposer, address[] targets, uint256[] values, string[] signatures, bytes[] calldatas, uint256 voteStart, uint256 voteEnd, string description)",
+        "compact": "ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "proposer",
+                "type": "address"
+            },
+            {
+                "internalType": "address[]",
+                "name": "targets",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "string[]",
+                "name": "signatures",
+                "type": "string[]"
+            },
+            {
+                "internalType": "bytes[]",
+                "name": "calldatas",
+                "type": "bytes[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "voteStart",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "voteEnd",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            }
+        ],
+        "name": "ProposalCreated",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "712ae138": {
+        "abi": "event ProposalExecuted(uint256 proposalId)",
+        "compact": "ProposalExecuted(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ProposalExecuted",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "event"
@@ -437,6 +537,81 @@ module.exports = {
             }
         ],
         "name": "Unpaused",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "b8e13888": {
+        "abi": "event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason)",
+        "compact": "VoteCast(address,uint256,uint8,uint256,string)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "voter",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint256",
+                "name": "weight",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            }
+        ],
+        "name": "VoteCast",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "e2babfba": {
+        "abi": "event VoteCastWithParams(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason, bytes params)",
+        "compact": "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "voter",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "support",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint256",
+                "name": "weight",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "reason",
+                "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "params",
+                "type": "bytes"
+            }
+        ],
+        "name": "VoteCastWithParams",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "event"
@@ -1694,6 +1869,32 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "43859632": {
+        "abi": "function hasVoted(uint256 proposalId, address account) public view virtual returns (bool)",
+        "compact": "hasVoted(uint256,address)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "hasVoted",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "c59057e4": {
         "abi": "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
         "compact": "hashProposal(address[],uint256[],bytes[],bytes32)",
@@ -2059,6 +2260,27 @@ module.exports = {
             }
         ],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "f8ce560a": {
+        "abi": "function quorum(uint256 timepoint) public view virtual returns (uint256)",
+        "compact": "quorum(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "timepoint",
+                "type": "uint256"
+            }
+        ],
+        "name": "quorum",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "fbccedae": {
@@ -2856,6 +3078,36 @@ module.exports = {
         "name": "voteProposal",
         "outputs": [],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "3932abb1": {
+        "abi": "function votingDelay() public view virtual returns (uint256)",
+        "compact": "votingDelay()",
+        "inputs": [],
+        "name": "votingDelay",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "02a251a3": {
+        "abi": "function votingPeriod() public view virtual returns (uint256)",
+        "compact": "votingPeriod()",
+        "inputs": [],
+        "name": "votingPeriod",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "0968f264": {

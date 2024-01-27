@@ -67,18 +67,29 @@ function nonces(address owner) public view returns (uint256);
 function DOMAIN_SEPARATOR() external view returns (bytes32);
 
 // Governor
+event ProposalCreated(uint256 proposalId, address proposer, address[] targets, uint256[] values, string[] signatures, bytes[] calldatas, uint256 voteStart, uint256 voteEnd, string description);
+event ProposalCanceled(uint256 proposalId);
+event ProposalExecuted(uint256 proposalId);
+event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason);
+event VoteCastWithParams(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason, bytes params);
+
 function version() public view returns (string memory);
+function COUNTING_MODE() public view virtual returns (string memory);
 function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256);
 function state(uint256 proposalId) public view returns (ProposalState);
 function proposalThreshold() public view virtual returns (uint256);
 function proposalSnapshot(uint256 proposalId) public view virtual override returns (uint256);
 function proposalDeadline(uint256 proposalId) public view virtual override returns (uint256);
 function proposalProposer(uint256 proposalId) public view virtual override returns (address);
+function votingDelay() public view virtual returns (uint256);
+function votingPeriod() public view virtual returns (uint256);
+function quorum(uint256 timepoint) public view virtual returns (uint256);
 function propose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) public virtual override returns (uint256);
 function execute(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public payable virtual override returns (uint256);
 function cancel(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public virtual override returns (uint256);
 function getVotes(address account, uint256 timepoint) public view virtual override returns (uint256);
 function getVotesWithParams(address account, uint256 timepoint, bytes memory params) public view virtual override returns (uint256);
+function hasVoted(uint256 proposalId, address account) public view virtual returns (bool);
 function castVote(uint256 proposalId, uint8 support) public virtual override returns (uint256);
 function castVoteWithReason(uint256 proposalId, uint8 support, string calldata reason) public virtual override returns (uint256);
 function castVoteWithReasonAndParams(uint256 proposalId, uint8 support, string calldata reason, bytes memory params) public virtual override returns (uint256);

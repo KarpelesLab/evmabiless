@@ -68,6 +68,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xdd, 0x4e, 0x2b, 0xa5}: &Abi{
+		Name:            "COUNTING_MODE",
+		ABI:             "function COUNTING_MODE() public view virtual returns (string memory)",
+		Compact:         "COUNTING_MODE()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+	},
 	MethodPrefix{0x36, 0x44, 0xe5, 0x15}: &Abi{
 		Name:            "DOMAIN_SEPARATOR",
 		ABI:             "function DOMAIN_SEPARATOR() external view returns (bytes32)",
@@ -232,6 +247,91 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 			&AbiIO{
 				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x78, 0x9c, 0xf5, 0x5b}: &Abi{
+		Name:            "ProposalCanceled",
+		ABI:             "event ProposalCanceled(uint256 proposalId)",
+		Compact:         "ProposalCanceled(uint256)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x7d, 0x84, 0xa6, 0x26}: &Abi{
+		Name:            "ProposalCreated",
+		ABI:             "event ProposalCreated(uint256 proposalId, address proposer, address[] targets, uint256[] values, string[] signatures, bytes[] calldatas, uint256 voteStart, uint256 voteEnd, string description)",
+		Compact:         "ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "proposer",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "targets",
+				Type:         "address[]",
+				InternalType: "address[]",
+			},
+			&AbiIO{
+				Name:         "values",
+				Type:         "uint256[]",
+				InternalType: "uint256[]",
+			},
+			&AbiIO{
+				Name:         "signatures",
+				Type:         "string[]",
+				InternalType: "string[]",
+			},
+			&AbiIO{
+				Name:         "calldatas",
+				Type:         "bytes[]",
+				InternalType: "bytes[]",
+			},
+			&AbiIO{
+				Name:         "voteStart",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "voteEnd",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "description",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x71, 0x2a, 0xe1, 0x38}: &Abi{
+		Name:            "ProposalExecuted",
+		ABI:             "event ProposalExecuted(uint256 proposalId)",
+		Compact:         "ProposalExecuted(uint256)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
 				Type:         "uint256",
 				InternalType: "uint256",
 			},
@@ -439,6 +539,81 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "account",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xb8, 0xe1, 0x38, 0x88}: &Abi{
+		Name:            "VoteCast",
+		ABI:             "event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason)",
+		Compact:         "VoteCast(address,uint256,uint8,uint256,string)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "voter",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "weight",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xe2, 0xba, 0xbf, 0xba}: &Abi{
+		Name:            "VoteCastWithParams",
+		ABI:             "event VoteCastWithParams(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason, bytes params)",
+		Compact:         "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "voter",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "support",
+				Type:         "uint8",
+				InternalType: "uint8",
+			},
+			&AbiIO{
+				Name:         "weight",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "reason",
+				Type:         "string",
+				InternalType: "string",
+			},
+			&AbiIO{
+				Name:         "params",
+				Type:         "bytes",
+				InternalType: "bytes",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -1696,6 +1871,32 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x43, 0x85, 0x96, 0x32}: &Abi{
+		Name:            "hasVoted",
+		ABI:             "function hasVoted(uint256 proposalId, address account) public view virtual returns (bool)",
+		Compact:         "hasVoted(uint256,address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0xc5, 0x90, 0x57, 0xe4}: &Abi{
 		Name:            "hashProposal",
 		ABI:             "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
@@ -2053,6 +2254,27 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "description",
 				Type:         "string",
 				InternalType: "string",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0xf8, 0xce, 0x56, 0x0a}: &Abi{
+		Name:            "quorum",
+		ABI:             "function quorum(uint256 timepoint) public view virtual returns (uint256)",
+		Compact:         "quorum(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "timepoint",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 		Outputs: []*AbiIO{
@@ -2859,6 +3081,36 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x39, 0x32, 0xab, 0xb1}: &Abi{
+		Name:            "votingDelay",
+		ABI:             "function votingDelay() public view virtual returns (uint256)",
+		Compact:         "votingDelay()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x02, 0xa2, 0x51, 0xa3}: &Abi{
+		Name:            "votingPeriod",
+		ABI:             "function votingPeriod() public view virtual returns (uint256)",
+		Compact:         "votingPeriod()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
 	},
 	MethodPrefix{0x09, 0x68, 0xf2, 0x64}: &Abi{
 		Name:            "withdraw",
