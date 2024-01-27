@@ -163,6 +163,21 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0x62, 0xe7, 0x8c, 0xea}: &Abi{
+		Name:            "Paused",
+		ABI:             "event Paused(address account)",
+		Compact:         "Paused(address)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x40, 0xc3, 0x40, 0xf6}: &Abi{
 		Name:            "PayeeAdded",
 		ABI:             "event PayeeAdded(address account, uint256 shares)",
@@ -219,6 +234,81 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "amount",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xbd, 0x79, 0xb8, 0x6f}: &Abi{
+		Name:            "RoleAdminChanged",
+		ABI:             "event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)",
+		Compact:         "RoleAdminChanged(bytes32,bytes32,bytes32)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "previousAdminRole",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "newAdminRole",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x2f, 0x87, 0x88, 0x11}: &Abi{
+		Name:            "RoleGranted",
+		ABI:             "event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)",
+		Compact:         "RoleGranted(bytes32,address,address)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xf6, 0x39, 0x1f, 0x5c}: &Abi{
+		Name:            "RoleRevoked",
+		ABI:             "event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)",
+		Compact:         "RoleRevoked(bytes32,address,address)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "sender",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -334,6 +424,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "id",
 				Type:         "uint256",
 				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x5d, 0xb9, 0xee, 0x0a}: &Abi{
+		Name:            "Unpaused",
+		ABI:             "event Unpaused(address account)",
+		Compact:         "Unpaused(address)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 		Outputs: []*AbiIO{},
@@ -1204,6 +1309,37 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x2d, 0x49, 0x2c, 0xe2}: &Abi{
+		Name:            "execute",
+		ABI:             "function execute(ForwardRequest calldata req, bytes calldata signature) public payable returns (bool, bytes memory)",
+		Compact:         "execute(ForwardRequest,bytes)",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "req",
+				Type:         "ForwardRequest",
+				InternalType: "ForwardRequest",
+			},
+			&AbiIO{
+				Name:         "signature",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+	},
 	MethodPrefix{0x26, 0x56, 0x22, 0x7d}: &Abi{
 		Name:            "execute",
 		ABI:             "function execute(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public payable virtual override returns (uint256)",
@@ -1316,6 +1452,27 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x2d, 0x03, 0x35, 0xab}: &Abi{
+		Name:            "getNonce",
+		ABI:             "function getNonce(address from) public view returns (uint256)",
+		Compact:         "getNonce(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "from",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x8e, 0x53, 0x9e, 0x8c}: &Abi{
 		Name:            "getPastTotalSupply",
 		ABI:             "function getPastTotalSupply(uint256 blockNumber) public view override returns (uint256)",
@@ -1391,6 +1548,27 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "Proposal",
 				InternalType: "Proposal",
+			},
+		},
+	},
+	MethodPrefix{0x24, 0x8a, 0x9c, 0xa3}: &Abi{
+		Name:            "getRoleAdmin",
+		ABI:             "function getRoleAdmin(bytes32 role) external view returns (bytes32)",
+		Compact:         "getRoleAdmin(bytes32)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bytes32",
+				InternalType: "bytes32",
 			},
 		},
 	},
@@ -1472,6 +1650,52 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x2f, 0x2f, 0xf1, 0x5d}: &Abi{
+		Name:            "grantRole",
+		ABI:             "function grantRole(bytes32 role, address account) external",
+		Compact:         "grantRole(bytes32,address)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x91, 0xd1, 0x48, 0x54}: &Abi{
+		Name:            "hasRole",
+		ABI:             "function hasRole(bytes32 role, address account) external view returns (bool)",
+		Compact:         "hasRole(bytes32,address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0xc5, 0x90, 0x57, 0xe4}: &Abi{
 		Name:            "hashProposal",
 		ABI:             "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
@@ -1543,6 +1767,27 @@ var signatures = map[MethodPrefix]*Abi{
 		Inputs: []*AbiIO{
 			&AbiIO{
 				Name:         "relayer",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
+	MethodPrefix{0x57, 0x2b, 0x6c, 0x05}: &Abi{
+		Name:            "isTrustedForwarder",
+		ABI:             "function isTrustedForwarder(address forwarder) public view virtual returns (bool)",
+		Compact:         "isTrustedForwarder(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "forwarder",
 				Type:         "address",
 				InternalType: "address",
 			},
@@ -1647,6 +1892,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x5c, 0x97, 0x5a, 0xbb}: &Abi{
+		Name:            "paused",
+		ABI:             "function paused() public view virtual returns (bool)",
+		Compact:         "paused()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0x8b, 0x83, 0x20, 0x9b}: &Abi{
 		Name:            "payee",
 		ABI:             "function payee(uint256 index) public view returns (address)",
@@ -1665,6 +1925,27 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "address",
 				InternalType: "address",
+			},
+		},
+	},
+	MethodPrefix{0xe2, 0x98, 0x2c, 0x21}: &Abi{
+		Name:            "payments",
+		ABI:             "function payments(address dest) public view returns (uint256)",
+		Compact:         "payments(address)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "dest",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
@@ -1973,6 +2254,46 @@ var signatures = map[MethodPrefix]*Abi{
 		Type:            "function",
 		Inputs:          []*AbiIO{},
 		Outputs:         []*AbiIO{},
+	},
+	MethodPrefix{0x36, 0x56, 0x8a, 0xbe}: &Abi{
+		Name:            "renounceRole",
+		ABI:             "function renounceRole(bytes32 role, address account) external",
+		Compact:         "renounceRole(bytes32,address)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xd5, 0x47, 0x74, 0x1f}: &Abi{
+		Name:            "revokeRole",
+		ABI:             "function revokeRole(bytes32 role, address account) external",
+		Compact:         "revokeRole(bytes32,address)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "role",
+				Type:         "bytes32",
+				InternalType: "bytes32",
+			},
+			&AbiIO{
+				Name:         "account",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
 	},
 	MethodPrefix{0x2e, 0xb2, 0xc2, 0xd6}: &Abi{
 		Name:            "safeBatchTransferFrom",
@@ -2421,6 +2742,32 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xc1, 0xea, 0x34, 0xfb}: &Abi{
+		Name:            "verify",
+		ABI:             "function verify(ForwardRequest calldata req, bytes calldata signature) public view returns (bool)",
+		Compact:         "verify(ForwardRequest,bytes)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "req",
+				Type:         "ForwardRequest",
+				InternalType: "ForwardRequest",
+			},
+			&AbiIO{
+				Name:         "signature",
+				Type:         "bytes",
+				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "bool",
+				InternalType: "bool",
+			},
+		},
+	},
 	MethodPrefix{0x54, 0xfd, 0x4d, 0x50}: &Abi{
 		Name:            "version",
 		ABI:             "function version() public view returns (string memory)",
@@ -2524,6 +2871,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "data",
 				Type:         "bytes",
 				InternalType: "bytes",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x31, 0xb3, 0xeb, 0x94}: &Abi{
+		Name:            "withdrawPayments",
+		ABI:             "function withdrawPayments(address payable payee) public virtual",
+		Compact:         "withdrawPayments(address)",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "payee",
+				Type:         "address",
+				InternalType: "address",
 			},
 		},
 		Outputs: []*AbiIO{},

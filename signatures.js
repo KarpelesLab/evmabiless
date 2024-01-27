@@ -161,6 +161,21 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "event"
     },
+    "62e78cea": {
+        "abi": "event Paused(address account)",
+        "compact": "Paused(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Paused",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "40c340f6": {
         "abi": "event PayeeAdded(address account, uint256 shares)",
         "compact": "PayeeAdded(address,uint256)",
@@ -217,6 +232,81 @@ module.exports = {
             }
         ],
         "name": "PaymentReleased",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "bd79b86f": {
+        "abi": "event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)",
+        "compact": "RoleAdminChanged(bytes32,bytes32,bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "previousAdminRole",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "newAdminRole",
+                "type": "bytes32"
+            }
+        ],
+        "name": "RoleAdminChanged",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "2f878811": {
+        "abi": "event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)",
+        "compact": "RoleGranted(bytes32,address,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            }
+        ],
+        "name": "RoleGranted",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "f6391f5c": {
+        "abi": "event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)",
+        "compact": "RoleRevoked(bytes32,address,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            }
+        ],
+        "name": "RoleRevoked",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "event"
@@ -332,6 +422,21 @@ module.exports = {
             }
         ],
         "name": "URI",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "5db9ee0a": {
+        "abi": "event Unpaused(address account)",
+        "compact": "Unpaused(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Unpaused",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "event"
@@ -1202,6 +1307,37 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "2d492ce2": {
+        "abi": "function execute(ForwardRequest calldata req, bytes calldata signature) public payable returns (bool, bytes memory)",
+        "compact": "execute(ForwardRequest,bytes)",
+        "inputs": [
+            {
+                "internalType": "ForwardRequest",
+                "name": "req",
+                "type": "ForwardRequest"
+            },
+            {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+            }
+        ],
+        "name": "execute",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            },
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "2656227d": {
         "abi": "function execute(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public payable virtual override returns (uint256)",
         "compact": "execute(address[],uint256[],bytes[],bytes32)",
@@ -1314,6 +1450,27 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "2d0335ab": {
+        "abi": "function getNonce(address from) public view returns (uint256)",
+        "compact": "getNonce(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            }
+        ],
+        "name": "getNonce",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "8e539e8c": {
         "abi": "function getPastTotalSupply(uint256 blockNumber) public view override returns (uint256)",
         "compact": "getPastTotalSupply(uint256)",
@@ -1387,6 +1544,27 @@ module.exports = {
                 "internalType": "Proposal",
                 "name": "",
                 "type": "Proposal"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "248a9ca3": {
+        "abi": "function getRoleAdmin(bytes32 role) external view returns (bytes32)",
+        "compact": "getRoleAdmin(bytes32)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            }
+        ],
+        "name": "getRoleAdmin",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
@@ -1470,6 +1648,52 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "2f2ff15d": {
+        "abi": "function grantRole(bytes32 role, address account) external",
+        "compact": "grantRole(bytes32,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "grantRole",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "91d14854": {
+        "abi": "function hasRole(bytes32 role, address account) external view returns (bool)",
+        "compact": "hasRole(bytes32,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "hasRole",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "c59057e4": {
         "abi": "function hashProposal(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash) public pure returns (uint256)",
         "compact": "hashProposal(address[],uint256[],bytes[],bytes32)",
@@ -1543,6 +1767,27 @@ module.exports = {
             }
         ],
         "name": "isRelayer",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "572b6c05": {
+        "abi": "function isTrustedForwarder(address forwarder) public view virtual returns (bool)",
+        "compact": "isTrustedForwarder(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "forwarder",
+                "type": "address"
+            }
+        ],
+        "name": "isTrustedForwarder",
         "outputs": [
             {
                 "internalType": "bool",
@@ -1645,6 +1890,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "5c975abb": {
+        "abi": "function paused() public view virtual returns (bool)",
+        "compact": "paused()",
+        "inputs": [],
+        "name": "paused",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "8b83209b": {
         "abi": "function payee(uint256 index) public view returns (address)",
         "compact": "payee(uint256)",
@@ -1661,6 +1921,27 @@ module.exports = {
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "e2982c21": {
+        "abi": "function payments(address dest) public view returns (uint256)",
+        "compact": "payments(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "dest",
+                "type": "address"
+            }
+        ],
+        "name": "payments",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -1968,6 +2249,46 @@ module.exports = {
         "compact": "renounceOwnership()",
         "inputs": [],
         "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "36568abe": {
+        "abi": "function renounceRole(bytes32 role, address account) external",
+        "compact": "renounceRole(bytes32,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "renounceRole",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "d547741f": {
+        "abi": "function revokeRole(bytes32 role, address account) external",
+        "compact": "revokeRole(bytes32,address)",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "revokeRole",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "function"
@@ -2419,6 +2740,32 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "c1ea34fb": {
+        "abi": "function verify(ForwardRequest calldata req, bytes calldata signature) public view returns (bool)",
+        "compact": "verify(ForwardRequest,bytes)",
+        "inputs": [
+            {
+                "internalType": "ForwardRequest",
+                "name": "req",
+                "type": "ForwardRequest"
+            },
+            {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+            }
+        ],
+        "name": "verify",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "54fd4d50": {
         "abi": "function version() public view returns (string memory)",
         "compact": "version()",
@@ -2522,6 +2869,21 @@ module.exports = {
             }
         ],
         "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "31b3eb94": {
+        "abi": "function withdrawPayments(address payable payee) public virtual",
+        "compact": "withdrawPayments(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "payee",
+                "type": "address"
+            }
+        ],
+        "name": "withdrawPayments",
         "outputs": [],
         "stateMutability": "nonPayable",
         "type": "function"

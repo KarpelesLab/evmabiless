@@ -148,4 +148,28 @@ function deposit(bytes32 resourceID, address depositer, bytes calldata data) ext
 function executeProposal(bytes32 resourceID, bytes calldata data) external override;
 function withdraw(bytes memory data) external override;
 
+// ERC2771
+function isTrustedForwarder(address forwarder) public view virtual returns (bool);
+function getNonce(address from) public view returns (uint256);
+function verify(ForwardRequest calldata req, bytes calldata signature) public view returns (bool);
+function execute(ForwardRequest calldata req, bytes calldata signature) public payable returns (bool, bytes memory);
 
+// Pausable
+event Paused(address account);
+event Unpaused(address account);
+function paused() public view virtual returns (bool);
+
+// PullPayment
+function withdrawPayments(address payable payee) public virtual;
+function payments(address dest) public view returns (uint256);
+
+// IAccessControl
+event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole);
+event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender);
+event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
+
+function hasRole(bytes32 role, address account) external view returns (bool);
+function getRoleAdmin(bytes32 role) external view returns (bytes32);
+function grantRole(bytes32 role, address account) external;
+function revokeRole(bytes32 role, address account) external;
+function renounceRole(bytes32 role, address account) external;
