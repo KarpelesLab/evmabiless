@@ -2226,6 +2226,37 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "544ffc9c": {
+        "abi": "function proposalVotes(uint256 proposalId) public view virtual returns (uint256 againstVotes, uint256 forVotes, uint256 abstainVotes)",
+        "compact": "proposalVotes(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+            }
+        ],
+        "name": "proposalVotes",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "againstVotes",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "forVotes",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "abstainVotes",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "7d5e81e2": {
         "abi": "function propose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) public virtual override returns (uint256)",
         "compact": "propose(address[],uint256[],bytes[],string)",

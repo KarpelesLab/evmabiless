@@ -2228,6 +2228,37 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x54, 0x4f, 0xfc, 0x9c}: &Abi{
+		Name:            "proposalVotes",
+		ABI:             "function proposalVotes(uint256 proposalId) public view virtual returns (uint256 againstVotes, uint256 forVotes, uint256 abstainVotes)",
+		Compact:         "proposalVotes(uint256)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "proposalId",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "againstVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "forVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "abstainVotes",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x7d, 0x5e, 0x81, 0xe2}: &Abi{
 		Name:            "propose",
 		ABI:             "function propose(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, string memory description) public virtual override returns (uint256)",

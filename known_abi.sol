@@ -101,6 +101,9 @@ function token() public view returns (address);
 function clock() public view virtual override returns (uint48);
 function CLOCK_MODE() public view virtual override returns (string memory);
 
+// GovernorCountingSimple
+function proposalVotes(uint256 proposalId) public view virtual returns (uint256 againstVotes, uint256 forVotes, uint256 abstainVotes);
+
 // PaymentSplitter
 event PayeeAdded(address account, uint256 shares);
 event PaymentReleased(address to, uint256 amount);
