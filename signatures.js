@@ -96,6 +96,56 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "3134e8a2": {
+        "abi": "event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate)",
+        "compact": "DelegateChanged(address,address,address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "delegator",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "fromDelegate",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "toDelegate",
+                "type": "address"
+            }
+        ],
+        "name": "DelegateChanged",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "dec2bacd": {
+        "abi": "event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance)",
+        "compact": "DelegateVotesChanged(address,uint256,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "delegate",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "previousBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "newBalance",
+                "type": "uint256"
+            }
+        ],
+        "name": "DelegateVotesChanged",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "6339f15c": {
         "abi": "event ERC20PaymentReleased(IERC20 indexed token, address to, uint256 amount)",
         "compact": "ERC20PaymentReleased(IERC20,address,uint256)",

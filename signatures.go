@@ -98,6 +98,56 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x31, 0x34, 0xe8, 0xa2}: &Abi{
+		Name:            "DelegateChanged",
+		ABI:             "event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate)",
+		Compact:         "DelegateChanged(address,address,address)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "delegator",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "fromDelegate",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "toDelegate",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xde, 0xc2, 0xba, 0xcd}: &Abi{
+		Name:            "DelegateVotesChanged",
+		ABI:             "event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance)",
+		Compact:         "DelegateVotesChanged(address,uint256,uint256)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "delegate",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "previousBalance",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+			&AbiIO{
+				Name:         "newBalance",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x63, 0x39, 0xf1, 0x5c}: &Abi{
 		Name:            "ERC20PaymentReleased",
 		ABI:             "event ERC20PaymentReleased(IERC20 indexed token, address to, uint256 amount)",

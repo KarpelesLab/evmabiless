@@ -56,7 +56,10 @@ function balanceOfBatch(address[] calldata accounts, uint256[] calldata ids) ext
 function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes calldata data) external;
 function safeBatchTransferFrom(address from, address to, uint256[] calldata ids, uint256[] calldata amounts, bytes calldata data) external;
 
-// Votes
+// IVotes
+event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
+event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
+
 function getVotes(address account) public view override returns (uint256);
 function getPastVotes(address account, uint256 blockNumber) public view override returns (uint256);
 function getPastTotalSupply(uint256 blockNumber) public view override returns (uint256);
