@@ -16,8 +16,10 @@ while(true) {
 	if (!$data) break;
 
 	foreach($data as $abi) {
+		$hash = $abi['hash'];
+		unset($abi['hash']);
 		ksort($abi);
-		$signatures[$abi['hash']] = $abi;
+		$signatures[substr($hash, 0, 8)] = $abi;
 	}
 }
 
