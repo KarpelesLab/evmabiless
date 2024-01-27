@@ -28,15 +28,10 @@ function burn(uint256 amount) external;
 function burnFrom(address account, uint256 amount) external;
 
 // IERC721
-event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
-event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
 event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
-function balanceOf(address owner) external view returns (uint256 balance);
 function ownerOf(uint256 tokenId) external view returns (address owner);
 function safeTransferFrom(address from, address to, uint256 tokenId) external;
-function transferFrom(address from, address to, uint256 tokenId) external;
-function approve(address to, uint256 tokenId) external;
 function getApproved(uint256 tokenId) external view returns (address operator);
 function setApprovalForAll(address operator, bool _approved) external;
 function isApprovedForAll(address owner, address operator) external view returns (bool);
@@ -94,6 +89,24 @@ function castVoteWithReasonAndParamsBySig(uint256 proposalId, uint8 support, str
 function token() public view returns (address);
 function clock() public view virtual override returns (uint48);
 function CLOCK_MODE() public view virtual override returns (string memory);
+
+// PaymentSplitter
+event PayeeAdded(address account, uint256 shares);
+event PaymentReleased(address to, uint256 amount);
+event ERC20PaymentReleased(IERC20 indexed token, address to, uint256 amount);
+event PaymentReceived(address from, uint256 amount);
+
+function totalShares() public view returns (uint256);
+function totalReleased() public view returns (uint256);
+function totalReleased(IERC20 token) public view returns (uint256);
+function shares(address account) public view returns (uint256);
+function released(address account) public view returns (uint256);
+function released(IERC20 token, address account) public view returns (uint256);
+function payee(uint256 index) public view returns (address);
+function releasable(address account) public view returns (uint256);
+function releasable(IERC20 token, address account) public view returns (uint256);
+function release(address payable account) public virtual;
+function release(IERC20 token, address account) public virtual;
 
 // chainbridge
 function isRelayer(address relayer) external view returns (bool);

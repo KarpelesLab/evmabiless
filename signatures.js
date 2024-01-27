@@ -2,7 +2,7 @@
 
 module.exports = {
     "8c5be1e5": {
-        "abi": "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
+        "abi": "event Approval(address indexed owner, address indexed spender, uint256 value)",
         "compact": "Approval(address,address,uint256)",
         "inputs": [
             {
@@ -12,12 +12,12 @@ module.exports = {
             },
             {
                 "internalType": "address",
-                "name": "approved",
+                "name": "spender",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "tokenId",
+                "name": "value",
                 "type": "uint256"
             }
         ],
@@ -81,6 +81,31 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "6339f15c": {
+        "abi": "event ERC20PaymentReleased(IERC20 indexed token, address to, uint256 amount)",
+        "compact": "ERC20PaymentReleased(IERC20,address,uint256)",
+        "inputs": [
+            {
+                "internalType": "IERC20",
+                "name": "token",
+                "type": "IERC20"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC20PaymentReleased",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "8be0079c": {
         "abi": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
         "compact": "OwnershipTransferred(address,address)",
@@ -101,8 +126,68 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "event"
     },
+    "40c340f6": {
+        "abi": "event PayeeAdded(address account, uint256 shares)",
+        "compact": "PayeeAdded(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "shares",
+                "type": "uint256"
+            }
+        ],
+        "name": "PayeeAdded",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "6ef95f06": {
+        "abi": "event PaymentReceived(address from, uint256 amount)",
+        "compact": "PaymentReceived(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "PaymentReceived",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "df20fd1e": {
+        "abi": "event PaymentReleased(address to, uint256 amount)",
+        "compact": "PaymentReleased(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "PaymentReleased",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "ddf252ad": {
-        "abi": "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+        "abi": "event Transfer(address indexed from, address indexed to, uint256 value)",
         "compact": "Transfer(address,address,uint256)",
         "inputs": [
             {
@@ -117,7 +202,7 @@ module.exports = {
             },
             {
                 "internalType": "uint256",
-                "name": "tokenId",
+                "name": "value",
                 "type": "uint256"
             }
         ],
@@ -481,32 +566,38 @@ module.exports = {
         "type": "function"
     },
     "095ea7b3": {
-        "abi": "function approve(address to, uint256 tokenId) external",
+        "abi": "function approve(address spender, uint256 amount) external returns (bool)",
         "compact": "approve(address,uint256)",
         "inputs": [
             {
                 "internalType": "address",
-                "name": "to",
+                "name": "spender",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "tokenId",
+                "name": "amount",
                 "type": "uint256"
             }
         ],
         "name": "approve",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
         "stateMutability": "nonPayable",
         "type": "function"
     },
     "70a08231": {
-        "abi": "function balanceOf(address owner) external view returns (uint256 balance)",
+        "abi": "function balanceOf(address account) external view returns (uint256)",
         "compact": "balanceOf(address)",
         "inputs": [
             {
                 "internalType": "address",
-                "name": "owner",
+                "name": "account",
                 "type": "address"
             }
         ],
@@ -514,7 +605,7 @@ module.exports = {
         "outputs": [
             {
                 "internalType": "uint256",
-                "name": "balance",
+                "name": "",
                 "type": "uint256"
             }
         ],
@@ -1489,6 +1580,27 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "8b83209b": {
+        "abi": "function payee(uint256 index) public view returns (address)",
+        "compact": "payee(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "payee",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "c01f9e37": {
         "abi": "function proposalDeadline(uint256 proposalId) public view virtual override returns (uint256)",
         "compact": "proposalDeadline(uint256)",
@@ -1601,6 +1713,135 @@ module.exports = {
             }
         ],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "a11d2bd2": {
+        "abi": "function releasable(IERC20 token, address account) public view returns (uint256)",
+        "compact": "releasable(IERC20,address)",
+        "inputs": [
+            {
+                "internalType": "IERC20",
+                "name": "token",
+                "type": "IERC20"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "releasable",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "a3f8eace": {
+        "abi": "function releasable(address account) public view returns (uint256)",
+        "compact": "releasable(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "releasable",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "3cefee6b": {
+        "abi": "function release(IERC20 token, address account) public virtual",
+        "compact": "release(IERC20,address)",
+        "inputs": [
+            {
+                "internalType": "IERC20",
+                "name": "token",
+                "type": "IERC20"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "release",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "19165587": {
+        "abi": "function release(address payable account) public virtual",
+        "compact": "release(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "release",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "f7e6c74a": {
+        "abi": "function released(IERC20 token, address account) public view returns (uint256)",
+        "compact": "released(IERC20,address)",
+        "inputs": [
+            {
+                "internalType": "IERC20",
+                "name": "token",
+                "type": "IERC20"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "released",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "9852595c": {
+        "abi": "function released(address account) public view returns (uint256)",
+        "compact": "released(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "released",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "5e1fab0f": {
@@ -1807,6 +2048,27 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "ce7c2ac2": {
+        "abi": "function shares(address account) public view returns (uint256)",
+        "compact": "shares(address)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "shares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "3e4f49e6": {
         "abi": "function state(uint256 proposalId) public view returns (ProposalState)",
         "compact": "state(uint256)",
@@ -1900,6 +2162,57 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "e33b7de3": {
+        "abi": "function totalReleased() public view returns (uint256)",
+        "compact": "totalReleased()",
+        "inputs": [],
+        "name": "totalReleased",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "d7f7a4e5": {
+        "abi": "function totalReleased(IERC20 token) public view returns (uint256)",
+        "compact": "totalReleased(IERC20)",
+        "inputs": [
+            {
+                "internalType": "IERC20",
+                "name": "token",
+                "type": "IERC20"
+            }
+        ],
+        "name": "totalReleased",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "3a98ef39": {
+        "abi": "function totalShares() public view returns (uint256)",
+        "compact": "totalShares()",
+        "inputs": [],
+        "name": "totalShares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "18160ddd": {
         "abi": "function totalSupply() external view returns (uint256)",
         "compact": "totalSupply()",
@@ -1942,7 +2255,7 @@ module.exports = {
         "type": "function"
     },
     "23b872dd": {
-        "abi": "function transferFrom(address from, address to, uint256 tokenId) external",
+        "abi": "function transferFrom(address from, address to, uint256 amount) external returns (bool)",
         "compact": "transferFrom(address,address,uint256)",
         "inputs": [
             {
@@ -1957,12 +2270,18 @@ module.exports = {
             },
             {
                 "internalType": "uint256",
-                "name": "tokenId",
+                "name": "amount",
                 "type": "uint256"
             }
         ],
         "name": "transferFrom",
-        "outputs": [],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
         "stateMutability": "nonPayable",
         "type": "function"
     },

@@ -117,7 +117,14 @@ while(!feof($in)) {
 		$func['compact'] = $abi;
 		ksort($func);
 
-		$signatures[substr($hash, 0, 8)] = $func;
+		$hash_pfx = substr($hash, 0, 8);
+		if (isset($signatures[$hash_pfx])) {
+			echo "ABI conflict:\n";
+			var_dump($func, $signatures[$hash_pfx]);
+			exit(1);
+		}
+
+		$signatures[$hash_pfx] = $func;
 	}
 }
 if ($buf !== '') die("missing ; at end of known_abi.sol ?\n");
