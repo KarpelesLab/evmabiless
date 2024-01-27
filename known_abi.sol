@@ -52,6 +52,15 @@ function safeMint(address to, uint256 tokenId) public;
 function safeMint(address to) public;
 function mint(address to, uint256 tokenId) public;
 
+// IERC-1155
+event TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 value);
+event TransferBatch(address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values);
+event URI(string value, uint256 indexed id);
+function balanceOf(address account, uint256 id) external view returns (uint256);
+function balanceOfBatch(address[] calldata accounts, uint256[] calldata ids) external view returns (uint256[] memory);
+function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes calldata data) external;
+function safeBatchTransferFrom(address from, address to, uint256[] calldata ids, uint256[] calldata amounts, bytes calldata data) external;
+
 // Votes
 function getVotes(address account) public view override returns (uint256);
 function getPastVotes(address account, uint256 blockNumber) public view override returns (uint256);

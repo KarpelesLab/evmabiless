@@ -137,28 +137,24 @@ foreach($signatures as $key => $val) {
 	fwrite($go, "\t\tCompact: \"".$val['compact']."\",\n");
 	fwrite($go, "\t\tStateMutability: \"".$val['stateMutability']."\",\n");
 	fwrite($go, "\t\tType: \"".$val['type']."\",\n");
-	if (count($val['inputs'])) {
-		fwrite($go, "\t\tInputs: []*AbiIO{\n");
-		foreach($val['inputs'] as $io) {
-			fwrite($go, "\t\t\t&AbiIO{\n");
-			fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
-			fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
-			fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
-			fwrite($go, "\t\t\t},\n");
-		}
-		fwrite($go, "\t\t},\n");
+	fwrite($go, "\t\tInputs: []*AbiIO{\n");
+	foreach($val['inputs'] as $io) {
+		fwrite($go, "\t\t\t&AbiIO{\n");
+		fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
+		fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
+		fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+		fwrite($go, "\t\t\t},\n");
 	}
-	if (count($val['outputs'])) {
-		fwrite($go, "\t\tOutputs: []*AbiIO{\n");
-		foreach($val['outputs'] as $io) {
-			fwrite($go, "\t\t\t&AbiIO{\n");
-			fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
-			fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
-			fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
-			fwrite($go, "\t\t\t},\n");
-		}
-		fwrite($go, "\t\t},\n");
+	fwrite($go, "\t\t},\n");
+	fwrite($go, "\t\tOutputs: []*AbiIO{\n");
+	foreach($val['outputs'] as $io) {
+		fwrite($go, "\t\t\t&AbiIO{\n");
+		fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
+		fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
+		fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+		fwrite($go, "\t\t\t},\n");
 	}
+	fwrite($go, "\t\t},\n");
 	fwrite($go, "\t},\n");
 }
 

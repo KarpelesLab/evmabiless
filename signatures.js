@@ -126,6 +126,96 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "event"
     },
+    "4a39dc06": {
+        "abi": "event TransferBatch(address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values)",
+        "compact": "TransferBatch(address,address,address,uint256[],uint256[])",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "TransferBatch",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "c3d58168": {
+        "abi": "event TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 value)",
+        "compact": "TransferSingle(address,address,address,uint256,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            }
+        ],
+        "name": "TransferSingle",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "6bb7ff70": {
+        "abi": "event URI(string value, uint256 indexed id)",
+        "compact": "URI(string,uint256)",
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "value",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "URI",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "802aabe8": {
         "abi": "function _totalRelayers() public view returns (uint)",
         "compact": "_totalRelayers()",
@@ -426,6 +516,58 @@ module.exports = {
                 "internalType": "uint256",
                 "name": "balance",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "00fdd58e": {
+        "abi": "function balanceOf(address account, uint256 id) external view returns (uint256)",
+        "compact": "balanceOf(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "4e1273f4": {
+        "abi": "function balanceOfBatch(address[] calldata accounts, uint256[] calldata ids) external view returns (uint256[] memory)",
+        "compact": "balanceOfBatch(address[],uint256[])",
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "accounts",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "balanceOfBatch",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
             }
         ],
         "stateMutability": "view",
@@ -1485,6 +1627,41 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "2eb2c2d6": {
+        "abi": "function safeBatchTransferFrom(address from, address to, uint256[] calldata ids, uint256[] calldata amounts, bytes calldata data) external",
+        "compact": "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "amounts",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "safeBatchTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "40d097c3": {
         "abi": "function safeMint(address to) public",
         "compact": "safeMint(address)",
@@ -1562,6 +1739,41 @@ module.exports = {
             {
                 "internalType": "uint256",
                 "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "f242432a": {
+        "abi": "function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes calldata data) external",
+        "compact": "safeTransferFrom(address,address,uint256,uint256,bytes)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
                 "type": "uint256"
             },
             {
