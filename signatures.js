@@ -106,6 +106,41 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "event"
     },
+    "c0e52349": {
+        "abi": "event ERC20Released(address indexed token, uint256 amount)",
+        "compact": "ERC20Released(address,uint256)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC20Released",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
+    "da9d4e5f": {
+        "abi": "event EtherReleased(uint256 amount)",
+        "compact": "EtherReleased(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "EtherReleased",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "event"
+    },
     "8be0079c": {
         "abi": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
         "compact": "OwnershipTransferred(address,address)",
@@ -664,6 +699,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "38af3eed": {
+        "abi": "function beneficiary() public view virtual returns (address)",
+        "compact": "beneficiary()",
+        "inputs": [],
+        "name": "beneficiary",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "42966c68": {
         "abi": "function burn(uint256 amount) external",
         "compact": "burn(uint256)",
@@ -1135,6 +1185,21 @@ module.exports = {
         "name": "deposit",
         "outputs": [],
         "stateMutability": "payable",
+        "type": "function"
+    },
+    "0fb5a6b4": {
+        "abi": "function duration() public view virtual returns (uint256)",
+        "compact": "duration()",
+        "inputs": [],
+        "name": "duration",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "2656227d": {
@@ -1715,6 +1780,21 @@ module.exports = {
         "stateMutability": "nonPayable",
         "type": "function"
     },
+    "fbccedae": {
+        "abi": "function releasable() public view virtual returns (uint256)",
+        "compact": "releasable()",
+        "inputs": [],
+        "name": "releasable",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "a11d2bd2": {
         "abi": "function releasable(IERC20 token, address account) public view returns (uint256)",
         "compact": "releasable(IERC20,address)",
@@ -1762,6 +1842,15 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "86d1a69f": {
+        "abi": "function release() public virtual",
+        "compact": "release()",
+        "inputs": [],
+        "name": "release",
+        "outputs": [],
+        "stateMutability": "nonPayable",
+        "type": "function"
+    },
     "3cefee6b": {
         "abi": "function release(IERC20 token, address account) public virtual",
         "compact": "release(IERC20,address)",
@@ -1795,6 +1884,21 @@ module.exports = {
         "name": "release",
         "outputs": [],
         "stateMutability": "nonPayable",
+        "type": "function"
+    },
+    "96132521": {
+        "abi": "function released() public view virtual returns (uint256)",
+        "compact": "released()",
+        "inputs": [],
+        "name": "released",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     "f7e6c74a": {
@@ -2069,6 +2173,21 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "be9a6555": {
+        "abi": "function start() public view virtual returns (uint256)",
+        "compact": "start()",
+        "inputs": [],
+        "name": "start",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     "3e4f49e6": {
         "abi": "function state(uint256 proposalId) public view returns (ProposalState)",
         "compact": "state(uint256)",
@@ -2310,6 +2429,53 @@ module.exports = {
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "810ec23b": {
+        "abi": "function vestedAmount(address token, uint64 timestamp) public view virtual returns (uint256)",
+        "compact": "vestedAmount(address,uint64)",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "timestamp",
+                "type": "uint64"
+            }
+        ],
+        "name": "vestedAmount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "0a17b06b": {
+        "abi": "function vestedAmount(uint64 timestamp) public view virtual returns (uint256)",
+        "compact": "vestedAmount(uint64)",
+        "inputs": [
+            {
+                "internalType": "uint64",
+                "name": "timestamp",
+                "type": "uint64"
+            }
+        ],
+        "name": "vestedAmount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",

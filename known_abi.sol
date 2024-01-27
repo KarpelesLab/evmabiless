@@ -108,6 +108,19 @@ function releasable(IERC20 token, address account) public view returns (uint256)
 function release(address payable account) public virtual;
 function release(IERC20 token, address account) public virtual;
 
+// VestingWallet
+event EtherReleased(uint256 amount);
+event ERC20Released(address indexed token, uint256 amount);
+
+function beneficiary() public view virtual returns (address);
+function start() public view virtual returns (uint256);
+function duration() public view virtual returns (uint256);
+function released() public view virtual returns (uint256);
+function releasable() public view virtual returns (uint256);
+function release() public virtual;
+function vestedAmount(uint64 timestamp) public view virtual returns (uint256);
+function vestedAmount(address token, uint64 timestamp) public view virtual returns (uint256);
+
 // chainbridge
 function isRelayer(address relayer) external view returns (bool);
 function renounceAdmin(address newAdmin) external;

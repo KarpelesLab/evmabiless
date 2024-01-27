@@ -108,6 +108,41 @@ var signatures = map[MethodPrefix]*Abi{
 		},
 		Outputs: []*AbiIO{},
 	},
+	MethodPrefix{0xc0, 0xe5, 0x23, 0x49}: &Abi{
+		Name:            "ERC20Released",
+		ABI:             "event ERC20Released(address indexed token, uint256 amount)",
+		Compact:         "ERC20Released(address,uint256)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0xda, 0x9d, 0x4e, 0x5f}: &Abi{
+		Name:            "EtherReleased",
+		ABI:             "event EtherReleased(uint256 amount)",
+		Compact:         "EtherReleased(uint256)",
+		StateMutability: "nonPayable",
+		Type:            "event",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "amount",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
 	MethodPrefix{0x8b, 0xe0, 0x07, 0x9c}: &Abi{
 		Name:            "OwnershipTransferred",
 		ABI:             "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
@@ -666,6 +701,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x38, 0xaf, 0x3e, 0xed}: &Abi{
+		Name:            "beneficiary",
+		ABI:             "function beneficiary() public view virtual returns (address)",
+		Compact:         "beneficiary()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "address",
+				InternalType: "address",
+			},
+		},
+	},
 	MethodPrefix{0x42, 0x96, 0x6c, 0x68}: &Abi{
 		Name:            "burn",
 		ABI:             "function burn(uint256 amount) external",
@@ -1138,6 +1188,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x0f, 0xb5, 0xa6, 0xb4}: &Abi{
+		Name:            "duration",
+		ABI:             "function duration() public view virtual returns (uint256)",
+		Compact:         "duration()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
 	},
 	MethodPrefix{0x26, 0x56, 0x22, 0x7d}: &Abi{
 		Name:            "execute",
@@ -1717,6 +1782,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xfb, 0xcc, 0xed, 0xae}: &Abi{
+		Name:            "releasable",
+		ABI:             "function releasable() public view virtual returns (uint256)",
+		Compact:         "releasable()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0xa1, 0x1d, 0x2b, 0xd2}: &Abi{
 		Name:            "releasable",
 		ABI:             "function releasable(IERC20 token, address account) public view returns (uint256)",
@@ -1764,6 +1844,15 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0x86, 0xd1, 0xa6, 0x9f}: &Abi{
+		Name:            "release",
+		ABI:             "function release() public virtual",
+		Compact:         "release()",
+		StateMutability: "nonPayable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
 	MethodPrefix{0x3c, 0xef, 0xee, 0x6b}: &Abi{
 		Name:            "release",
 		ABI:             "function release(IERC20 token, address account) public virtual",
@@ -1798,6 +1887,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x96, 0x13, 0x25, 0x21}: &Abi{
+		Name:            "released",
+		ABI:             "function released() public view virtual returns (uint256)",
+		Compact:         "released()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
 	},
 	MethodPrefix{0xf7, 0xe6, 0xc7, 0x4a}: &Abi{
 		Name:            "released",
@@ -2071,6 +2175,21 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xbe, 0x9a, 0x65, 0x55}: &Abi{
+		Name:            "start",
+		ABI:             "function start() public view virtual returns (uint256)",
+		Compact:         "start()",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
 	MethodPrefix{0x3e, 0x4f, 0x49, 0xe6}: &Abi{
 		Name:            "state",
 		ABI:             "function state(uint256 proposalId) public view returns (ProposalState)",
@@ -2314,6 +2433,53 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "",
 				Type:         "string",
 				InternalType: "string",
+			},
+		},
+	},
+	MethodPrefix{0x81, 0x0e, 0xc2, 0x3b}: &Abi{
+		Name:            "vestedAmount",
+		ABI:             "function vestedAmount(address token, uint64 timestamp) public view virtual returns (uint256)",
+		Compact:         "vestedAmount(address,uint64)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "token",
+				Type:         "address",
+				InternalType: "address",
+			},
+			&AbiIO{
+				Name:         "timestamp",
+				Type:         "uint64",
+				InternalType: "uint64",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
+			},
+		},
+	},
+	MethodPrefix{0x0a, 0x17, 0xb0, 0x6b}: &Abi{
+		Name:            "vestedAmount",
+		ABI:             "function vestedAmount(uint64 timestamp) public view virtual returns (uint256)",
+		Compact:         "vestedAmount(uint64)",
+		StateMutability: "view",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "timestamp",
+				Type:         "uint64",
+				InternalType: "uint64",
+			},
+		},
+		Outputs: []*AbiIO{
+			&AbiIO{
+				Name:         "",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 	},
