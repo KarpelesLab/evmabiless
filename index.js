@@ -4,6 +4,7 @@ const signatures = require('./signatures');
 
 const byteCodeMethodRegexp = /8063([0-9a-fA-F]{8})1461([0-9a-fA-F]{4})57/g;
 
+// scanContract will scan the given bytecode and return a list of ABI hashes
 module.exports.scanContract = function(code) {
 	let res = [];
 
@@ -18,6 +19,14 @@ module.exports.scanContract = function(code) {
 	}
 
 	return res;
+};
+
+// lookupAbi returns the abi object for a given 8 characters long hexadecimal function hash, or null if not known
+module.exports.lookupAbi = function(h) {
+	if (h in signatures)
+		return signatures[h];
+
+	return null;
 };
 
 // abiList returns an array of Human-Readable ABI, such as what ethers.js accepts as input
