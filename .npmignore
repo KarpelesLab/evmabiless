@@ -1,3 +1,7 @@
 *.php
 *.txt
 *.sol
+*.go
+go.mod
+Makefile
+tests/*
