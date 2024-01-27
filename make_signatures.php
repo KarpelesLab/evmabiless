@@ -1,5 +1,5 @@
 <?php
-require(__DIR__.'/kecack256.class.php');
+require(__DIR__.'/keccak256.class.php');
 
 $signatures = [];
 $in = fopen(__DIR__.'/known_abi.sol', 'r');
