@@ -4,6 +4,7 @@ type AbiIO struct {
 	InternalType string `json:"internalType"`
 	Name         string `json:"name"`
 	Type         string `json:"type"`
+	Indexed      bool   `json:"indexed,omitempty"`
 }
 
 // Abi is the struct type used to represent a function or event ABI

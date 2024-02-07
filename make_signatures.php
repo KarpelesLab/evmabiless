@@ -49,6 +49,8 @@ foreach($signatures as $key => $val) {
 		fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
 		fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
 		fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+		if (isset($io['indexed']))
+			fwrite($go, "\t\t\t\tIndexed: ".json_encode((bool)$io['indexed']).",\n");
 		fwrite($go, "\t\t\t},\n");
 	}
 	fwrite($go, "\t\t},\n");
@@ -59,6 +61,8 @@ foreach($signatures as $key => $val) {
 			fwrite($go, "\t\t\t\tName: \"".$io['name']."\",\n");
 			fwrite($go, "\t\t\t\tType: \"".$io['type']."\",\n");
 			fwrite($go, "\t\t\t\tInternalType: \"".$io['internalType']."\",\n");
+			if (isset($io['indexed']))
+				fwrite($go, "\t\t\t\tIndexed: ".json_encode((bool)$io['indexed']).",\n");
 			fwrite($go, "\t\t\t},\n");
 		}
 		fwrite($go, "\t\t},\n");
