@@ -14,6 +14,6 @@ type Abi struct {
 	Inputs          []*AbiIO `json:"inputs"`
 	Name            string   `json:"name"`
 	Outputs         []*AbiIO `json:"outputs"`
-	StateMutability string   `json:"stateMutability"`
+	StateMutability string   `json:"stateMutability,omitempty"`
 	Type            string   `json:"type"`
 }
