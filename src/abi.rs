@@ -1,8 +1,11 @@
 use core::fmt;
 
 use crate::MethodPrefix;
+// The full table wins when both table features are enabled.
 #[cfg(feature = "signatures")]
 use crate::signatures::SIGNATURES;
+#[cfg(all(feature = "common-signatures", not(feature = "signatures")))]
+use crate::signatures_common::SIGNATURES;
 
 /// The kind of an ABI entry.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -235,15 +238,17 @@ impl<'a> Abi<'a> {
     }
 }
 
-/// Returns the whole built-in signature table, sorted by selector.
-#[cfg(feature = "signatures")]
+/// Returns the whole built-in signature table, sorted by selector: every
+/// known signature with the `signatures` feature, or only the most common
+/// token operations with just `common-signatures`.
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn signatures() -> &'static [Abi<'static>] {
     &SIGNATURES
 }
 
 /// Returns the ABI associated with the given selector, or `None` if it is not
-/// in the built-in signature table.
-#[cfg(feature = "signatures")]
+/// in the built-in signature table (see [`signatures`]).
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn lookup_abi(selector: MethodPrefix) -> Option<&'static Abi<'static>> {
     SIGNATURES
         .binary_search_by_key(&selector, |abi| abi.selector)

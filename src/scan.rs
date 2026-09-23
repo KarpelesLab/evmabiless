@@ -1,6 +1,6 @@
 use core::iter::FusedIterator;
 
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 use crate::{Abi, lookup_abi};
 use crate::{HexError, MethodPrefix, hex_val, strip_0x};
 
@@ -32,7 +32,7 @@ pub fn scan_contract(bytecode: &[u8]) -> ScanContract<'_> {
 /// hex digits.
 pub fn scan_contract_hex(bytecode: &str) -> Result<ScanContract<'_>, HexError> {
     let hex = strip_0x(bytecode.as_bytes());
-    if hex.len() % 2 != 0 {
+    if !hex.len().is_multiple_of(2) {
         return Err(HexError::InvalidLength);
     }
     if !hex.iter().all(|&c| hex_val(c).is_some()) {
@@ -47,7 +47,7 @@ pub fn scan_contract_hex(bytecode: &str) -> Result<ScanContract<'_>, HexError> {
 /// Scans the bytecode and returns the ABI of every known selector found, in
 /// scan order. Unknown selectors are skipped; use [`scan_contract`] to see
 /// them.
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn abi_list(bytecode: &[u8]) -> AbiList<'_> {
     AbiList {
         scan: scan_contract(bytecode),
@@ -56,7 +56,7 @@ pub fn abi_list(bytecode: &[u8]) -> AbiList<'_> {
 
 /// Like [`abi_list`], but reads the bytecode from a hex string (see
 /// [`scan_contract_hex`]).
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn abi_list_hex(bytecode: &str) -> Result<AbiList<'_>, HexError> {
     Ok(AbiList {
         scan: scan_contract_hex(bytecode)?,
@@ -140,12 +140,12 @@ impl FusedIterator for ScanContract<'_> {}
 /// Iterator over the known ABIs found in bytecode, returned by [`abi_list`]
 /// and [`abi_list_hex`].
 #[derive(Clone, Debug)]
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub struct AbiList<'a> {
     scan: ScanContract<'a>,
 }
 
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 impl Iterator for AbiList<'_> {
     type Item = &'static Abi<'static>;
 
@@ -158,5 +158,5 @@ impl Iterator for AbiList<'_> {
     }
 }
 
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 impl FusedIterator for AbiList<'_> {}

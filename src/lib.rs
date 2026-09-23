@@ -16,6 +16,10 @@
 //!
 //! - `signatures`: the built-in signature table, [`lookup_abi`] and
 //!   [`signatures`]. It is most of the crate's size.
+//! - `common-signatures`: the same functions with a small table of the most
+//!   common token operations only (ERC-20 `transfer`, `approve`, `permit`…,
+//!   ERC-721 and ERC-1155 transfers and approvals). Ignored when `signatures`
+//!   is enabled.
 //! - `decode`: [`Abi::decode_input`], which validates a transaction's
 //!   calldata against an ABI and decodes its arguments into zero-copy
 //!   [`Value`]s, e.g. to show them to a user before signing. Without
@@ -24,8 +28,8 @@
 //!   [`scan_contract_hex`], which yields raw selectors.
 //!
 //! Combinations enable functions that look selectors up in the table:
-//! [`decode_calldata`] with `decode` and `signatures`, and [`abi_list`] /
-//! [`abi_list_hex`] with `scan` and `signatures`.
+//! [`decode_calldata`] with `decode` and a table feature, and [`abi_list`] /
+//! [`abi_list_hex`] with `scan` and a table feature.
 //!
 //! # Examples
 //!
@@ -45,7 +49,7 @@
 //! Decoding its arguments as well (`decode` and `signatures` features):
 //!
 //! ```
-//! # #[cfg(all(feature = "decode", feature = "signatures"))] {
+//! # #[cfg(all(feature = "decode", any(feature = "signatures", feature = "common-signatures")))] {
 //! use evmabiless::{decode_calldata, DecodeErrorKind};
 //!
 //! let mut calldata = [0u8; 68];
@@ -90,7 +94,7 @@
 //! on the fly:
 //!
 //! ```
-//! # #[cfg(all(feature = "scan", feature = "signatures"))] {
+//! # #[cfg(all(feature = "scan", any(feature = "signatures", feature = "common-signatures")))] {
 //! use evmabiless::abi_list_hex;
 //!
 //! // DUP1 PUSH4 a9059cbb EQ PUSH2 0x00ff JUMPI
@@ -117,18 +121,27 @@ mod scan;
 #[cfg(feature = "signatures")]
 #[rustfmt::skip]
 mod signatures;
+#[cfg(all(feature = "common-signatures", not(feature = "signatures")))]
+#[rustfmt::skip]
+mod signatures_common;
 
 pub use abi::{Abi, AbiIO, AbiType, StateMutability};
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub use abi::{lookup_abi, signatures};
 #[cfg(feature = "decode")]
 pub use decode::{
     Address, Array, DecodeError, DecodeErrorKind, DecodeMode, Int, MAX_DEPTH, Param, Params, Uint,
     Value,
 };
-#[cfg(all(feature = "decode", feature = "signatures"))]
+#[cfg(all(
+    feature = "decode",
+    any(feature = "signatures", feature = "common-signatures")
+))]
 pub use decode::{Call, decode_calldata, decode_calldata_with};
-#[cfg(all(feature = "scan", feature = "signatures"))]
+#[cfg(all(
+    feature = "scan",
+    any(feature = "signatures", feature = "common-signatures")
+))]
 pub use scan::{AbiList, abi_list, abi_list_hex};
 #[cfg(feature = "scan")]
 pub use scan::{ScanContract, scan_contract, scan_contract_hex};

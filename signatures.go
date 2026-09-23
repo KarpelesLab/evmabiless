@@ -6575,6 +6575,15 @@ var signatures = map[MethodPrefix]*Abi{
 			},
 		},
 	},
+	MethodPrefix{0xd0, 0xe3, 0x0d, 0xb0}: &Abi{
+		Name:            "deposit",
+		ABI:             "function deposit()",
+		Compact:         "deposit()",
+		StateMutability: "payable",
+		Type:            "function",
+		Inputs:          []*AbiIO{},
+		Outputs:         []*AbiIO{},
+	},
 	MethodPrefix{0xf3, 0x40, 0xfa, 0x01}: &Abi{
 		Name:            "deposit",
 		ABI:             "function deposit(address payee)",
@@ -13354,6 +13363,21 @@ var signatures = map[MethodPrefix]*Abi{
 				Name:         "payee",
 				Type:         "address",
 				InternalType: "address payable",
+			},
+		},
+		Outputs: []*AbiIO{},
+	},
+	MethodPrefix{0x2e, 0x1a, 0x7d, 0x4d}: &Abi{
+		Name:            "withdraw",
+		ABI:             "function withdraw(uint256 wad)",
+		Compact:         "withdraw(uint256)",
+		StateMutability: "nonpayable",
+		Type:            "function",
+		Inputs: []*AbiIO{
+			&AbiIO{
+				Name:         "wad",
+				Type:         "uint256",
+				InternalType: "uint256",
 			},
 		},
 		Outputs: []*AbiIO{},

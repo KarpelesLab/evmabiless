@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `common-signatures` feature: the table functions (`lookup_abi`,
+  `decode_calldata`, `abi_list`…) with a small table of the most common
+  operations instead of every known signature.
+- WETH `deposit()` and `withdraw(uint256)` in the signature tables (Rust, Go
+  and JavaScript).
 - `const` constructors `Abi::new` and `AbiIO::new`, with `with_*` setters, so
   ABIs can be defined as `static`s or built at run time.
 

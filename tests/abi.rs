@@ -1,4 +1,5 @@
-#![cfg(feature = "signatures")]
+//! Tests that hold for whichever built-in table is enabled.
+#![cfg(any(feature = "signatures", feature = "common-signatures"))]
 
 use evmabiless::{AbiType, MethodPrefix, StateMutability, lookup_abi, signatures};
 use tiny_keccak::{Hasher, Keccak};
@@ -30,7 +31,12 @@ fn lookup_from_calldata() {
 #[test]
 fn table_is_sorted_and_unique() {
     let sigs = signatures();
-    assert!(sigs.len() > 600);
+    let min = if cfg!(feature = "signatures") {
+        600
+    } else {
+        10
+    };
+    assert!(sigs.len() > min);
     assert!(sigs.windows(2).all(|w| w[0].selector < w[1].selector));
     for abi in sigs {
         assert_eq!(lookup_abi(abi.selector), Some(abi));

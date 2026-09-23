@@ -6692,6 +6692,15 @@ module.exports = {
         "stateMutability": "view",
         "type": "function"
     },
+    "d0e30db0": {
+        "abi": "function deposit()",
+        "compact": "deposit()",
+        "inputs": [],
+        "name": "deposit",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
     "f340fa01": {
         "abi": "function deposit(address payee)",
         "compact": "deposit(address)",
@@ -13660,6 +13669,21 @@ module.exports = {
                 "internalType": "address payable",
                 "name": "payee",
                 "type": "address"
+            }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    "2e1a7d4d": {
+        "abi": "function withdraw(uint256 wad)",
+        "compact": "withdraw(uint256)",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "wad",
+                "type": "uint256"
             }
         ],
         "name": "withdraw",

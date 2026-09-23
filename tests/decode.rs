@@ -85,6 +85,19 @@ fn ethers_vectors() {
 }
 
 #[test]
+fn weth() {
+    let data = hex("d0e30db0");
+    let call = decode_calldata(&data).unwrap();
+    assert_eq!(call.abi.abi, "function deposit()");
+    assert_eq!(call.params.len(), 0);
+
+    let data = hex("2e1a7d4d0000000000000000000000000000000000000000000000000de0b6b3a7640000");
+    let call = decode_calldata(&data).unwrap();
+    assert_eq!(call.abi.compact, "withdraw(uint256)");
+    assert_eq!(shown(call.params), ["1000000000000000000"]);
+}
+
+#[test]
 fn structured_access() {
     let data = hex(VECTORS[1].1); // execute(address[],uint256[],bytes[],bytes32)
     let call = decode_calldata(&data).unwrap();

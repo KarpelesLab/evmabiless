@@ -33,11 +33,13 @@ jobs:
       - name: Test
         run: cargo test
 
-      # `decode`, `scan` and `signatures` can each be used alone; make sure each one
-      # builds, is lint-clean and passes its tests.
+      # Every feature can be used alone; make sure each one builds, is
+      # lint-clean and passes its tests, and that the common table works with
+      # the decoder and the scanner.
       - name: Clippy + test, each feature on its own
         run: |
-          for f in "" "decode" "scan" "signatures"; do
+          for f in "" "decode" "scan" "signatures" "common-signatures" \
+                   "decode,common-signatures" "scan,common-signatures"; do
             echo "::group::features: '${f}'"
             cargo clippy --all-targets --no-default-features --features "$f" -- -D warnings
             cargo test --no-default-features --features "$f"
@@ -53,16 +55,22 @@ jobs:
         run: cargo package
 
   generated:
-    name: signatures.rs is up to date
+    name: Generated tables are up to date
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
-      - name: Regenerate src/signatures.rs from signatures.js
+      # For gofmt, which formats the generated signatures.go.
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: 'stable'
+
+      - name: Regenerate every table from signatures.js
         run: php make_signatures.php --from-js
 
       - name: Check for differences
-        run: git diff --exit-code src/signatures.rs
+        run: git diff --exit-code signatures.go signatures.js src/signatures.rs src/signatures_common.rs
 
   no_std:
     name: no_std, no alloc (${{ matrix.target }})
@@ -87,6 +95,9 @@ jobs:
       - name: Build (signatures only)
         run: cargo build --release --target ${{ matrix.target }} --no-default-features --features signatures
 
+      - name: Build (decode with the common table)
+        run: cargo build --release --target ${{ matrix.target }} --no-default-features --features decode,common-signatures
+
       - name: Build (decode only)
         run: cargo build --release --target ${{ matrix.target }} --no-default-features --features decode
 
@@ -94,13 +105,13 @@ jobs:
         run: cargo build --release --target ${{ matrix.target }} --no-default-features --features scan
 
   msrv:
-    name: MSRV (Rust 1.85)
+    name: MSRV (Rust 1.89)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Rust 1.85 (declared MSRV)
-        uses: dtolnay/rust-toolchain@1.85
+      - name: Install Rust 1.89 (declared MSRV)
+        uses: dtolnay/rust-toolchain@1.89
 
       - name: Test
         run: cargo test

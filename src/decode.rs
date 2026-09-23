@@ -11,7 +11,7 @@
 use core::fmt;
 use core::slice;
 
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 use crate::lookup_abi;
 use crate::{Abi, AbiIO, AbiType, MethodPrefix};
 
@@ -141,7 +141,7 @@ impl fmt::Display for DecodeErrorKind {
 }
 
 /// A decoded function call, returned by [`decode_calldata`].
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 #[derive(Clone, Debug)]
 #[non_exhaustive]
 pub struct Call<'a> {
@@ -175,13 +175,13 @@ pub struct Call<'a> {
 ///     println!("{}: {}", param.io.name, param.value);
 /// }
 /// ```
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn decode_calldata(calldata: &[u8]) -> Result<Call<'_>, DecodeError> {
     decode_calldata_with(calldata, DecodeMode::Strict)
 }
 
 /// Like [`decode_calldata`], with an explicit [`DecodeMode`].
-#[cfg(feature = "signatures")]
+#[cfg(any(feature = "signatures", feature = "common-signatures"))]
 pub fn decode_calldata_with(calldata: &[u8], mode: DecodeMode) -> Result<Call<'_>, DecodeError> {
     let selector = MethodPrefix::from_calldata(calldata)
         .ok_or(DecodeError::new(DecodeErrorKind::TooShort, 0))?;
@@ -533,8 +533,8 @@ fn write_hex(f: &mut fmt::Formatter<'_>, bytes: &[u8]) -> fmt::Result {
 fn fmt_decimal(f: &mut fmt::Formatter<'_>, non_negative: bool, word: [u8; WORD]) -> fmt::Result {
     const CHUNK: u64 = 10_000_000_000_000_000_000; // 10^19, the largest power of 10 in a u64
     let mut limbs = [0u64; 4];
-    for (limb, bytes) in limbs.iter_mut().zip(word.chunks_exact(8)) {
-        *limb = u64::from_be_bytes(bytes.try_into().unwrap_or_default());
+    for (limb, bytes) in limbs.iter_mut().zip(word.as_chunks::<8>().0) {
+        *limb = u64::from_be_bytes(*bytes);
     }
     // 2^256 has 78 decimal digits.
     let mut buf = [b'0'; 78];

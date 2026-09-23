@@ -3,7 +3,7 @@
 use crate::{Abi, AbiIO, AbiType, MethodPrefix, StateMutability};
 
 /// Every known ABI entry, sorted by selector.
-pub(crate) static SIGNATURES: [Abi<'static>; 647] = [
+pub(crate) static SIGNATURES: [Abi<'static>; 649] = [
 	Abi {
 		selector: MethodPrefix([0x00, 0x23, 0xde, 0x29]),
 		name: "tokensReceived",
@@ -3188,6 +3188,25 @@ pub(crate) static SIGNATURES: [Abi<'static>; 647] = [
 			},
 			AbiIO {
 				name: "weiAmount",
+				ty: "uint256",
+				internal_type: "uint256",
+				indexed: false,
+				components: &[],
+			},
+		],
+		outputs: &[],
+	},
+	Abi {
+		selector: MethodPrefix([0x2e, 0x1a, 0x7d, 0x4d]),
+		name: "withdraw",
+		abi: "function withdraw(uint256 wad)",
+		compact: "withdraw(uint256)",
+		kind: AbiType::Function,
+		state_mutability: Some(StateMutability::NonPayable),
+		anonymous: false,
+		inputs: &[
+			AbiIO {
+				name: "wad",
 				ty: "uint256",
 				internal_type: "uint256",
 				indexed: false,
@@ -14853,6 +14872,17 @@ pub(crate) static SIGNATURES: [Abi<'static>; 647] = [
 				components: &[],
 			},
 		],
+		outputs: &[],
+	},
+	Abi {
+		selector: MethodPrefix([0xd0, 0xe3, 0x0d, 0xb0]),
+		name: "deposit",
+		abi: "function deposit()",
+		compact: "deposit()",
+		kind: AbiType::Function,
+		state_mutability: Some(StateMutability::Payable),
+		anonymous: false,
+		inputs: &[],
 		outputs: &[],
 	},
 	Abi {

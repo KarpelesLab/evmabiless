@@ -2,7 +2,7 @@
 name = "evmabiless"
 version = "0.1.16"
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.89"
 description = "Recover the ABI of a deployed EVM contract from its bytecode using a built-in table of known selectors. no_std, no alloc."
 repository = "https://github.com/KarpelesLab/evmabiless"
 license = "MIT"
@@ -14,15 +14,19 @@ include = ["/src/**/*.rs", "/tests/**/*.rs", "/Cargo.toml", "/README.md", "/LICE
 
 [features]
 default = ["decode", "scan", "signatures"]
-# Calldata decoding: `Abi::decode_input`. With `signatures`, also
+# Calldata decoding: `Abi::decode_input`. With a table feature, also
 # `decode_calldata`.
 decode = []
-# Bytecode scanner: `scan_contract`, `scan_contract_hex`. With `signatures`,
-# also `abi_list` and `abi_list_hex`.
+# Bytecode scanner: `scan_contract`, `scan_contract_hex`. With a table
+# feature, also `abi_list` and `abi_list_hex`.
 scan = []
 # Built-in signature table: `lookup_abi`, `signatures`. Most of the crate's
 # size.
 signatures = []
+# Like `signatures`, with only the most common operations (ERC-20, ERC-721,
+# ERC-1155 transfers and approvals, ERC-2612 permit, WETH deposit/withdraw).
+# Ignored when `signatures` is on.
+common-signatures = []
 
 [package.metadata.docs.rs]
 all-features = true

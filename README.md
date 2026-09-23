@@ -117,18 +117,20 @@ Cargo features, all on by default, let you take only what you need:
 | Feature      | Provides |
 |--------------|----------|
 | `signatures` | The built-in signature table: `lookup_abi`, `signatures` (most of the crate's size) |
+| `common-signatures` | The same, with only the most common operations (ERC-20, ERC-721, ERC-1155 transfers and approvals, ERC-2612 `permit`, WETH `deposit`/`withdraw`); ignored when `signatures` is on |
 | `decode`     | Calldata decoding: `Abi::decode_input` |
 | `scan`       | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
 
 The `Abi` types are always available. Functions that look selectors up in the
-table need `signatures` as well: `decode_calldata` (with `decode`), and
-`abi_list` / `abi_list_hex` (with `scan`).
+table need one of the table features as well: `decode_calldata` (with
+`decode`), and `abi_list` / `abi_list_hex` (with `scan`).
 
 #### Decoding calldata
 
 To show a user what a transaction does, e.g. on a hardware wallet, decode its
 input data without the bytecode scanner, looking the function up in the
-built-in table:
+built-in table (or use `common-signatures` for a much smaller table of the
+most common operations):
 
 ```toml
 evmabiless = { version = "0.1", default-features = false, features = ["decode", "signatures"] }
@@ -227,9 +229,13 @@ such as per-function payability.
 ## Updating the signature table
 
 The built-in table is regenerated from an internal ABI database via
-`make_signatures.php`. Running it rewrites `signatures.go`, `signatures.js`
-and `src/signatures.rs`. `php make_signatures.php --from-js` regenerates only
-`src/signatures.rs` from the existing `signatures.js`, without network access.
+`make_signatures.php`. Running it rewrites `signatures.go`, `signatures.js`,
+`src/signatures.rs` and `src/signatures_common.rs`; `php make_signatures.php
+--from-js` regenerates them from the existing `signatures.js` instead, without
+network access. Signatures missing from the database (such as WETH's
+`deposit()` and `withdraw(uint256)`) are added from `EXTRA_SIGNATURES`, and
+the functions in the common table are listed in `COMMON_SIGNATURES`, both in
+`make_signatures.php`.
 
 ## Releases
 
