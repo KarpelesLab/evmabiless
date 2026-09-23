@@ -1,7 +1,6 @@
 [![GoDoc](https://godoc.org/github.com/KarpelesLab/evmabiless?status.svg)](https://godoc.org/github.com/KarpelesLab/evmabiless)
 [![CI](https://github.com/KarpelesLab/evmabiless/actions/workflows/test.yml/badge.svg)](https://github.com/KarpelesLab/evmabiless/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/KarpelesLab/evmabiless/badge.svg?branch=master)](https://coveralls.io/github/KarpelesLab/evmabiless?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/KarpelesLab/evmabiless)](https://goreportcard.com/report/github.com/KarpelesLab/evmabiless)
 [![crates.io](https://img.shields.io/crates/v/evmabiless.svg)](https://crates.io/crates/evmabiless)
 [![docs.rs](https://docs.rs/evmabiless/badge.svg)](https://docs.rs/evmabiless)
 
