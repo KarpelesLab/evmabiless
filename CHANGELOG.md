@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.17](https://github.com/KarpelesLab/evmabiless/compare/v0.1.16...v0.1.17) - 2026-09-23
+
+### Other
+
+- add common-signatures feature, WETH deposit/withdraw, MSRV 1.89
+- separate the signature table from the decoder
+- remove Go Report Card badge (service closed)
+
 ### Changed
 
 - **Breaking:** the `abi` feature is renamed `signatures` and only gates the
