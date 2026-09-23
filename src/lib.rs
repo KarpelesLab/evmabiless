@@ -11,11 +11,15 @@
 //!
 //! # Features
 //!
-//! Both features are enabled by default; each can be used on its own.
+//! All features are enabled by default; each can be used on its own.
 //!
 //! - `abi`: the built-in signature table, [`lookup_abi`] and [`signatures`].
-//!   Enough to decode the selector of a transaction's calldata (see
+//!   Enough to identify the function a transaction calls (see
 //!   [`MethodPrefix::from_calldata`]) without pulling in the bytecode scanner.
+//! - `decode` (implies `abi`): [`decode_calldata`] and [`Abi::decode_input`],
+//!   which validate a transaction's calldata against the ABI and decode its
+//!   arguments into zero-copy [`Value`]s, e.g. to show them to a user before
+//!   signing.
 //! - `scan`: the bytecode scanner, [`scan_contract`] and
 //!   [`scan_contract_hex`]. On its own it yields raw selectors and does not
 //!   embed the signature table.
@@ -25,7 +29,7 @@
 //!
 //! # Examples
 //!
-//! Decoding a transaction (`abi` feature):
+//! Identifying the function a transaction calls (`abi` feature):
 //!
 //! ```
 //! # #[cfg(feature = "abi")] {
@@ -35,6 +39,28 @@
 //! let selector = MethodPrefix::from_calldata(&calldata).unwrap();
 //! let abi = lookup_abi(selector).unwrap();
 //! assert_eq!(abi.abi, "function transfer(address to, uint256 value) returns (bool)");
+//! # }
+//! ```
+//!
+//! Decoding its arguments as well (`decode` feature):
+//!
+//! ```
+//! # #[cfg(feature = "decode")] {
+//! use evmabiless::{decode_calldata, DecodeErrorKind};
+//!
+//! let mut calldata = [0u8; 68];
+//! calldata[..4].copy_from_slice(&[0xa9, 0x05, 0x9c, 0xbb]);
+//! calldata[35] = 0xff;
+//! calldata[67] = 100;
+//!
+//! let call = decode_calldata(&calldata).unwrap();
+//! let mut params = call.params.map(|p| (p.io.name, p.value.to_string()));
+//! assert_eq!(params.next().unwrap(), ("to", "0x00000000000000000000000000000000000000ff".into()));
+//! assert_eq!(params.next().unwrap(), ("value", "100".into()));
+//!
+//! // Anything that is not the canonical encoding is rejected.
+//! calldata[4] = 1; // dirty address padding
+//! assert_eq!(decode_calldata(&calldata).unwrap_err().kind(), DecodeErrorKind::DirtyPadding);
 //! # }
 //! ```
 //!
@@ -63,6 +89,8 @@ use core::str::FromStr;
 
 #[cfg(feature = "abi")]
 mod abi;
+#[cfg(feature = "decode")]
+mod decode;
 #[cfg(feature = "scan")]
 mod scan;
 #[cfg(feature = "abi")]
@@ -71,6 +99,11 @@ mod signatures;
 
 #[cfg(feature = "abi")]
 pub use abi::{Abi, AbiIO, AbiType, StateMutability, lookup_abi, signatures};
+#[cfg(feature = "decode")]
+pub use decode::{
+    Address, Array, Call, DecodeError, DecodeErrorKind, DecodeMode, Int, MAX_DEPTH, Param, Params,
+    Uint, Value, decode_calldata, decode_calldata_with,
+};
 #[cfg(all(feature = "scan", feature = "abi"))]
 pub use scan::{AbiList, abi_list, abi_list_hex};
 #[cfg(feature = "scan")]

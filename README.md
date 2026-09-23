@@ -113,29 +113,58 @@ assert_eq!(transfer.compact, "transfer(address,uint256)");
 Unlike the Go version, Rust `Abi` entries also carry tuple `components` and the
 event `anonymous` flag.
 
-Two Cargo features, both on by default, let you take only what you need:
+Cargo features, all on by default, let you take only what you need:
 
-| Feature | Provides |
-|---------|----------|
-| `abi`   | The signature table, `lookup_abi`, `signatures` and the `Abi` types |
-| `scan`  | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
+| Feature  | Provides |
+|----------|----------|
+| `abi`    | The signature table, `lookup_abi`, `signatures` and the `Abi` types |
+| `decode` | Calldata decoding: `decode_calldata`, `Abi::decode_input` (implies `abi`) |
+| `scan`   | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
 
-`abi_list` and `abi_list_hex` need both. For example, to decode the method of
-a transaction without the bytecode scanner:
+`abi_list` and `abi_list_hex` need both `abi` and `scan`. A `scan`-only build
+does not embed the signature table at all.
+
+#### Decoding calldata
+
+To show a user what a transaction does, e.g. on a hardware wallet, decode its
+input data without the bytecode scanner:
 
 ```toml
-evmabiless = { version = "0.1", default-features = false, features = ["abi"] }
+evmabiless = { version = "0.1", default-features = false, features = ["decode"] }
 ```
 
 ```rust
-use evmabiless::{lookup_abi, MethodPrefix};
+use evmabiless::decode_calldata;
 
-if let Some(abi) = MethodPrefix::from_calldata(&tx_input).and_then(lookup_abi) {
-    println!("{}", abi.abi);
+match decode_calldata(&tx_input) {
+    Ok(call) => {
+        println!("{}", call.abi.name); // transfer
+        for param in call.params {
+            // to: 0x1111111111111111111111111111111111111111
+            // value: 1000000
+            println!("{}: {}", param.io.name, param.value);
+        }
+    }
+    Err(e) => println!("cannot decode: {e}"), // e.g. "non-zero padding at byte 4"
 }
 ```
 
-A `scan`-only build does not embed the signature table at all.
+Decoding validates the whole calldata before returning anything, then hands
+out zero-copy `Value`s (integers, addresses, bytes, strings, arrays, tuples)
+borrowing from the input; walking them cannot fail. Values display integers in
+decimal, addresses and bytes as `0x` hex, and strings quoted and escaped.
+
+Anything but the canonical encoding is rejected by default: dirty padding in
+any value, bools other than 0/1, invalid UTF-8, offsets that don't point where
+Solidity would put the data, and trailing bytes, so every accepted calldata
+has exactly one meaning. `DecodeMode::Lenient` accepts non-canonical layouts
+(but still never dirty values), with the work bounded against offsets crafted
+to make the decoder read the same data over and over. Errors report the kind
+of problem and the byte position.
+
+A selector is only 4 bytes, so a match in the table is a guess; an argument
+encoding that does not validate against the guessed ABI is reported as an
+error rather than shown.
 
 ## How it works
 

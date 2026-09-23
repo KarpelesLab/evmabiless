@@ -17,3 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `abi` and `scan` Cargo features (both default) so the signature table and
   the bytecode scanner can each be used on their own.
 - `MethodPrefix::from_calldata` to get the selector of a transaction.
+- `decode` Cargo feature (default): `decode_calldata` and `Abi::decode_input`
+  validate calldata against the ABI, rejecting non-canonical encodings by
+  default (`DecodeMode::Lenient` relaxes the layout checks), and decode the
+  arguments into zero-copy `Value`s, still without allocating.
