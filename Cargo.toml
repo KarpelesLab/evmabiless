@@ -1,6 +1,6 @@
 [package]
 name = "evmabiless"
-version = "0.1.16"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.89"
 description = "Recover the ABI of a deployed EVM contract from its bytecode using a built-in table of known selectors. no_std, no alloc."
