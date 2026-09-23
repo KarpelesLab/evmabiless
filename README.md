@@ -2,6 +2,8 @@
 [![CI](https://github.com/KarpelesLab/evmabiless/actions/workflows/test.yml/badge.svg)](https://github.com/KarpelesLab/evmabiless/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/KarpelesLab/evmabiless/badge.svg?branch=master)](https://coveralls.io/github/KarpelesLab/evmabiless?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/KarpelesLab/evmabiless)](https://goreportcard.com/report/github.com/KarpelesLab/evmabiless)
+[![crates.io](https://img.shields.io/crates/v/evmabiless.svg)](https://crates.io/crates/evmabiless)
+[![docs.rs](https://docs.rs/evmabiless/badge.svg)](https://docs.rs/evmabiless)
 
 # ABI-less contract invocation
 
@@ -11,9 +13,10 @@ table of several hundred well-known method, event and error signatures and
 matches them against the 4-byte selectors embedded in a contract's dispatch
 prologue.
 
-The library is available for both Go and JavaScript and is designed to plug
-directly into `ethers.js` or `go-ethereum` so you can call a contract you just
-discovered on-chain.
+The library is available for Go, JavaScript and Rust. The Go and JavaScript
+versions are designed to plug directly into `go-ethereum` or `ethers.js` so you
+can call a contract you just discovered on-chain; the Rust crate is `no_std`
+and never allocates, so it also runs on embedded and bare-metal targets.
 
 ## Installation
 
@@ -27,6 +30,12 @@ go get github.com/KarpelesLab/evmabiless
 
 ```sh
 npm install evmabiless
+```
+
+### Rust
+
+```sh
+cargo add evmabiless
 ```
 
 ## Usage
@@ -79,6 +88,55 @@ for _, abi := range evmabiless.AbiList(code) {
 Unknown selectors are silently dropped from `AbiList`; use `ScanContract` if
 you need to see the raw selector hashes.
 
+### Rust
+
+The crate is `#![no_std]` and allocation-free: the signature table is a sorted
+`static` array and scanning returns lazy iterators over the input.
+
+```rust
+use evmabiless::{abi_list_hex, lookup_abi, MethodPrefix};
+
+// Hex straight from eth_getCode, with or without 0x; decoded on the fly.
+for abi in abi_list_hex(&bytecode_hex)? {
+    println!("{}", abi.abi); // function transfer(address to, uint256 value) returns (bool)
+}
+
+let transfer = lookup_abi(MethodPrefix::from_hex("a9059cbb")?).unwrap();
+assert_eq!(transfer.compact, "transfer(address,uint256)");
+```
+
+- `scan_contract(&[u8])` / `scan_contract_hex(&str)` iterate over every `MethodPrefix` found, in scan order.
+- `abi_list(&[u8])` / `abi_list_hex(&str)` iterate over the `&'static Abi` entries for known selectors.
+- `lookup_abi(MethodPrefix)` resolves a single selector, or returns `None`.
+- `signatures()` returns the whole table, sorted by selector.
+
+Unlike the Go version, Rust `Abi` entries also carry tuple `components` and the
+event `anonymous` flag.
+
+Two Cargo features, both on by default, let you take only what you need:
+
+| Feature | Provides |
+|---------|----------|
+| `abi`   | The signature table, `lookup_abi`, `signatures` and the `Abi` types |
+| `scan`  | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
+
+`abi_list` and `abi_list_hex` need both. For example, to decode the method of
+a transaction without the bytecode scanner:
+
+```toml
+evmabiless = { version = "0.1", default-features = false, features = ["abi"] }
+```
+
+```rust
+use evmabiless::{lookup_abi, MethodPrefix};
+
+if let Some(abi) = MethodPrefix::from_calldata(&tx_input).and_then(lookup_abi) {
+    println!("{}", abi.abi);
+}
+```
+
+A `scan`-only build does not embed the signature table at all.
+
 ## How it works
 
 Solidity compiles every public / external function into a dispatch table at the
@@ -106,7 +164,7 @@ and looks it up in the built-in signature table.
 
 - Only selectors present in the built-in table can be resolved. Custom or
   obfuscated selectors come back as raw hashes (JavaScript `scanContract`) or
-  are dropped (Go `AbiList`).
+  are dropped (Go `AbiList`, Rust `abi_list`).
 - Two different functions can theoretically share the same 4-byte selector
   (keccak256 collision); the table stores only one entry per selector.
 - The scanner recognises Solidity's standard dispatch prologue. Contracts
@@ -121,8 +179,16 @@ such as per-function payability.
 ## Updating the signature table
 
 The built-in table is regenerated from an internal ABI database via
-`make_signatures.php`. Running it rewrites both `signatures.go` and
-`signatures.js`.
+`make_signatures.php`. Running it rewrites `signatures.go`, `signatures.js`
+and `src/signatures.rs`. `php make_signatures.php --from-js` regenerates only
+`src/signatures.rs` from the existing `signatures.js`, without network access.
+
+## Releases
+
+The Rust crate is published to crates.io by
+[release-plz](https://release-plz.dev/): pushing to `master` a `Cargo.toml`
+version that is not yet on crates.io publishes it and creates the matching
+`vX.Y.Z` tag and GitHub Release (which Go also uses as its module version).
 
 ## License
 

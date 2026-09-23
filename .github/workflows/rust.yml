@@ -1,0 +1,103 @@
+name: Rust
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test & lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Format
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Test
+        run: cargo test
+
+      # `abi` and `scan` can each be used alone; make sure every combination
+      # builds, is lint-clean and passes its tests.
+      - name: Clippy + test, each feature combination
+        run: |
+          for f in "" "abi" "scan"; do
+            echo "::group::features: '${f}'"
+            cargo clippy --all-targets --no-default-features --features "$f" -- -D warnings
+            cargo test --no-default-features --features "$f"
+            echo "::endgroup::"
+          done
+
+      - name: Docs
+        run: cargo doc --no-deps
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+      - name: Package
+        run: cargo package
+
+  generated:
+    name: signatures.rs is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Regenerate src/signatures.rs from signatures.js
+        run: php make_signatures.php --from-js
+
+      - name: Check for differences
+        run: git diff --exit-code src/signatures.rs
+
+  no_std:
+    name: no_std, no alloc (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Bare-metal targets have neither `std` nor a global allocator, so a
+        # successful build proves the crate needs neither.
+        target: [thumbv6m-none-eabi, thumbv7em-none-eabihf, riscv32imc-unknown-none-elf]
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Build (default features)
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Build (abi only)
+        run: cargo build --release --target ${{ matrix.target }} --no-default-features --features abi
+
+      - name: Build (scan only)
+        run: cargo build --release --target ${{ matrix.target }} --no-default-features --features scan
+
+  msrv:
+    name: MSRV (Rust 1.85)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust 1.85 (declared MSRV)
+        uses: dtolnay/rust-toolchain@1.85
+
+      - name: Test
+        run: cargo test

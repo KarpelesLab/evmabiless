@@ -1,0 +1,30 @@
+[package]
+name = "evmabiless"
+version = "0.1.16"
+edition = "2024"
+rust-version = "1.85"
+description = "Recover the ABI of a deployed EVM contract from its bytecode using a built-in table of known selectors. no_std, no alloc."
+repository = "https://github.com/KarpelesLab/evmabiless"
+license = "MIT"
+keywords = ["ethereum", "evm", "abi", "solidity", "no-std"]
+categories = ["cryptography::cryptocurrencies", "no-std", "no-std::no-alloc", "parser-implementations"]
+# The repository also hosts the Go module and the npm package; only ship the
+# Rust sources in the published .crate.
+include = ["/src/**/*.rs", "/tests/**/*.rs", "/Cargo.toml", "/README.md", "/LICENSE", "/CHANGELOG.md"]
+
+[features]
+default = ["abi", "scan"]
+# Built-in signature table: `lookup_abi`, `signatures`, and the `Abi` types.
+abi = []
+# Bytecode scanner: `scan_contract`, `scan_contract_hex`. Together with `abi`
+# it also enables `abi_list` and `abi_list_hex`.
+scan = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[dependencies]
+
+[dev-dependencies]
+tiny-keccak = { version = "2", features = ["keccak"] }
