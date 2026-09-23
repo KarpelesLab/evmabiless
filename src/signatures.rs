@@ -3,7 +3,7 @@
 use crate::{Abi, AbiIO, AbiType, MethodPrefix, StateMutability};
 
 /// Every known ABI entry, sorted by selector.
-pub(crate) static SIGNATURES: [Abi; 647] = [
+pub(crate) static SIGNATURES: [Abi<'static>; 647] = [
 	Abi {
 		selector: MethodPrefix([0x00, 0x23, 0xde, 0x29]),
 		name: "tokensReceived",

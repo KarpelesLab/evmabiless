@@ -129,7 +129,7 @@ function write_rust($signatures) {
 	fwrite($rs, "// Do not edit, automatically generated file (see make_signatures.php).\n\n");
 	fwrite($rs, "use crate::{Abi, AbiIO, AbiType, MethodPrefix, StateMutability};\n\n");
 	fwrite($rs, "/// Every known ABI entry, sorted by selector.\n");
-	fwrite($rs, "pub(crate) static SIGNATURES: [Abi; ".count($signatures)."] = [\n");
+	fwrite($rs, "pub(crate) static SIGNATURES: [Abi<'static>; ".count($signatures)."] = [\n");
 	foreach($signatures as $key => $val) {
 		$key = (string)$key;
 		if (!preg_match('/^[0-9a-f]{8}$/', $key)) throw new Exception('invalid selector '.$key);

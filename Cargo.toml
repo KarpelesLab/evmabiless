@@ -13,14 +13,16 @@ categories = ["cryptography::cryptocurrencies", "no-std", "no-std::no-alloc", "p
 include = ["/src/**/*.rs", "/tests/**/*.rs", "/Cargo.toml", "/README.md", "/LICENSE", "/CHANGELOG.md"]
 
 [features]
-default = ["abi", "decode", "scan"]
-# Built-in signature table: `lookup_abi`, `signatures`, and the `Abi` types.
-abi = []
-# Calldata decoding: `decode_calldata`, `Abi::decode_input`.
-decode = ["abi"]
-# Bytecode scanner: `scan_contract`, `scan_contract_hex`. Together with `abi`
-# it also enables `abi_list` and `abi_list_hex`.
+default = ["decode", "scan", "signatures"]
+# Calldata decoding: `Abi::decode_input`. With `signatures`, also
+# `decode_calldata`.
+decode = []
+# Bytecode scanner: `scan_contract`, `scan_contract_hex`. With `signatures`,
+# also `abi_list` and `abi_list_hex`.
 scan = []
+# Built-in signature table: `lookup_abi`, `signatures`. Most of the crate's
+# size.
+signatures = []
 
 [package.metadata.docs.rs]
 all-features = true

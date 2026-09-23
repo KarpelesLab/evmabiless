@@ -114,22 +114,24 @@ event `anonymous` flag.
 
 Cargo features, all on by default, let you take only what you need:
 
-| Feature  | Provides |
-|----------|----------|
-| `abi`    | The signature table, `lookup_abi`, `signatures` and the `Abi` types |
-| `decode` | Calldata decoding: `decode_calldata`, `Abi::decode_input` (implies `abi`) |
-| `scan`   | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
+| Feature      | Provides |
+|--------------|----------|
+| `signatures` | The built-in signature table: `lookup_abi`, `signatures` (most of the crate's size) |
+| `decode`     | Calldata decoding: `Abi::decode_input` |
+| `scan`       | The bytecode scanner: `scan_contract`, `scan_contract_hex` |
 
-`abi_list` and `abi_list_hex` need both `abi` and `scan`. A `scan`-only build
-does not embed the signature table at all.
+The `Abi` types are always available. Functions that look selectors up in the
+table need `signatures` as well: `decode_calldata` (with `decode`), and
+`abi_list` / `abi_list_hex` (with `scan`).
 
 #### Decoding calldata
 
 To show a user what a transaction does, e.g. on a hardware wallet, decode its
-input data without the bytecode scanner:
+input data without the bytecode scanner, looking the function up in the
+built-in table:
 
 ```toml
-evmabiless = { version = "0.1", default-features = false, features = ["decode"] }
+evmabiless = { version = "0.1", default-features = false, features = ["decode", "signatures"] }
 ```
 
 ```rust
@@ -145,6 +147,24 @@ match decode_calldata(&tx_input) {
         }
     }
     Err(e) => println!("cannot decode: {e}"), // e.g. "non-zero padding at byte 4"
+}
+```
+
+Or leave out the table and supply the ABIs yourself, as `static`s or built at
+run time from borrowed data (`features = ["decode"]`):
+
+```rust
+use evmabiless::{Abi, AbiIO, AbiType, MethodPrefix};
+
+static APPROVE: Abi = Abi::new(
+    AbiType::Function,
+    MethodPrefix([0x09, 0x5e, 0xa7, 0xb3]),
+    "approve",
+    &[AbiIO::new("spender", "address"), AbiIO::new("value", "uint256")],
+);
+
+for param in APPROVE.decode_input(&tx_input)? {
+    println!("{}: {}", param.io.name, param.value);
 }
 ```
 

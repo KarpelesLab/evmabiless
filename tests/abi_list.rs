@@ -1,4 +1,4 @@
-#![cfg(all(feature = "scan", feature = "abi"))]
+#![cfg(all(feature = "scan", feature = "signatures"))]
 
 mod common;
 

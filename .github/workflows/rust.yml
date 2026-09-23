@@ -33,11 +33,11 @@ jobs:
       - name: Test
         run: cargo test
 
-      # `abi`, `decode` and `scan` can each be used alone; make sure each one
+      # `decode`, `scan` and `signatures` can each be used alone; make sure each one
       # builds, is lint-clean and passes its tests.
       - name: Clippy + test, each feature on its own
         run: |
-          for f in "" "abi" "decode" "scan"; do
+          for f in "" "decode" "scan" "signatures"; do
             echo "::group::features: '${f}'"
             cargo clippy --all-targets --no-default-features --features "$f" -- -D warnings
             cargo test --no-default-features --features "$f"
@@ -84,8 +84,8 @@ jobs:
       - name: Build (default features)
         run: cargo build --release --target ${{ matrix.target }}
 
-      - name: Build (abi only)
-        run: cargo build --release --target ${{ matrix.target }} --no-default-features --features abi
+      - name: Build (signatures only)
+        run: cargo build --release --target ${{ matrix.target }} --no-default-features --features signatures
 
       - name: Build (decode only)
         run: cargo build --release --target ${{ matrix.target }} --no-default-features --features decode

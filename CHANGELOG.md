@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** the `abi` feature is renamed `signatures` and only gates the
+  built-in table (`lookup_abi`, `signatures`). `decode` no longer requires
+  it: `Abi::decode_input` works with caller-supplied ABIs, while
+  `decode_calldata` needs both `decode` and `signatures`.
+- **Breaking:** `Abi` and `AbiIO` are always available and take a lifetime
+  (`Abi<'a>`, `AbiIO<'a>`; the built-in table is `Abi<'static>`), so ABIs can
+  borrow data received at run time.
+
+### Added
+
+- `const` constructors `Abi::new` and `AbiIO::new`, with `with_*` setters, so
+  ABIs can be defined as `static`s or built at run time.
+
 ## [0.1.16] - 2026-09-23
 
 ### Added

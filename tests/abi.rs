@@ -1,4 +1,4 @@
-#![cfg(feature = "abi")]
+#![cfg(feature = "signatures")]
 
 use evmabiless::{AbiType, MethodPrefix, StateMutability, lookup_abi, signatures};
 use tiny_keccak::{Hasher, Keccak};

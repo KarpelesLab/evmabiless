@@ -11,7 +11,9 @@
 use core::fmt;
 use core::slice;
 
-use crate::{Abi, AbiIO, AbiType, MethodPrefix, lookup_abi};
+#[cfg(feature = "signatures")]
+use crate::lookup_abi;
+use crate::{Abi, AbiIO, AbiType, MethodPrefix};
 
 const WORD: usize = 32;
 
@@ -139,11 +141,12 @@ impl fmt::Display for DecodeErrorKind {
 }
 
 /// A decoded function call, returned by [`decode_calldata`].
+#[cfg(feature = "signatures")]
 #[derive(Clone, Debug)]
 #[non_exhaustive]
 pub struct Call<'a> {
     /// The function being called.
-    pub abi: &'static Abi,
+    pub abi: &'static Abi<'static>,
     /// The arguments. Clone the iterator to walk them more than once.
     pub params: Params<'a>,
 }
@@ -172,11 +175,13 @@ pub struct Call<'a> {
 ///     println!("{}: {}", param.io.name, param.value);
 /// }
 /// ```
+#[cfg(feature = "signatures")]
 pub fn decode_calldata(calldata: &[u8]) -> Result<Call<'_>, DecodeError> {
     decode_calldata_with(calldata, DecodeMode::Strict)
 }
 
 /// Like [`decode_calldata`], with an explicit [`DecodeMode`].
+#[cfg(feature = "signatures")]
 pub fn decode_calldata_with(calldata: &[u8], mode: DecodeMode) -> Result<Call<'_>, DecodeError> {
     let selector = MethodPrefix::from_calldata(calldata)
         .ok_or(DecodeError::new(DecodeErrorKind::TooShort, 0))?;
@@ -190,18 +195,22 @@ pub fn decode_calldata_with(calldata: &[u8], mode: DecodeMode) -> Result<Call<'_
     })
 }
 
-impl Abi {
+impl<'b> Abi<'b> {
     /// Decodes `calldata` (selector included) as a call to this function,
     /// rejecting non-canonical encodings. Also decodes revert data for an
     /// [`AbiType::Error`].
-    pub fn decode_input<'a>(&self, calldata: &'a [u8]) -> Result<Params<'a>, DecodeError> {
+    ///
+    /// The ABI does not have to come from the built-in table: its types are
+    /// validated as well, and an unsupported or too deeply nested type is an
+    /// error, never a panic.
+    pub fn decode_input<'a>(&'a self, calldata: &'a [u8]) -> Result<Params<'a>, DecodeError> {
         self.decode_input_with(calldata, DecodeMode::Strict)
     }
 
     /// Like [`decode_input`](Self::decode_input), with an explicit
     /// [`DecodeMode`].
     pub fn decode_input_with<'a>(
-        &self,
+        &'a self,
         calldata: &'a [u8],
         mode: DecodeMode,
     ) -> Result<Params<'a>, DecodeError> {
@@ -251,7 +260,7 @@ impl Abi {
 #[non_exhaustive]
 pub struct Param<'a> {
     /// Name and type of the argument.
-    pub io: &'static AbiIO,
+    pub io: &'a AbiIO<'a>,
     /// The decoded value.
     pub value: Value<'a>,
 }
@@ -324,7 +333,7 @@ impl fmt::Display for Value<'_> {
 #[derive(Clone)]
 pub struct Params<'a> {
     reader: Reader<'a>,
-    fields: slice::Iter<'static, AbiIO>,
+    fields: slice::Iter<'a, AbiIO<'a>>,
     base: usize,
     head: usize,
 }
@@ -357,21 +366,21 @@ impl fmt::Debug for Params<'_> {
 #[derive(Clone)]
 pub struct Array<'a> {
     reader: Reader<'a>,
-    elem: Ty,
+    elem: Ty<'a>,
     base: usize,
     head: usize,
     remaining: usize,
 }
 
-impl Array<'_> {
+impl<'a> Array<'a> {
     /// The element type, e.g. `"uint256"` for a `uint256[]`, or `"tuple"`.
-    pub fn elem_type(&self) -> &'static str {
+    pub fn elem_type(&self) -> &'a str {
         self.elem.s
     }
 
     /// The members of the element type when it is a `tuple`, empty
     /// otherwise.
-    pub fn elem_components(&self) -> &'static [AbiIO] {
+    pub fn elem_components(&self) -> &'a [AbiIO<'a>] {
         self.elem.components
     }
 }
@@ -560,13 +569,13 @@ fn fmt_decimal(f: &mut fmt::Formatter<'_>, non_negative: bool, word: [u8; WORD])
 
 /// An ABI type: its type string and, for tuples, its components.
 #[derive(Clone, Copy, Debug)]
-struct Ty {
-    s: &'static str,
-    components: &'static [AbiIO],
+struct Ty<'a> {
+    s: &'a str,
+    components: &'a [AbiIO<'a>],
 }
 
 #[derive(Clone, Copy)]
-enum Kind {
+enum Kind<'a> {
     Uint(usize),
     Int(usize),
     Address,
@@ -576,18 +585,18 @@ enum Kind {
     Bytes,
     String,
     Tuple,
-    Array { elem: Ty, len: Option<usize> },
+    Array { elem: Ty<'a>, len: Option<usize> },
 }
 
-impl Ty {
-    fn of(io: &'static AbiIO) -> Ty {
+impl<'a> Ty<'a> {
+    fn of(io: &'a AbiIO<'a>) -> Ty<'a> {
         Ty {
             s: io.ty,
             components: io.components,
         }
     }
 
-    fn kind(self) -> Result<Kind, DecodeErrorKind> {
+    fn kind(self) -> Result<Kind<'a>, DecodeErrorKind> {
         use DecodeErrorKind::UnsupportedType;
         if let Some(inner) = self.s.strip_suffix(']') {
             // The last [..] is the outermost array: `uint8[2][]` is a
@@ -722,12 +731,12 @@ fn canonical_number(s: &str) -> Option<usize> {
 
 /// The members of a tuple, or the elements of an array.
 #[derive(Clone, Copy)]
-enum Members {
-    Fields(&'static [AbiIO]),
-    Repeat(Ty, usize),
+enum Members<'a> {
+    Fields(&'a [AbiIO<'a>]),
+    Repeat(Ty<'a>, usize),
 }
 
-impl Members {
+impl<'a> Members<'a> {
     fn len(self) -> usize {
         match self {
             Members::Fields(fields) => fields.len(),
@@ -735,7 +744,7 @@ impl Members {
         }
     }
 
-    fn get(self, i: usize) -> Option<Ty> {
+    fn get(self, i: usize) -> Option<Ty<'a>> {
         match self {
             Members::Fields(fields) => fields.get(i).map(Ty::of),
             Members::Repeat(ty, n) => (i < n).then_some(ty),
@@ -786,7 +795,7 @@ impl<'a> Validator<'a> {
 
     /// Validates the value of type `ty` encoded at `pos`, returning the end
     /// of its encoding (for dynamic types, including their tail).
-    fn value(&mut self, ty: Ty, pos: usize, depth: usize) -> Result<usize, DecodeError> {
+    fn value(&mut self, ty: Ty<'_>, pos: usize, depth: usize) -> Result<usize, DecodeError> {
         let err = |kind| DecodeError::new(kind, pos);
         self.budget = self
             .budget
@@ -838,7 +847,7 @@ impl<'a> Validator<'a> {
     /// the tails of dynamic members. Returns the end of the encoding.
     fn sequence(
         &mut self,
-        members: Members,
+        members: Members<'_>,
         base: usize,
         depth: usize,
     ) -> Result<usize, DecodeError> {
@@ -885,7 +894,7 @@ impl<'a> Validator<'a> {
 }
 
 /// Checks that a static elementary value is canonically encoded.
-fn check_word(kind: Kind, w: &[u8; WORD]) -> Result<(), DecodeErrorKind> {
+fn check_word(kind: Kind<'_>, w: &[u8; WORD]) -> Result<(), DecodeErrorKind> {
     let zero = |bytes: &[u8]| bytes.iter().all(|&b| b == 0);
     let ok = match kind {
         Kind::Uint(bits) => zero(&w[..WORD - bits / 8]),
@@ -939,7 +948,7 @@ impl<'a> Reader<'a> {
 
     /// Reads the value whose head is at `head` in the tuple or array body
     /// starting at `base`.
-    fn at_head(self, ty: Ty, base: usize, head: usize) -> Option<Value<'a>> {
+    fn at_head(self, ty: Ty<'a>, base: usize, head: usize) -> Option<Value<'a>> {
         if ty.is_dynamic(0).ok()? {
             self.value(ty, base.checked_add(self.usize_at(head)?)?)
         } else {
@@ -947,7 +956,7 @@ impl<'a> Reader<'a> {
         }
     }
 
-    fn value(self, ty: Ty, pos: usize) -> Option<Value<'a>> {
+    fn value(self, ty: Ty<'a>, pos: usize) -> Option<Value<'a>> {
         Some(match ty.kind().ok()? {
             Kind::Uint(_) => Value::Uint(Uint(self.word(pos)?)),
             Kind::Int(_) => Value::Int(Int(self.word(pos)?)),
@@ -1067,28 +1076,10 @@ mod tests {
 
     use std::vec::Vec;
 
-    use crate::StateMutability;
-
     /// A function taking a single argument of type `ty`.
-    fn abi_with_arg(ty: &'static str) -> Abi {
-        let inputs: &'static [AbiIO] = std::boxed::Box::leak(std::boxed::Box::new([AbiIO {
-            name: "x",
-            ty,
-            internal_type: ty,
-            indexed: false,
-            components: &[],
-        }]));
-        Abi {
-            selector: MethodPrefix([1, 2, 3, 4]),
-            name: "f",
-            abi: "",
-            compact: "",
-            kind: AbiType::Function,
-            state_mutability: Some(StateMutability::NonPayable),
-            anonymous: false,
-            inputs,
-            outputs: &[],
-        }
+    fn abi_with_arg(ty: &'static str) -> Abi<'static> {
+        let inputs = std::boxed::Box::leak(std::boxed::Box::new([AbiIO::new("x", ty)]));
+        Abi::new(AbiType::Function, MethodPrefix([1, 2, 3, 4]), "f", inputs)
     }
 
     fn push_word(data: &mut Vec<u8>, v: usize) {

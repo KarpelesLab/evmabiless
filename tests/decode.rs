@@ -1,4 +1,4 @@
-#![cfg(feature = "decode")]
+#![cfg(all(feature = "decode", feature = "signatures"))]
 
 mod common;
 

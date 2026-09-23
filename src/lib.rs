@@ -11,28 +11,28 @@
 //!
 //! # Features
 //!
-//! All features are enabled by default; each can be used on its own.
+//! All features are enabled by default; each can be used on its own. The
+//! [`Abi`] types are always available.
 //!
-//! - `abi`: the built-in signature table, [`lookup_abi`] and [`signatures`].
-//!   Enough to identify the function a transaction calls (see
-//!   [`MethodPrefix::from_calldata`]) without pulling in the bytecode scanner.
-//! - `decode` (implies `abi`): [`decode_calldata`] and [`Abi::decode_input`],
-//!   which validate a transaction's calldata against the ABI and decode its
-//!   arguments into zero-copy [`Value`]s, e.g. to show them to a user before
-//!   signing.
+//! - `signatures`: the built-in signature table, [`lookup_abi`] and
+//!   [`signatures`]. It is most of the crate's size.
+//! - `decode`: [`Abi::decode_input`], which validates a transaction's
+//!   calldata against an ABI and decodes its arguments into zero-copy
+//!   [`Value`]s, e.g. to show them to a user before signing. Without
+//!   `signatures`, you supply the ABIs.
 //! - `scan`: the bytecode scanner, [`scan_contract`] and
-//!   [`scan_contract_hex`]. On its own it yields raw selectors and does not
-//!   embed the signature table.
+//!   [`scan_contract_hex`], which yields raw selectors.
 //!
-//! [`abi_list`] and [`abi_list_hex`], which scan bytecode and look up every
-//! selector found, require both.
+//! Combinations enable functions that look selectors up in the table:
+//! [`decode_calldata`] with `decode` and `signatures`, and [`abi_list`] /
+//! [`abi_list_hex`] with `scan` and `signatures`.
 //!
 //! # Examples
 //!
-//! Identifying the function a transaction calls (`abi` feature):
+//! Identifying the function a transaction calls (`signatures` feature):
 //!
 //! ```
-//! # #[cfg(feature = "abi")] {
+//! # #[cfg(feature = "signatures")] {
 //! use evmabiless::{lookup_abi, MethodPrefix};
 //!
 //! let calldata = [0xa9, 0x05, 0x9c, 0xbb, /* arguments... */];
@@ -42,10 +42,10 @@
 //! # }
 //! ```
 //!
-//! Decoding its arguments as well (`decode` feature):
+//! Decoding its arguments as well (`decode` and `signatures` features):
 //!
 //! ```
-//! # #[cfg(feature = "decode")] {
+//! # #[cfg(all(feature = "decode", feature = "signatures"))] {
 //! use evmabiless::{decode_calldata, DecodeErrorKind};
 //!
 //! let mut calldata = [0u8; 68];
@@ -64,11 +64,33 @@
 //! # }
 //! ```
 //!
-//! Recovering the ABI of a contract from its bytecode (`scan` and `abi`
-//! features). Hex bytecode, e.g. from `eth_getCode`, is decoded on the fly:
+//! Decoding with your own ABI (`decode` feature only):
 //!
 //! ```
-//! # #[cfg(all(feature = "scan", feature = "abi"))] {
+//! # #[cfg(feature = "decode")] {
+//! use evmabiless::{Abi, AbiIO, AbiType, MethodPrefix};
+//!
+//! static APPROVE: Abi = Abi::new(
+//!     AbiType::Function,
+//!     MethodPrefix([0x09, 0x5e, 0xa7, 0xb3]),
+//!     "approve",
+//!     &[AbiIO::new("spender", "address"), AbiIO::new("value", "uint256")],
+//! );
+//!
+//! let mut calldata = [0u8; 68];
+//! calldata[..4].copy_from_slice(&[0x09, 0x5e, 0xa7, 0xb3]);
+//! calldata[67] = 7;
+//! let value = APPROVE.decode_input(&calldata).unwrap().nth(1).unwrap().value;
+//! assert_eq!(value.to_string(), "7");
+//! # }
+//! ```
+//!
+//! Recovering the ABI of a contract from its bytecode (`scan` and
+//! `signatures` features). Hex bytecode, e.g. from `eth_getCode`, is decoded
+//! on the fly:
+//!
+//! ```
+//! # #[cfg(all(feature = "scan", feature = "signatures"))] {
 //! use evmabiless::abi_list_hex;
 //!
 //! // DUP1 PUSH4 a9059cbb EQ PUSH2 0x00ff JUMPI
@@ -87,30 +109,32 @@
 use core::fmt;
 use core::str::FromStr;
 
-#[cfg(feature = "abi")]
 mod abi;
 #[cfg(feature = "decode")]
 mod decode;
 #[cfg(feature = "scan")]
 mod scan;
-#[cfg(feature = "abi")]
+#[cfg(feature = "signatures")]
 #[rustfmt::skip]
 mod signatures;
 
-#[cfg(feature = "abi")]
-pub use abi::{Abi, AbiIO, AbiType, StateMutability, lookup_abi, signatures};
+pub use abi::{Abi, AbiIO, AbiType, StateMutability};
+#[cfg(feature = "signatures")]
+pub use abi::{lookup_abi, signatures};
 #[cfg(feature = "decode")]
 pub use decode::{
-    Address, Array, Call, DecodeError, DecodeErrorKind, DecodeMode, Int, MAX_DEPTH, Param, Params,
-    Uint, Value, decode_calldata, decode_calldata_with,
+    Address, Array, DecodeError, DecodeErrorKind, DecodeMode, Int, MAX_DEPTH, Param, Params, Uint,
+    Value,
 };
-#[cfg(all(feature = "scan", feature = "abi"))]
+#[cfg(all(feature = "decode", feature = "signatures"))]
+pub use decode::{Call, decode_calldata, decode_calldata_with};
+#[cfg(all(feature = "scan", feature = "signatures"))]
 pub use scan::{AbiList, abi_list, abi_list_hex};
 #[cfg(feature = "scan")]
 pub use scan::{ScanContract, scan_contract, scan_contract_hex};
 
 /// A 4-byte function selector: the first four bytes of the keccak256 hash of
-/// the function's canonical signature (`Abi::compact`). It is the value the
+/// the function's canonical signature ([`Abi::compact`]). It is the value the
 /// EVM reads from calldata to dispatch a call.
 ///
 /// It formats (via [`Display`](fmt::Display) and [`LowerHex`](fmt::LowerHex))
